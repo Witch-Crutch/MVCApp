@@ -12,3 +12,8 @@
   - JDBS PostgreSQL v.42.2.16
 ## Figma
 * [Layouts](https://www.figma.com/file/a4Yd1TVRhb71AqQSwGFxLQ/Prototype?node-id=0%3A1)
+## Developers
+- ### Dev1
+ - Zheleznov Dmitriy
+- ### Dev2
+ - Morozova Alexandra
