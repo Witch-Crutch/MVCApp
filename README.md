@@ -14,6 +14,6 @@
 * [Layouts](https://www.figma.com/file/a4Yd1TVRhb71AqQSwGFxLQ/Prototype?node-id=0%3A1)
 ## Developers
 - ### Dev1
- - Zheleznov Dmitriy
+  - Zheleznov Dmitriy
 - ### Dev2
- - Morozova Alexandra
+  - Morozova Alexandra
