@@ -10,7 +10,7 @@ App for using the services of the witch Crutch.
 - ### Backend
   - Java Servlets v.4.0.1 
   - Freemarker template engine v.2.3.30
-  - JDBS MySQL v.8.0.21
+  - JDBS PostgreSQL v.42.2.16
  
 ## Сoncepts and patterns
 - ### Concept of development
