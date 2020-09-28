@@ -90,6 +90,14 @@ h5 {
     text-align: center;
 }
 
+.stages-cont_text{
+    padding-top: 30px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Proxima Nova Rg', sans-serif;
+    font-size: 18px;
+}
+
 .stages-cont_img{
     padding-top: 85px;
 }
