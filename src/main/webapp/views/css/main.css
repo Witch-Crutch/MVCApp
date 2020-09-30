@@ -78,6 +78,7 @@ h5 {
 .card-cont_title {
     padding-top: 20px;
     font-size: 24px;
+    font-weight: bold;
 }
 
 .card-cont_text {
