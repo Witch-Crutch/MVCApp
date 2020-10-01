@@ -58,6 +58,22 @@ a:hover {
     padding-top: 70px;
 }
 
+.div_front {
+    position: absolute;
+    z-index: 100;
+}
+
+.div_back_right {
+    position: absolute;
+    z-index: 0;
+    left: 800px;
+}
+
+.div_back_left {
+    position: absolute;
+    z-index: 0;
+    right: 1000px;
+}
 
 .register-cont_input {
     background-color: #988CCA !important;
@@ -78,11 +94,11 @@ a:hover {
     padding-bottom: 40px;
 }
 
-.auth-checkbox{
-    padding-top:40px;
+.auth-checkbox {
+    padding-top: 40px;
 }
 
-.checkbox_text{
+.checkbox_text {
     color: black;
     font-family: 'Proxima Nova Rg', sans-serif;
 }
