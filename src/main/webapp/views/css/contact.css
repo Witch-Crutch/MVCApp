@@ -63,3 +63,21 @@ a:hover {
 .btn:hover {
     background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
 }
+
+.div_front {
+    position: absolute;
+    z-index: 100;
+}
+
+
+.div_back_right {
+    position: absolute;
+    z-index: 0;
+    left: 850px;
+}
+
+.div_back_left {
+    position: absolute;
+    z-index: 0;
+    right: 900px;
+}
