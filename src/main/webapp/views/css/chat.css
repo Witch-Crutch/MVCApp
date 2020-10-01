@@ -6,6 +6,24 @@ body {
     font-family: 'Proxima Nova Rg', sans-serif;
 }
 
+.div_front {
+    position: absolute;
+    z-index: 100;
+}
+
+
+.div_back_right {
+    position: absolute;
+    z-index: 0;
+    left: 150px;
+}
+
+.div_back_left {
+    position: absolute;
+    z-index: 0;
+    right: 300px;
+}
+
 .links {
     padding-top: 50px;
 }
