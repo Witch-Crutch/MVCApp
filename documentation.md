@@ -38,6 +38,16 @@ to come to the office to the witch Crutch.
 - Division of functionality between registered and unregistered users:
     - An unregistered user cannot use the online chat and pay for services.
     - An unregistered user can view the main page and the page with the services provided.
+    
+## List of pages
+- Home page
+- Personal account
+- Service catalog
+- Detailed description of the service
+- Authorization
+- Registration
+- Online chat with a witch
+- An order call
      
 ## System requirements
  - Using sessions in authorization.
