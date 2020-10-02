@@ -10,6 +10,13 @@ body {
     padding-top: 50px;
 }
 
+h1, h2, h4 {
+    font-weight: bold;
+    font-family: 'Proxima Nova Rg', sans-serif;
+    color: #FFFFFF;
+}
+
+
 a {
     color: #FFFFFF;
     font-family: 'Proxima Nova Rg', sans-serif;
@@ -85,13 +92,48 @@ a:hover {
     background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
 }
 
-.card-body_img {
-
-}
-
 .card-body_title {
     font-size: 30px;
     font-family: 'Proxima Nova Rg', sans-serif;
     color: black;
 }
 
+
+.div_front {
+    position: absolute;
+    z-index: 100;
+}
+
+.div_back_right {
+    position: absolute;
+    z-index: 0;
+    left: 800px;
+}
+
+.div_back_left {
+    position: absolute;
+    z-index: 0;
+    right: 1000px;
+}
+
+.card-body_title{
+    font-weight: bold;
+    padding-top: 40px;
+}
+
+.card-body_text{
+    text-align: left;
+    padding-top: 40px;
+    color:#000000;
+    font-size: 18px;
+    font-family: 'Proxima Nova Rg', sans-serif;
+}
+
+.card-body_price{
+    text-align: left;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color:#000000;
+    font-size: 18px;
+    font-family: 'Proxima Nova Rg', sans-serif;
+}
