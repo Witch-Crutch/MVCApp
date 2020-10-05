@@ -6,20 +6,13 @@ body {
     font-family: 'Proxima Nova Rg', sans-serif;
 }
 
-.links {
-    padding-top: 50px;
-}
-
 h1, h2, h4 {
     font-weight: bold;
-    font-family: 'Proxima Nova Rg', sans-serif;
     color: #FFFFFF;
 }
-
 
 a {
     color: #FFFFFF;
-    font-family: 'Proxima Nova Rg', sans-serif;
     font-size: 18px;
 }
 
@@ -27,77 +20,9 @@ a:hover {
     color: #9E31D1;
 }
 
-.profile-cont_title {
-    font-weight: bold;
-    font-family: 'Proxima Nova Rg', sans-serif;
-    color: #FFFFFF;
+.center {
     text-align: center;
-    font-size: 56px;
-    margin-top: 80px;
 }
-
-.profile-cont_subtitle {
-    font-weight: bold;
-    font-family: 'Proxima Nova Rg', sans-serif;
-    color: #FFFFFF;
-    text-align: left;
-    font-size: 40px;
-    padding-top: 45px;
-}
-
-.profile-cont_img {
-    padding-top: 45px;
-}
-
-.info-cont {
-    padding-top: 70px;
-}
-
-.info-cont_text_top {
-    font-family: 'Proxima Nova Rg', sans-serif;
-    color: #FFFFFF;
-    font-size: 30px;
-}
-
-.info-cont_text {
-    padding-top: 25px;
-    font-family: 'Proxima Nova Rg', sans-serif;
-    color: #FFFFFF;
-    font-size: 30px;
-}
-
-.history-cont_cards {
-    padding-top: 45px;
-}
-
-.history-cont_btn {
-    padding-top: 100px;
-}
-
-.btn {
-    background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
-    box-shadow: 0px 8px 60px rgba(178, 49, 210, 0.5);
-    font-size: 30px;
-    font-family: 'Proxima Nova Rg', sans-serif;
-    font-weight: bold;
-    color: #CCCCCC;
-    padding: 20px 60px;
-    border-radius: 90px;
-    letter-spacing: 1px;
-    text-align: center;
-    transition: all 0.5s ease;
-}
-
-.btn:hover {
-    background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
-}
-
-.card-body_title {
-    font-size: 30px;
-    font-family: 'Proxima Nova Rg', sans-serif;
-    color: black;
-}
-
 
 .div_front {
     position: absolute;
@@ -116,24 +41,91 @@ a:hover {
     right: 1000px;
 }
 
-.card-body_title{
+.logo:hover {
+    cursor: pointer;
+}
+
+.links {
+    padding-top: 50px;
+}
+
+.btn {
+    background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
+    box-shadow: 0px 8px 60px rgba(178, 49, 210, 0.5);
+    font-size: 30px;
+    font-family: 'Proxima Nova Rg', sans-serif;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding: 20px 60px;
+    border-radius: 90px;
+    letter-spacing: 1px;
+    transition: 0.5s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
+}
+
+.profile-cont_title {
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 56px;
+    margin-top: 80px;
+}
+
+.profile-cont_subtitle {
+    font-weight: bold;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 40px;
+    padding-top: 45px;
+}
+
+.profile-cont_img {
+    padding-top: 45px;
+}
+
+.info-cont {
+    padding-top: 70px;
+}
+
+.info-cont_text_top {
+    color: #FFFFFF;
+    font-size: 30px;
+}
+
+.info-cont_text {
+    padding-top: 25px;
+    color: #FFFFFF;
+    font-size: 30px;
+}
+
+.history-cont_cards {
+    padding-top: 45px;
+}
+
+.history-cont_btn {
+    padding-top: 100px;
+}
+
+.card-body_title {
+    font-size: 30px;
+    color: black;
     font-weight: bold;
     padding-top: 40px;
 }
 
-.card-body_text{
+.card-body_text {
     text-align: left;
     padding-top: 40px;
-    color:#000000;
+    color: #000000;
     font-size: 18px;
-    font-family: 'Proxima Nova Rg', sans-serif;
 }
 
-.card-body_price{
+.card-body_price {
     text-align: left;
     padding-top: 40px;
     padding-bottom: 40px;
-    color:#000000;
+    color: #000000;
     font-size: 18px;
-    font-family: 'Proxima Nova Rg', sans-serif;
 }

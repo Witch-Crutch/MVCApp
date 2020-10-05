@@ -6,19 +6,13 @@ body {
     background-color: #000000;
 }
 
-.links {
-    padding-top: 50px;
-}
-
 h1, h2, h4 {
     font-weight: bold;
-    font-family: 'Proxima Nova Rg', sans-serif;
     color: #FFFFFF;
 }
 
 a {
     color: #FFFFFF;
-    font-family: 'Proxima Nova Rg', sans-serif;
     font-size: 18px;
 }
 
@@ -26,49 +20,10 @@ a:hover {
     color: #9E31D1;
 }
 
-.contact-card {
-    padding-top: 100px !important;
-}
-
-.card-contact_title {
-    padding-top: 30px;
-    font-size: 30px;
-    text-align: center;
-    color: #000000;
-}
-
-.cont_input {
-    background-color: #988CCA !important;
-    height: 60px;
-    border-radius: 10px;
-}
-
-.cont_btn {
-    align-content: center;
-}
-
-.btn {
-    background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
-    box-shadow: 0px 8px 60px rgba(178, 49, 210, 0.5);
-    font-size: 24px;
-    font-family: 'Proxima Nova Rg', sans-serif;
-    font-weight: bold;
-    color: #CCCCCC;
-    padding: 10px 50px;
-    border-radius: 90px;
-    text-align: center;
-    transition: all 0.5s ease;
-}
-
-.btn:hover {
-    background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
-}
-
 .div_front {
     position: absolute;
     z-index: 100;
 }
-
 
 .div_back_right {
     position: absolute;
@@ -81,3 +36,53 @@ a:hover {
     z-index: 0;
     right: 900px;
 }
+
+.center {
+    text-align: center;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.links {
+    padding-top: 50px;
+}
+
+.btn {
+    background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
+    box-shadow: 0px 8px 60px rgba(178, 49, 210, 0.5);
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 10px 50px;
+    border-radius: 90px;
+    transition: 0.5s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
+}
+
+.contact-card:focus {
+    padding-top: 100px;
+}
+
+.card-contact_title {
+    padding-top: 30px;
+    font-size: 30px;
+    color: #000000;
+}
+
+.cont_input {
+    background-color: #988CCA;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.cont_input:focus {
+    background-color: #988CCA;
+}
+
+
+

@@ -6,20 +6,13 @@ body {
     font-family: 'Proxima Nova Rg', sans-serif;
 }
 
-.links {
-    padding-top: 50px;
-}
-
-
 h1, h2, h4 {
     font-weight: bold;
-    font-family: 'Proxima Nova Rg', sans-serif;
     color: #FFFFFF;
 }
 
 a {
     color: #FFFFFF;
-    font-family: 'Proxima Nova Rg', sans-serif;
     font-size: 18px;
 }
 
@@ -27,9 +20,54 @@ a:hover {
     color: #9E31D1;
 }
 
+.center {
+    text-align: center;
+}
+
+
+.div_front {
+    position: absolute;
+    z-index: 100;
+}
+
+
+.div_back_right {
+    position: absolute;
+    z-index: 0;
+    left: 850px;
+}
+
+.div_back_left {
+    position: absolute;
+    z-index: 0;
+    right: 900px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.links {
+    padding-top: 50px;
+}
+
+.btn {
+    background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
+    box-shadow: 0px 8px 60px rgba(178, 49, 210, 0.5);
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding: 15px 60px;
+    border-radius: 20px;
+    transition: 0.5s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
+}
+
 .serv-cont_title {
     font-weight: bold;
-    font-family: 'Proxima Nova Rg', sans-serif;
     color: #FFFFFF;
     text-align: center;
     font-size: 56px;
@@ -51,41 +89,6 @@ a:hover {
     padding-top: 30px;
 }
 
-.btn {
-    background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
-    box-shadow: 0px 8px 60px rgba(178, 49, 210, 0.5);
-    font-size: 18px;
-    font-family: 'Proxima Nova Rg', sans-serif;
-    font-weight: bold;
-    color: #CCCCCC;
-    padding: 15px 60px;
-    border-radius: 20px;
-    text-align: center;
-    transition: all 0.5s ease;
-}
-
-.btn:hover {
-    background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
-}
-
-.div_front {
-    position: absolute;
-    z-index: 100;
-}
-
-
-.div_back_right {
-    position: absolute;
-    z-index: 0;
-    left: 850px;
-}
-
-.div_back_left {
-    position: absolute;
-    z-index: 0;
-    right: 900px;
-}
-
 .services {
     padding-top: 40px;
 }
@@ -100,18 +103,14 @@ a:hover {
 
 .services_title {
     color: #000000;
-    font-family: 'Proxima Nova Rg', sans-serif;
     font-weight: bold;
     font-size: 24px;
-    text-align: center;
     padding-top: 30px;
 }
 
 .services_price {
     color: #000000;
-    font-family: 'Proxima Nova Rg', sans-serif;
     font-size: 24px;
-    text-align: center;
     padding-top: 10px;
 }
 
