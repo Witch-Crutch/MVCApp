@@ -1,0 +1,60 @@
+body {
+    background-color: #000000;
+    position: relative;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-family: 'Proxima Nova Rg', sans-serif;
+}
+
+h1, h2, h4 {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+a {
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+a:hover {
+    color: #9E31D1;
+}
+
+.center {
+    text-align: center;
+}
+
+.links {
+    padding-top: 50px;
+}
+
+
+.btn {
+    background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
+    box-shadow: 0px 8px 60px rgba(178, 49, 210, 0.5);
+    font-size: 24px;
+    font-weight: bold;
+    border: 0;
+    color: #ffffff;
+    border-radius: 90px;
+    letter-spacing: 1px;
+    transition:  0.5s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
+}
+
+.alert-cont_text {
+    padding-top: 40px;
+    color: #000;
+    font-size: 36px;
+}
+
+.alert-btn_in{
+    padding: 20px 50px;
+}
+
+.alert-btn_register{
+    padding: 20px 60px;
+}
