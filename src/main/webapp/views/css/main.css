@@ -28,6 +28,10 @@ a:hover {
     text-align: center;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .links {
     padding-top: 50px;
 }
@@ -57,7 +61,7 @@ a:hover {
     padding: 20px 60px;
     border-radius: 90px;
     letter-spacing: 1px;
-    transition:  0.5s ease;
+    transition: 0.5s ease;
 }
 
 .btn:hover {
@@ -115,11 +119,14 @@ a:hover {
 }
 
 .auth-cont_input {
-    background-color: #988CCA !important;
+    background-color: #988CCA;
     height: 60px;
     border-radius: 10px;
 }
 
+.auth-cont_input:focus {
+    background-color: #988CCA;
+}
 
 .card-gradient {
     border-radius: 15px;

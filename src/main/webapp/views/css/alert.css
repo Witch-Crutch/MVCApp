@@ -24,10 +24,13 @@ a:hover {
     text-align: center;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .links {
     padding-top: 50px;
 }
-
 
 .btn {
     background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);

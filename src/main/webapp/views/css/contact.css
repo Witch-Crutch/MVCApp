@@ -20,28 +20,33 @@ a:hover {
     color: #9E31D1;
 }
 
+.div_front {
+    position: absolute;
+    z-index: 100;
+}
+
+.div_back_right {
+    position: absolute;
+    z-index: 0;
+    left: 850px;
+}
+
+.div_back_left {
+    position: absolute;
+    z-index: 0;
+    right: 900px;
+}
+
 .center {
     text-align: center;
 }
 
+.logo:hover {
+    cursor: pointer;
+}
+
 .links {
     padding-top: 50px;
-}
-
-.contact-card {
-    padding-top: 100px !important;
-}
-
-.card-contact_title {
-    padding-top: 30px;
-    font-size: 30px;
-    color: #000000;
-}
-
-.cont_input {
-    background-color: #988CCA !important;
-    height: 60px;
-    border-radius: 10px;
 }
 
 .btn {
@@ -59,20 +64,25 @@ a:hover {
     background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
 }
 
-.div_front {
-    position: absolute;
-    z-index: 100;
+.contact-card:focus {
+    padding-top: 100px;
+}
+
+.card-contact_title {
+    padding-top: 30px;
+    font-size: 30px;
+    color: #000000;
+}
+
+.cont_input {
+    background-color: #988CCA;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.cont_input:focus {
+    background-color: #988CCA;
 }
 
 
-.div_back_right {
-    position: absolute;
-    z-index: 0;
-    left: 850px;
-}
 
-.div_back_left {
-    position: absolute;
-    z-index: 0;
-    right: 900px;
-}
