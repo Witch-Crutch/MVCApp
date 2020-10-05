@@ -15,7 +15,7 @@ public class TestJDBS {
                 configDB.get("URL"), configDB.get("USERNAME"), configDB.get("PASS")
         );
 
-        UsersRepositoryJdbcImpl usersRepositoryJdbc = new UsersRepositoryJdbcImpl(connection);
+        UsersRepositoryJdbcImpl usersRepositoryJdbc = new UsersRepositoryJdbcImpl();
         System.out.println(usersRepositoryJdbc.findAll());
 
 
