@@ -3,10 +3,10 @@ package ru.itis.witchCrutch.jdbc.repositories;
 import ru.itis.witchCrutch.jdbc.SimpleDataSource;
 import ru.itis.witchCrutch.models.User;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,19 +63,47 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         sds.closeConnection(connection);
     }
 
-    public boolean userIsExist(String login, String password) {
+    public boolean userIsExist(String name, String password) {
         boolean result = false;
 
         try {
-            Statement statement = connection.createStatement();
-            String query = "SELECT * FROM users where name='" + login + "' AND password='" + password + "';";
-            ResultSet resultSet = statement.executeQuery(query);
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
 
+            messageDigest.update(name.getBytes(StandardCharsets.UTF_8));
+            messageDigest.update(password.getBytes(StandardCharsets.UTF_8));
+
+            byte[] cryptPassword = messageDigest.digest();
+
+            Statement statement = connection.createStatement();
+            String query = "SELECT * FROM users where name='" + name + "' AND password='" + new String(cryptPassword) + "';";
+
+            ResultSet resultSet = statement.executeQuery(query);
             result = resultSet.next();
-        } catch (SQLException e) {
+
+        } catch (SQLException | NoSuchAlgorithmException e) {
             throw new IllegalArgumentException();
         }
 
         return result;
+    }
+
+    public void addUser(User user) {
+        String query = "INSERT INTO users (name, email, surname, password, profile_img, rights)" +
+                "VALUES (?, ?, ?, ?, ?, ?);";
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, user.getName());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getSurname());
+            statement.setString(4, user.getPassword());
+            statement.setString(5, user.getProfileImg());
+            statement.setString(6, user.getRights().getString());
+
+            System.out.println(statement.executeUpdate());
+
+        } catch (SQLException e) {
+            throw new IllegalArgumentException();
+        }
     }
 }

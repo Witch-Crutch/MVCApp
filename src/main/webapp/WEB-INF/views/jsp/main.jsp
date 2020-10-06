@@ -252,7 +252,7 @@
                         <div style="padding-top: 80px">
                             <input type="email" id="inputEmail" class="form-control auth-cont_input" placeholder="Login"
                                    required
-                                   autofocus>
+                                   >
                         </div>
 
                         <div style="padding-top: 20px">
@@ -282,7 +282,7 @@
     <div class="container">
         <div class="row" style="padding-top: 100px">
             <div class="offset-1 col-md-3">
-                <img src="../assets/main/logo.png">
+                <img src="../../../views/assets/main/logo.png">
             </div>
             <div class="offset-1 col-md-2">
                 <div class="row"><a class="nav-link js-scroll-trigger" href="advantages.html">Преимущества</a></div>

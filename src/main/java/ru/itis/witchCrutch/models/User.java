@@ -7,9 +7,9 @@ public class User {
     private String email;
     private String password;
     private String profileImg;
-    private boolean rights;
+    private Right rights;
 
-    public User(String name, String surname, String email, String password, String profileImg, boolean rights) {
+    public User(String name, String surname, String email, String password, String profileImg, Right rights) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -19,11 +19,11 @@ public class User {
     }
 
     public User(String name, String surname, String email, String password, String profileImg) {
-        this(name, surname, email, password, profileImg, false);
+        this(name, surname, email, password, profileImg, Right.USER);
     }
 
     public User(String name, String surname, String email, String password) {
-        this(name, surname, email, password, ".", false);
+        this(name, surname, email, password, ".", Right.USER);
     }
 
     public String getName() { return name; }
@@ -36,7 +36,7 @@ public class User {
 
     public String getProfileImg() { return profileImg; }
 
-    public boolean isRights() { return rights; }
+    public Right getRights() { return rights; }
 
     @Override
     public String toString() {
@@ -48,5 +48,21 @@ public class User {
                 ", profileImg='" + profileImg + '\'' +
                 ", rights=" + rights +
                 '}';
+    }
+
+    public enum Right {
+        ADMIN ("admin"),
+        USER ("user"),
+        UNKNOWN ("unknown");
+
+        private final String string;
+
+        Right(String rights) {
+            this.string = rights;
+        }
+
+        public String getString() {
+            return string;
+        }
     }
 }
