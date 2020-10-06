@@ -44,15 +44,15 @@
 
 <!--chat-->
 <div class="container">
-    <div class="offset-3 col-md-6" style="padding-top: 30px; padding-bottom: 30px">
+    <div class="offset-3 col-md-6 chat_padding">
         <div class="div_back_right">
             <img src="../assets/smoke.png">
         </div>
         <div class="div_back_left">
             <img src="../assets/smoke.png">
         </div>
-        <div class="card chat-room div_front">
-            <div class="card-body" style="background-color: #FFFFFF">
+        <div class="card chat-room div_front" style="border-radius: 20px">
+            <div class="card-body">
                 <div class="chat-message">
                     <ul class="list-unstyled chat-1 scrollbar-light-blue">
                         <li class="d-flex justify-content-between mb-4">
@@ -141,22 +141,23 @@
                         </li>
                     </ul>
 
-                    <div class="white">
-                        <div class="form-group basic-textarea">
+                    <form>
+                        <div class="white">
+                            <div class="form-group basic-textarea">
                             <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
                                       placeholder="Напишите сообщение ведьме здесь..."></textarea>
+                            </div>
                         </div>
-                    </div>
 
-                    <span class="btn float-left">
+                        <span class="btn float-left">
                          Прикрепить файл <input type="file">
                         </span>
-                    <div>
-                        <button type="button"
-                                class="btn float-right">Отправить
-                        </button>
-                    </div>
-
+                        <div>
+                            <button type="button"
+                                    class="btn float-right">Отправить
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
