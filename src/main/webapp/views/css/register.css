@@ -1,25 +1,3 @@
-body {
-    background-color: #000000;
-    position: relative;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    font-family: 'Proxima Nova Rg', sans-serif;
-}
-
-h1, h2, h4 {
-    font-weight: bold;
-    color: #FFFFFF;
-}
-
-a {
-    color: #FFFFFF;
-    font-size: 18px;
-}
-
-a:hover {
-    color: #9E31D1;
-}
-
 .div_front {
     position: absolute;
     z-index: 100;
@@ -36,15 +14,6 @@ a:hover {
     z-index: 0;
     right: 1000px;
 }
-
-.logo:hover {
-    cursor: pointer;
-}
-
-.links {
-    padding-top: 50px;
-}
-
 
 .btn {
     background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
@@ -67,7 +36,7 @@ a:hover {
     color: #FFFFFF;
     text-align: center;
     font-size: 56px;
-    margin-top: 80px;
+    padding-top: 50px;
 }
 
 .cards {
