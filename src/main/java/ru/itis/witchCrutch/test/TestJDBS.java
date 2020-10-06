@@ -4,21 +4,26 @@ import ru.itis.witchCrutch.jdbc.SimpleDataSource;
 import ru.itis.witchCrutch.jdbc.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.witchCrutch.util.ConfigParser;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Map;
 
 public class TestJDBS {
     public static void main(String[] args) throws SQLException {
-        SimpleDataSource dataSource = new SimpleDataSource();
-        Map<String, String> configDB = ConfigParser.parseDBConfig();
-        Connection connection = dataSource.openConnection(
-                configDB.get("URL"), configDB.get("USERNAME"), configDB.get("PASS")
-        );
+        InitialContext cxt = null;
+        try {
+            cxt = new InitialContext();
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
 
-        UsersRepositoryJdbcImpl usersRepositoryJdbc = new UsersRepositoryJdbcImpl();
-        System.out.println(usersRepositoryJdbc.findAll());
-
-
-        dataSource.closeConnection(connection);
+        DataSource ds = null;
+        try {
+            ds = (DataSource) cxt.lookup( "java:/comp/env/jdbc/postgres" );
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
     }
 }

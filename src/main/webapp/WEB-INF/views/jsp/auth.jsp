@@ -64,16 +64,16 @@
                 <div class="card-body text-center ">
                     <form class="form-signin" method="post" action="/auth">
                         <div class="register-cont_input_top">
-                            <input type="email" id="inputEmail" class="form-control register-cont_input"
+                            <input type="text" id="inputEmail" class="form-control register-cont_input"
                                    placeholder="Login"
                                    required
-                                   autofocus>
+                                   autofocus name="login">
                         </div>
 
                         <div class="register-cont_input_middle">
                             <input type="password" id="inputPassword" class="form-control register-cont_input"
                                    placeholder="Password"
-                                   required>
+                                   required name="password">
                         </div>
 
                         <div class="auth-checkbox">
@@ -82,6 +82,9 @@
                                     <input type="checkbox" value="remember-me"> запомнить меня
                                 </label>
                             </div>
+                        </div>
+                        <div class="row" style="padding-top: 50px">
+                            <button class=" offset-4 col-md-4 btn btn-lg btn-primary btn-block" type="submit">Регистрация</button>
                         </div>
                     </form>
                 </div>

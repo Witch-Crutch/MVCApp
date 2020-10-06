@@ -15,6 +15,11 @@ public class SimpleDataSource {
     }
 
     public Connection openConnection(String url, String username, String pass) {
+        try{
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException();
+        }
         try {
             return DriverManager.getConnection(url, username, pass);
         } catch (SQLException e) {

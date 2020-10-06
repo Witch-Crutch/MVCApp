@@ -14,4 +14,12 @@ public class AuthServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/views/jsp/auth.jsp").forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        final String login = req.getParameter("login");
+        final String password = req.getParameter("password");
+
+        System.out.println(login + " " + password);
+    }
 }

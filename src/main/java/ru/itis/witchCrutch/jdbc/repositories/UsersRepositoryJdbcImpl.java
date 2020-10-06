@@ -68,10 +68,11 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
         try {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM users where name=" + login + " AND password=" + password + ";");
+            String query = "SELECT * FROM users where name='" + login + "' AND password='" + password + "';";
+            ResultSet resultSet = statement.executeQuery(query);
 
             result = resultSet.next();
-        } catch (SQLException throwables) {
+        } catch (SQLException e) {
             throw new IllegalArgumentException();
         }
 

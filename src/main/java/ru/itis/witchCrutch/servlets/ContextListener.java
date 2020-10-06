@@ -7,7 +7,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.util.concurrent.atomic.AtomicReference;
 
-
+@WebListener
 public class ContextListener implements ServletContextListener {
 
     private AtomicReference<UsersRepositoryJdbcImpl> userRepository;

@@ -25,25 +25,28 @@ public class AuthFilter implements Filter {
 
         @SuppressWarnings("unchecked")
         final AtomicReference<UsersRepositoryJdbcImpl> userRepository = (AtomicReference<UsersRepositoryJdbcImpl>) req.getServletContext().getAttribute("userRepository");
-        System.out.println(userRepository);
+
         final HttpSession session = req.getSession();
 
         if (session != null && session.getAttribute("login") != null && session.getAttribute("pass") != null) {
             moveTo(req, resp, "/main");
+            System.out.println("1");
         } else if (userRepository.get().userIsExist(login, password)) {
 
             req.getSession().setAttribute("login", login);
             req.getSession().setAttribute("password", password);
             moveTo(req, resp, "/main");
+            System.out.println("2");
         } else {
             moveTo(req, resp, "/auth");
+            System.out.println("3");
         }
     }
 
     private void moveTo(HttpServletRequest req, HttpServletResponse resp, String context) {
         try {
-            req.getServletContext().getRequestDispatcher(context).forward(req, resp);
-        } catch (ServletException | IOException e) {
+            req.getRequestDispatcher(context).forward(req, resp);
+        } catch (IOException | ServletException e) {
             throw new IllegalArgumentException();
         }
     }
