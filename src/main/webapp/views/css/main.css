@@ -126,6 +126,7 @@ a:hover {
 
 .auth-cont_input:focus {
     background-color: #988CCA;
+    color: #1b1e21;
 }
 
 .card-gradient {
@@ -133,5 +134,10 @@ a:hover {
     box-shadow: 0 4px 4px 0 rgba(98, 79, 174, 0.50), 0 6px 10px 0 rgba(98, 79, 174, 0.50);
     background: transparent linear-gradient(to right, #624FAE, #9E31D1);
 }
+
+.auth-cont_input::placeholder {
+    color: #1b1e21;
+}
+
 
 
