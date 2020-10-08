@@ -79,7 +79,7 @@
                         <div class="auth-checkbox">
                             <div class="checkbox mb-3">
                                 <label class="checkbox_text">
-                                    <input type="checkbox" value="remember-me"> запомнить меня
+                                    <input type="checkbox" value="true" name="remember"> запомнить меня
                                 </label>
                             </div>
                         </div>

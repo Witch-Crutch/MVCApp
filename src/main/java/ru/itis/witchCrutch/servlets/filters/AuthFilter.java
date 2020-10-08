@@ -8,6 +8,7 @@ import ru.itis.witchCrutch.util.HashPassword;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -29,14 +30,25 @@ public class AuthFilter implements Filter {
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
         this.usersService = new UsersServiceImpl(usersRepository);
 
-        final String name = req.getParameter("name");
-        final String password = req.getParameter("password");
+        String name = req.getParameter("name");
+        String password = req.getParameter("password");
+        final boolean remember = req.getParameter("remember") != null;
+
+        Cookie[] cookies = req.getCookies();
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("name")) name = cookie.getValue();
+            if (cookie.getName().equals("password")) password = cookie.getValue();
+        }
 
         final HttpSession session = req.getSession();
         //TODO: переводить на куку по желанию
         if (session != null && session.getAttribute("name") != null && session.getAttribute("password") != null) {
             redirectTo(req, resp, "/main");
         } else if (name != null && password != null && usersService.userIsExist(name, HashPassword.getHash(name, password))) {
+            if (remember) {
+                resp.addCookie(new Cookie("name", name));
+                resp.addCookie(new Cookie("password", password));
+            }
             req.getSession().setAttribute("name", name);
             req.getSession().setAttribute("password", password);
             redirectTo(req, resp, "/main");
