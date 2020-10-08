@@ -1,26 +1,36 @@
 package ru.itis.witchCrutch.servlets;
 
-import ru.itis.witchCrutch.jdbc.repositories.UsersRepositoryJdbcImpl;
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import ru.itis.witchCrutch.util.ConfigParser;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.util.concurrent.atomic.AtomicReference;
+import java.util.Map;
 
 @WebListener
 public class ContextListener implements ServletContextListener {
 
-    private AtomicReference<UsersRepositoryJdbcImpl> userRepository;
-
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        userRepository = new AtomicReference<>(new UsersRepositoryJdbcImpl());
-        sce.getServletContext().setAttribute("userRepository", userRepository);
+        HikariConfig hikariConfig = new HikariConfig();
+        Map<String, String> configDB = ConfigParser.parseDBConfig();
+
+        hikariConfig.setJdbcUrl(configDB.get("URL"));
+        hikariConfig.setDriverClassName(configDB.get("DRIVER"));
+        hikariConfig.setUsername(configDB.get("USERNAME"));
+        hikariConfig.setPassword(configDB.get("PASS"));
+        hikariConfig.setMaximumPoolSize(10);
+
+        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+        sce.getServletContext().setAttribute("datasource", dataSource);
+
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        userRepository.get().close();
-        sce.getServletContext().setAttribute("userRepository", null);
+        sce.getServletContext().setAttribute("datasource", null);
     }
+
 }

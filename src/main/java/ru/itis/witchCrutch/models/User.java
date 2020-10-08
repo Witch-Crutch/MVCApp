@@ -1,52 +1,39 @@
 package ru.itis.witchCrutch.models;
 
+
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@Builder
+@ToString
+@EqualsAndHashCode
 public class User {
 
     private String name;
     private String surname;
     private String email;
     private String password;
-    private String profileImg;
-    private boolean rights;
+    @Builder.Default
+    private String profileImg = ".";
+    @Builder.Default
+    private Right rights = Right.USER;
 
-    public User(String name, String surname, String email, String password, String profileImg, boolean rights) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.password = password;
-        this.profileImg = profileImg;
-        this.rights = rights;
-    }
+    public enum Right {
+        ADMIN ("ADMIN"),
+        USER ("USER"),
+        UNKNOWN ("UNKNOWN");
 
-    public User(String name, String surname, String email, String password, String profileImg) {
-        this(name, surname, email, password, profileImg, false);
-    }
+        private final String string;
 
-    public User(String name, String surname, String email, String password) {
-        this(name, surname, email, password, ".", false);
-    }
+        Right(String rights) {
+            this.string = rights;
+        }
 
-    public String getName() { return name; }
-
-    public String getSurname() { return surname; }
-
-    public String getEmail() { return email; }
-
-    public String getPassword() { return password; }
-
-    public String getProfileImg() { return profileImg; }
-
-    public boolean isRights() { return rights; }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", profileImg='" + profileImg + '\'' +
-                ", rights=" + rights +
-                '}';
+        public String getString() {
+            return string;
+        }
     }
 }

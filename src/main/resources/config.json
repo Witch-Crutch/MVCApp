@@ -2,6 +2,7 @@
   "DB" : {
     "URL": "jdbc:postgresql://localhost:5432/WitchCrutch",
     "USERNAME": "postgres",
+    "DRIVER": "org.postgresql.Driver",
     "PASS": "root"
   }
 }
