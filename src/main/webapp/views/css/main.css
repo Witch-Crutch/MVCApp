@@ -32,6 +32,14 @@ span {
     text-align: center;
 }
 
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
 .logo:hover {
     cursor: pointer;
 }
