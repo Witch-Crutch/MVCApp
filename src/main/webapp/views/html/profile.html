@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/profile.css">
     <title>Личный кабинет</title>
+    <script>
+        var b = document.getElementById('overlay');
+
+        function swa() {
+            b.style.visibility = 'visible';
+            b.style.opacity = '1';
+            b.style.transition = 'all 0.7s ease-out 0s';
+        }
+
+        function swa2() {
+            b.style.visibility = 'hidden';
+            b.style.opacity = '0';
+        }
+    </script>
 </head>
 <body>
 <nav>
@@ -58,13 +72,13 @@
                     <div class="profile-cont_subtitle left">
                         Информация
                     </div>
-                    <div class="col-md-2 profile-cont_img">
-                        <img src="../assets/pencil.png">
+                    <div class="col-md-3 profile-cont_subtitle">
+                        <button class="btn_mini_2" onclick="swa()" type="button">Изменить</button>
                     </div>
                 </div>
                 <div class="row info-cont">
                     <div class="col-md-2">
-                        <a href="#openModal">
+                        <a>
                             <img src="../assets/profile.png">
                         </a>
                     </div>
@@ -95,24 +109,13 @@
         </div>
 
         <!-- Модальное окно -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
+        <div id="overlay">
+            <div class="popup">
+                <button class="close" title="Закрыть окно" onclick="swa2()"></button>
+                <p class="zag">Добавить фотографию</p>
+                <p><span class="btn float-left">
+                         Прикрепить файл <input type="file">
+                        </span></p>
             </div>
         </div>
 
