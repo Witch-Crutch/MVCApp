@@ -67,7 +67,7 @@
                             <input type="text" id="inputEmail" class="form-control register-cont_input"
                                    placeholder="Login"
                                    required
-                                   autofocus name="login">
+                                   autofocus name="name">
                         </div>
 
                         <div class="register-cont_input_middle">
