@@ -4,6 +4,7 @@ body {
     box-sizing: border-box;
     color: #FFFFFF;
     font-family: 'Proxima Nova Rg', sans-serif;
+    overflow-x: hidden;
 }
 
 h1, h2, h4 {

@@ -87,3 +87,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.btn_ajax:focus {
+    padding: 15px 180px;
+}
