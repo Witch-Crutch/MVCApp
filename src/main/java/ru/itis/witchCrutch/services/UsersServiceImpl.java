@@ -27,4 +27,11 @@ public class UsersServiceImpl implements UsersService {
     public void addUser(User user) {
         usersRepository.save(user);
     }
+
+    @Override
+    public User getUserByNamePassword(String name, String password) {
+        return usersRepository.findByNamePassword(name, password);
+    }
+
+
 }

@@ -2,18 +2,26 @@ package ru.itis.witchCrutch.servlets;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import freemarker.template.Configuration;
+import freemarker.template.TemplateExceptionHandler;
+import lombok.SneakyThrows;
 import ru.itis.witchCrutch.util.ConfigParser;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import java.io.File;
 import java.util.Map;
 
 @WebListener
 public class ContextListener implements ServletContextListener {
 
+    @SneakyThrows
     @Override
     public void contextInitialized(ServletContextEvent sce) {
+
+        //    DB
+
         HikariConfig hikariConfig = new HikariConfig();
         Map<String, String> configDB = ConfigParser.parseDBConfig();
 
@@ -25,7 +33,6 @@ public class ContextListener implements ServletContextListener {
 
         HikariDataSource dataSource = new HikariDataSource(hikariConfig);
         sce.getServletContext().setAttribute("datasource", dataSource);
-
     }
 
     @Override
