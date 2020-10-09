@@ -41,12 +41,11 @@ public class CookieFilter implements Filter {
             if (cookie.getName().equals("name")) name = cookie.getValue();
             if (cookie.getName().equals("password")) password = cookie.getValue();
         }
+        if (name != null && password != null) {
+            User user = usersService.getUserByNamePassword(name, HashPassword.getHash(name, password));
 
-        User user = usersService.getUserByNamePassword(name, HashPassword.getHash(name, password));
-        System.out.println(user);
-
-        if (user != null) req.getServletContext().setAttribute("user", user);
-
+            if (user != null) req.getServletContext().setAttribute("user", user);
+        }
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
