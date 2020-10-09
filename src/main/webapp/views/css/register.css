@@ -80,3 +80,7 @@
 .checkbox_text {
     color: black;
 }
+
+.card_settings{
+    border-radius: 20px;
+}

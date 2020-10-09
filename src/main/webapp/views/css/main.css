@@ -29,6 +29,10 @@ span {
     white-space: nowrap;
 }
 
+.inner_form {
+    display: none;
+}
+
 .center {
     text-align: center;
 }

@@ -50,5 +50,7 @@
     background-color: #988CCA;
 }
 
-
-
+.cont_btn {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
