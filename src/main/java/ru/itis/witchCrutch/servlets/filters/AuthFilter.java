@@ -41,7 +41,7 @@ public class AuthFilter implements Filter {
         }
 
         final HttpSession session = req.getSession();
-        //TODO: переводить на куку по желанию
+
         if (session != null && session.getAttribute("name") != null && session.getAttribute("password") != null) {
             redirectTo(req, resp, "/main");
         } else if (name != null && password != null && usersService.userIsExist(name, HashPassword.getHash(name, password))) {
