@@ -1,8 +1,5 @@
 package ru.itis.witchCrutch.servlets.servlet;
 
-import ru.itis.witchCrutch.models.User;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -14,15 +11,15 @@ import java.io.IOException;
 public class QuitServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Cookie[] cookies = req.getCookies();
 
-        for (int i = 0; i < cookies.length; i++) {
-            if (cookies[i].getName().equals("name") || cookies[i].getName().equals("password")) {
-                cookies[i].setValue("");
-                cookies[i].setPath("/");
-                cookies[i].setMaxAge(0);
-                resp.addCookie(cookies[i]);
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("name") || cookie.getName().equals("password")) {
+                cookie.setValue("");
+                cookie.setPath("/");
+                cookie.setMaxAge(0);
+                resp.addCookie(cookie);
             }
         }
 
@@ -34,7 +31,7 @@ public class QuitServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         doGet(req, resp);
     }
 }

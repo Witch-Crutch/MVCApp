@@ -7,7 +7,7 @@ import java.util.List;
 
 public class UsersRepositoryJdbcImpl implements UsersRepository {
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     //language=SQL
     private static final String SQL_FIND_ALL = "select * from users";
@@ -22,7 +22,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private static final  String SQL_INSERT = "INSERT INTO users (name, email, surname, password, profile_img, rights)" +
             "VALUES (?, ?, ?, ?, ?, ?);";
 
-    private RowMapper<User> userRowMapper = row -> User.builder()
+    private final RowMapper<User> userRowMapper = row -> User.builder()
             .name(row.getString("name"))
             .lastname(row.getString("surname"))
             .email(row.getString("email"))

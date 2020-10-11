@@ -18,19 +18,17 @@ import java.io.IOException;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
-    private UsersService usersService;
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("register.ftl").forward(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        this.usersService = new UsersServiceImpl(usersRepository);
+        UsersService usersService = new UsersServiceImpl(usersRepository);
 
         String name = req.getParameter("name");
         String lastname = req.getParameter("lastname");

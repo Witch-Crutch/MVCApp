@@ -1,12 +1,11 @@
 package ru.itis.witchCrutch.models;
 
 
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
+@Data
 @Getter
+@Setter
 @Builder
 @ToString
 @EqualsAndHashCode

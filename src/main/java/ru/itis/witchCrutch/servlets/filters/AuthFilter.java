@@ -4,7 +4,6 @@ import ru.itis.witchCrutch.repositories.UsersRepository;
 import ru.itis.witchCrutch.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.witchCrutch.services.UsersService;
 import ru.itis.witchCrutch.services.UsersServiceImpl;
-import ru.itis.witchCrutch.util.HashPassword;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -18,8 +17,6 @@ import java.io.IOException;
 @WebFilter(filterName = "AuthFilter", urlPatterns="/auth")
 public class AuthFilter implements Filter {
 
-    private UsersService usersService;
-
     @Override
     public void doFilter(ServletRequest reqS, ServletResponse respS, FilterChain filterChain) throws IOException, ServletException {
 
@@ -28,7 +25,7 @@ public class AuthFilter implements Filter {
 
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        this.usersService = new UsersServiceImpl(usersRepository);
+        UsersService usersService = new UsersServiceImpl(usersRepository);
 
         String email = req.getParameter("email");
         String password = req.getParameter("password");
@@ -43,7 +40,7 @@ public class AuthFilter implements Filter {
         final HttpSession session = req.getSession();
 
         if (session != null && session.getAttribute("email") != null && session.getAttribute("password") != null) {
-            redirectTo(req, resp, "/main");
+            resp.sendRedirect("main");
         } else if (email != null && password != null && usersService.userIsExist(email)) {
             if (remember) {
                 resp.addCookie(new Cookie("email", email));
@@ -51,25 +48,9 @@ public class AuthFilter implements Filter {
             }
             req.getSession().setAttribute("email", email);
             req.getSession().setAttribute("password", password);
-            redirectTo(req, resp, "/main");
+            resp.sendRedirect("main");
         } else {
-            forwardTo(req, resp, "auth.ftl");
-        }
-    }
-
-    private void redirectTo(HttpServletRequest req, HttpServletResponse resp, String context) {
-        try {
-            resp.sendRedirect(context);
-        } catch (IOException e) {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    private void forwardTo(HttpServletRequest req, HttpServletResponse resp, String context) {
-        try {
-            req.getRequestDispatcher(context).forward(req, resp);
-        } catch (IOException | ServletException e) {
-            throw new IllegalArgumentException();
+            req.getRequestDispatcher("auth.ftl").forward(req, resp);
         }
     }
 }

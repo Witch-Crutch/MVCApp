@@ -1,7 +1,5 @@
 package ru.itis.witchCrutch.util;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
