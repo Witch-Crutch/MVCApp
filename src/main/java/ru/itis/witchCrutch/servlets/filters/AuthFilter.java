@@ -46,7 +46,6 @@ public class AuthFilter implements Filter {
             redirectTo(req, resp, "/main");
         } else if (email != null && password != null && usersService.userIsExist(email)) {
             if (remember) {
-                System.out.println("hello");
                 resp.addCookie(new Cookie("email", email));
                 resp.addCookie(new Cookie("password", password));
             }
