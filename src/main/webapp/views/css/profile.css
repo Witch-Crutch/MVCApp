@@ -3,7 +3,7 @@
     z-index: 100;
 }
 
-.modal {
+div.modal div.modal-backdrop {
     z-index: 200;
 }
 
