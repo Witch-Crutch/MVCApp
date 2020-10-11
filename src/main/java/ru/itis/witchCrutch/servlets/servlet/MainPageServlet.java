@@ -1,7 +1,5 @@
 package ru.itis.witchCrutch.servlets.servlet;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
 import lombok.SneakyThrows;
 
 import javax.servlet.ServletException;

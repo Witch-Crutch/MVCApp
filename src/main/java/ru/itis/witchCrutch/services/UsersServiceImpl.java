@@ -19,8 +19,8 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public boolean userIsExist(String name, String password) {
-        return usersRepository.findByNamePassword(name, password) != null;
+    public boolean userIsExist(String email) {
+        return usersRepository.findByEmail(email) != null;
     }
 
     @Override
@@ -31,6 +31,11 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public User getUserByNamePassword(String name, String password) {
         return usersRepository.findByNamePassword(name, password);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return usersRepository.findByEmail(email);
     }
 
 

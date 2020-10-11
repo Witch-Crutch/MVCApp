@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface UsersService {
     List<User> getAllUsers();
-    boolean userIsExist(String name, String password);
+    boolean userIsExist(String email);
     void addUser(User user);
     User getUserByNamePassword(String name, String password);
+    User getUserByEmail(String email);
 }

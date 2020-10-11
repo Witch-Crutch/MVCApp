@@ -30,30 +30,30 @@ public class AuthFilter implements Filter {
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
         this.usersService = new UsersServiceImpl(usersRepository);
 
-        String name = req.getParameter("name");
+        String email = req.getParameter("email");
         String password = req.getParameter("password");
         final boolean remember = req.getParameter("remember") != null;
 
         Cookie[] cookies = req.getCookies();
         for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("name")) name = cookie.getValue();
+            if (cookie.getName().equals("email")) email = cookie.getValue();
             if (cookie.getName().equals("password")) password = cookie.getValue();
         }
 
         final HttpSession session = req.getSession();
 
-        if (session != null && session.getAttribute("name") != null && session.getAttribute("password") != null) {
+        if (session != null && session.getAttribute("email") != null && session.getAttribute("password") != null) {
             redirectTo(req, resp, "/main");
-        } else if (name != null && password != null && usersService.userIsExist(name, HashPassword.getHash(name, password))) {
+        } else if (email != null && password != null && usersService.userIsExist(email)) {
             if (remember) {
-                resp.addCookie(new Cookie("name", name));
+                resp.addCookie(new Cookie("email", email));
                 resp.addCookie(new Cookie("password", password));
             }
-            req.getSession().setAttribute("name", name);
+            req.getSession().setAttribute("email", email);
             req.getSession().setAttribute("password", password);
             redirectTo(req, resp, "/main");
         } else {
-            forwardTo(req, resp, "/WEB-INF/views/jsp/auth.jsp");
+            forwardTo(req, resp, "auth.ftl");
         }
     }
 

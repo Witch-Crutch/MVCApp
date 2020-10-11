@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.io.IOException;
 
+//TODO: может другой контекст ?
 @WebFilter("/*")
 public class CookieFilter implements Filter {
 
@@ -34,15 +35,17 @@ public class CookieFilter implements Filter {
 
         Cookie[] cookies = req.getCookies();
 
-        String name = null;
-        String password = null;
+        String email = (String) req.getSession().getAttribute("email");
+        String password = (String) req.getSession().getAttribute("password");
 
-        for(Cookie cookie : cookies) {
-            if (cookie.getName().equals("name")) name = cookie.getValue();
-            if (cookie.getName().equals("password")) password = cookie.getValue();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("email")) email = cookie.getValue();
+                if (cookie.getName().equals("password")) password = cookie.getValue();
+            }
         }
-        if (name != null && password != null) {
-            User user = usersService.getUserByNamePassword(name, HashPassword.getHash(name, password));
+        if (email != null && password != null) {
+            User user = usersService.getUserByEmail(email);
 
             if (user != null) req.getServletContext().setAttribute("user", user);
         }

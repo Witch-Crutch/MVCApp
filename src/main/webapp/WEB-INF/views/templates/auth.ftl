@@ -1,11 +1,12 @@
+<#ftl encoding="UTF-8"/>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../static/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/register.css">
+    <link rel="stylesheet" href="../../../views/static/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../views/css/main.css">
+    <link rel="stylesheet" href="../../../views/css/register.css">
     <title>Авторизация</title>
 </head>
 <body>
@@ -14,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <a href="main.html"><img src="../assets/main/logo.png" class="logo"></a>
+                <a href="main.html"><img src="../../../views/assets/main/logo.png" class="logo"></a>
             </div>
             <div class="offset-md-1 col-md-2 links">
                 <a class="nav-link" href="advantages.html">Преимущества</a>
@@ -43,10 +44,10 @@
 
 <div class="container">
     <div class="div_back_left">
-        <img src="../assets/smoke_2.png">
+        <img src="../../../views/assets/smoke_2.png">
     </div>
     <div class="div_back_right">
-        <img src="../assets/smoke.png">
+        <img src="../../../views/assets/smoke.png">
     </div>
 
     <div class="container div_front">
@@ -54,21 +55,18 @@
             Авторизация
         </div>
 
-        <form class="form-signin">
+        <form class="form-signin" method="post" action="/auth">
             <div class="row cards">
                 <div class="card offset-3 col-md-6" style="border-radius: 20px">
                     <div class="card-body text-center">
                         <div class="register-cont_input_top">
+                            <!-- исправить на email -->
                             <input type="email" id="inputEmail" class="form-control register-cont_input"
-                                   placeholder="Почта"
-                                   required
-                            >
+                                   placeholder="Почта" required name="email">
                         </div>
-
                         <div class="register-cont_input_middle">
                             <input type="password" id="inputPassword" class="form-control register-cont_input"
-                                   placeholder="Пароль"
-                                   required>
+                                   placeholder="Пароль" required name="password">
                         </div>
 
                         <div class="auth-checkbox">
@@ -94,7 +92,7 @@
     <div class="container">
         <div class="row" style="padding-top: 800px">
             <div class="offset-1 col-md-3">
-                <a href="main.html"><img src="../assets/main/logo.png"></a>
+                <a href="main.html"><img src="../../../views/assets/main/logo.png"></a>
             </div>
             <div class="offset-1 col-md-2">
                 <div class="row"><a class="nav-link" href="advantages.html">Преимущества</a></div>

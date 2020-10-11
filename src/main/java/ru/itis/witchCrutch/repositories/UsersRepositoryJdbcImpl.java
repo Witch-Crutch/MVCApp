@@ -4,7 +4,6 @@ import ru.itis.witchCrutch.models.User;
 
 import javax.sql.DataSource;
 import java.util.List;
-import java.util.Optional;
 
 public class UsersRepositoryJdbcImpl implements UsersRepository {
 
@@ -17,12 +16,15 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String SQL_FIND_NAME_PASS = "SELECT * FROM users where name= ? AND password= ?";
 
     //language=SQL
+    private final String SQL_FIND_EMAIL = "SELECT * FROM users where email=?";
+
+    //language=SQL
     private static final  String SQL_INSERT = "INSERT INTO users (name, email, surname, password, profile_img, rights)" +
             "VALUES (?, ?, ?, ?, ?, ?);";
 
     private RowMapper<User> userRowMapper = row -> User.builder()
             .name(row.getString("name"))
-            .surname(row.getString("surname"))
+            .lastname(row.getString("surname"))
             .email(row.getString("email"))
             .password(row.getString("password"))
             .profileImg(row.getString("profile_img"))
@@ -43,17 +45,25 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public User findByNamePassword(String name, String password) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> user = simpleJdbcTemplate.query(SQL_FIND_NAME_PASS, userRowMapper, name, password);
+        List<User> users = simpleJdbcTemplate.query(SQL_FIND_NAME_PASS, userRowMapper, name, password);
 
-        return !user.isEmpty() ? user.get(0) : null;
+        return !users.isEmpty() ? users.get(0) : null;
 
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
+        List<User> users = simpleJdbcTemplate.query(SQL_FIND_EMAIL, userRowMapper, email);
+
+        return !users.isEmpty() ? users.get(0) : null;
     }
 
     @Override
     public void save(User user) {
         SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         simpleJdbcTemplate.update(
-                SQL_INSERT, user.getName(), user.getEmail(), user.getSurname(), user.getPassword(),
+                SQL_INSERT, user.getName(), user.getEmail(), user.getLastname(), user.getPassword(),
                 user.getProfileImg(), user.getRights().getString());
     }
 
@@ -65,10 +75,5 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public void delete(User entity) {
 
-    }
-
-    @Override
-    public Optional<User> findById(Long id) {
-        return Optional.empty();
     }
 }

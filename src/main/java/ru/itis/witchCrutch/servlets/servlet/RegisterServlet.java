@@ -22,7 +22,7 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/views/jsp/register.jsp").forward(req, resp);
+        req.getRequestDispatcher("register.ftl").forward(req, resp);
     }
 
     @Override
@@ -33,16 +33,23 @@ public class RegisterServlet extends HttpServlet {
         this.usersService = new UsersServiceImpl(usersRepository);
 
         String name = req.getParameter("name");
+        String lastname = req.getParameter("lastname");
+        String email = req.getParameter("email");
         String password = req.getParameter("password");
         String password_again = req.getParameter("password_again");
 
-
-        if (password.equals(password_again) && !usersService.userIsExist(name, password)) {
-            //TODO: исправить на почту
+        if (password.equals(password_again) && !usersService.userIsExist(email)) {
             String hash = HashPassword.getHash(name, password);
 
-            User user = User.builder().name(name).password(hash).build();
+            User user = User.builder().name(name).password(hash).lastname(lastname).email(email).build();
             usersService.addUser(user);
+
+            req.getSession().setAttribute("email", email);
+            req.getSession().setAttribute("password", password);
+            resp.sendRedirect("/profile");
+        }
+        else {
+            resp.sendRedirect("/register");
         }
     }
 }
