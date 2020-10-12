@@ -12,9 +12,11 @@ public class ProductRepositoryJdbcImpl implements ProductRepository{
     private final String SQL_FIND_ALL = "SELECT p.name, p.description, p.price, p.image, c.name ca_name FROM product p INNER JOIN categories c on c.id = p.category_id";
 
     private final DataSource dataSource;
+    private final SimpleJdbcTemplate template;
 
-    public ProductRepositoryJdbcImpl(DataSource dataSource) {
+    public ProductRepositoryJdbcImpl(DataSource dataSource, SimpleJdbcTemplate template) {
         this.dataSource = dataSource;
+        this.template = template;
     }
 
     public RowMapper<Product> ProductRowMapper = row -> Product.builder()
@@ -42,7 +44,6 @@ public class ProductRepositoryJdbcImpl implements ProductRepository{
 
     @Override
     public List<Product> findAll() {
-        SimpleJdbcTemplate template = new SimpleJdbcTemplate(dataSource);
         return template.query(SQL_FIND_ALL, ProductRowMapper);
     }
 }

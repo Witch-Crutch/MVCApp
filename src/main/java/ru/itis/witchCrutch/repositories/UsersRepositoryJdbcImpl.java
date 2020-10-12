@@ -8,6 +8,12 @@ import java.util.List;
 public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     private final DataSource dataSource;
+    private final SimpleJdbcTemplate template;
+
+    public UsersRepositoryJdbcImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+        this.template = new SimpleJdbcTemplate(dataSource);
+    }
 
     //language=SQL
     private static final String SQL_FIND_ALL = "select * from users";
@@ -31,38 +37,26 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .rights(User.Right.valueOf(row.getString("rights")))
             .build();
 
-
-    public UsersRepositoryJdbcImpl(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
-
     @Override
     public List<User> findAll() {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        return simpleJdbcTemplate.query(SQL_FIND_ALL, userRowMapper);
+        return template.query(SQL_FIND_ALL, userRowMapper);
     }
 
     @Override
     public User findByNamePassword(String name, String password) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> users = simpleJdbcTemplate.query(SQL_FIND_NAME_PASS, userRowMapper, name, password);
-
+        List<User> users = template.query(SQL_FIND_NAME_PASS, userRowMapper, name, password);
         return !users.isEmpty() ? users.get(0) : null;
-
     }
 
     @Override
     public User findByEmail(String email) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        List<User> users = simpleJdbcTemplate.query(SQL_FIND_EMAIL, userRowMapper, email);
-
+        List<User> users = template.query(SQL_FIND_EMAIL, userRowMapper, email);
         return !users.isEmpty() ? users.get(0) : null;
     }
 
     @Override
     public void save(User user) {
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
-        simpleJdbcTemplate.update(
+        template.update(
                 SQL_INSERT, user.getName(), user.getEmail(), user.getLastname(), user.getPassword(),
                 user.getProfileImg(), user.getRights().getString());
     }
