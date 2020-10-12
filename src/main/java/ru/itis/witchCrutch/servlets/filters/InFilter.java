@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter("/register")
-public class RegisterFilter implements Filter {
+@WebFilter({"/auth", "/register"})
+public class InFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
@@ -28,7 +28,7 @@ public class RegisterFilter implements Filter {
         }
 
         if (email != null && password != null) {
-            resp.sendRedirect("/main");
+            resp.sendRedirect("/profile");
         }
         else {
             filterChain.doFilter(servletRequest, servletResponse);

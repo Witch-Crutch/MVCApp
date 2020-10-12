@@ -15,7 +15,7 @@ public class QuitServlet extends HttpServlet {
         Cookie[] cookies = req.getCookies();
 
         for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("name") || cookie.getName().equals("password")) {
+            if (cookie.getName().equals("email") || cookie.getName().equals("password")) {
                 cookie.setValue("");
                 cookie.setPath("/");
                 cookie.setMaxAge(0);
@@ -24,7 +24,7 @@ public class QuitServlet extends HttpServlet {
         }
 
         req.getServletContext().setAttribute("user", null);
-        req.getSession().setAttribute("name", null);
+        req.getSession().setAttribute("email", null);
         req.getSession().setAttribute("password", null);
 
         resp.sendRedirect("/main");

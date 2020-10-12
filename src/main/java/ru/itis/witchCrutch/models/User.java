@@ -16,7 +16,7 @@ public class User {
     private String email;
     private String password;
     @Builder.Default
-    private String profileImg = ".";
+    private String profileImg = "profile.png";
     @Builder.Default
     private Right rights = Right.USER;
 

@@ -14,9 +14,9 @@ public class ProductRepositoryJdbcImpl implements ProductRepository{
     private final DataSource dataSource;
     private final SimpleJdbcTemplate template;
 
-    public ProductRepositoryJdbcImpl(DataSource dataSource, SimpleJdbcTemplate template) {
+    public ProductRepositoryJdbcImpl(DataSource dataSource) {
         this.dataSource = dataSource;
-        this.template = template;
+        this.template = new SimpleJdbcTemplate(dataSource);
     }
 
     public RowMapper<Product> ProductRowMapper = row -> Product.builder()

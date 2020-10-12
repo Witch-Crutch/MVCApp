@@ -1,27 +1,26 @@
-package ru.itis.witchCrutch.servlets.filters;
+package ru.itis.witchCrutch.servlets.servlet;
 
 import ru.itis.witchCrutch.repositories.UsersRepository;
 import ru.itis.witchCrutch.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.witchCrutch.services.UsersService;
 import ru.itis.witchCrutch.services.UsersServiceImpl;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.*;
 import javax.sql.DataSource;
 import java.io.IOException;
 
-@WebFilter("/auth")
-public class AuthFilter implements Filter {
+@WebServlet("/auth")
+public class AuthServlet extends HttpServlet {
 
     @Override
-    public void doFilter(ServletRequest reqS, ServletResponse respS, FilterChain filterChain) throws IOException, ServletException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/auth.ftl").forward(req, resp);
+    }
 
-        HttpServletRequest req = (HttpServletRequest) reqS;
-        HttpServletResponse resp = (HttpServletResponse) respS;
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
@@ -40,7 +39,7 @@ public class AuthFilter implements Filter {
         final HttpSession session = req.getSession();
 
         if (session != null && session.getAttribute("email") != null && session.getAttribute("password") != null) {
-            resp.sendRedirect("/main");
+            resp.sendRedirect("/profile");
         } else if (email != null && password != null && usersService.userIsExist(email)) {
             if (remember) {
                 resp.addCookie(new Cookie("email", email));
@@ -48,9 +47,9 @@ public class AuthFilter implements Filter {
             }
             req.getSession().setAttribute("email", email);
             req.getSession().setAttribute("password", password);
-            resp.sendRedirect("/main");
+            resp.sendRedirect("/profile");
         } else {
-            req.getRequestDispatcher("auth.ftl").forward(req, resp);
+            resp.sendRedirect("/auth");
         }
     }
 }

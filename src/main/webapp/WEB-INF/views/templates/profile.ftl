@@ -32,16 +32,16 @@
                         <div class="row info-cont">
                             <div class="col-md-2">
                                 <a>
-                                    <img src="../../../views/assets/profile.png">
+                                    <img src="../../../views/assets/user/${user.getProfileImg()}">
                                 </a>
                             </div>
 
                             <div class="offset-2 col-md-2">
                                 <div class="row info-cont_text_top">
-                                    Иванова
+                                    ${user.getLastname()}
                                 </div>
                                 <div class="row info-cont_text">
-                                    Елизавета
+                                    ${user.getName()}
                                 </div>
                                 <div class="row info-cont_text">
                                     11.06.1996
@@ -49,7 +49,7 @@
                             </div>
                             <div class="offset-1 col-md-5">
                                 <div class="row info-cont_text_top">
-                                    elizavetka96@mail.ru
+                                    ${user.getEmail()}
                                 </div>
                                 <div class="row info-cont_text">
                                     Пользуюсь услугами
