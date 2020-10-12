@@ -43,6 +43,10 @@
     padding-top: 70px;
 }
 
+footer .container {
+    padding-top: 700px;
+}
+
 .register-cont_input {
     background-color: #988CCA;
     height: 60px;

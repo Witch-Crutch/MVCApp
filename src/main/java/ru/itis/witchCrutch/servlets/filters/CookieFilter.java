@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 import java.io.IOException;
 
 
-@WebFilter("/*")
+@WebFilter({"/auth", "/main", "/register", "/profile", "/products", "/quit"})
 public class CookieFilter implements Filter {
 
     @Override

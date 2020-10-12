@@ -29,6 +29,10 @@ span {
     white-space: nowrap;
 }
 
+footer .container {
+    margin-top: 100px;
+}
+
 .inner_form {
     display: none;
 }

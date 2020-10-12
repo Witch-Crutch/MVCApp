@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
 
-@WebServlet("/products")
-public class ProductServlet extends HttpServlet {
+@WebServlet("/services")
+public class ServicesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,6 +25,6 @@ public class ProductServlet extends HttpServlet {
 
         req.setAttribute("products", productService.getAllProducts());
 
-        req.getRequestDispatcher("/products.ftl").forward(req, resp);
+        req.getRequestDispatcher("/services.ftl").forward(req, resp);
     }
 }

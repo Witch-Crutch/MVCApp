@@ -1,10 +1,9 @@
 <footer>
-    <div class="container" style="padding-top: 100px">
+    <div class="container">
         <div class="row">
             <div class="offset-1 col-md-3">
                 <img src="../../../../views/assets/main/logo.png">
             </div>
-            <#--TODO: исправить на абсолютные-->
             <div class="offset-1 col-md-2">
                 <div class="row"><a class="nav-link " href="advantages.html">Преимущества</a></div>
                 <div class="row"><a class="nav-link " href="stages.html">Этапы</a></div>

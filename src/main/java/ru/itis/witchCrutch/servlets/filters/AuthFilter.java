@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import java.io.IOException;
 
-@WebFilter(filterName = "AuthFilter", urlPatterns="/auth")
+@WebFilter("/auth")
 public class AuthFilter implements Filter {
 
     @Override
@@ -40,7 +40,7 @@ public class AuthFilter implements Filter {
         final HttpSession session = req.getSession();
 
         if (session != null && session.getAttribute("email") != null && session.getAttribute("password") != null) {
-            resp.sendRedirect("main");
+            resp.sendRedirect("/main");
         } else if (email != null && password != null && usersService.userIsExist(email)) {
             if (remember) {
                 resp.addCookie(new Cookie("email", email));
@@ -48,7 +48,7 @@ public class AuthFilter implements Filter {
             }
             req.getSession().setAttribute("email", email);
             req.getSession().setAttribute("password", password);
-            resp.sendRedirect("main");
+            resp.sendRedirect("/main");
         } else {
             req.getRequestDispatcher("auth.ftl").forward(req, resp);
         }

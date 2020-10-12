@@ -15,7 +15,7 @@
                             <p class="offer-cont_text">
                                 Моя магия безгранична
                             </p>
-                            <button class="offer-cont_btn btn" onclick="window.location = 'services.html'">
+                            <button class="offer-cont_btn btn" onclick="location.href = '/services'">
                                 Подобрать услугу
                             </button>
                         </div>
@@ -138,22 +138,21 @@
             <div class="row cards">
                 <div class="offset-1 col-md-2 center">
                     <img src="../../../views/assets/main/spoilage.png">
-                    <a href="services.html">
+                    <a href="/services">
                         <div class="text-services">Порча</div>
                     </a>
                 </div>
 
                 <div class="offset-2 col-md-2 center">
                     <img src="../../../views/assets/main/protection.png">
-                    <a href="services.html">
-                        <div class="text-services">Защита</h3>
-                        </div>
+                    <a href="/services">
+                        <div class="text-services">Защита</div>
                     </a>
                 </div>
 
                 <div class="offset-2 col-md-2 center">
                     <img src="../../../views/assets/main/evileye.png">
-                    <a href="services.html">
+                    <a href="/services">
                         <div class="text-services">Сглаз</div>
                     </a>
                 </div>
@@ -161,21 +160,21 @@
             <div class="row cards">
                 <div class="offset-1 col-md-2 center">
                     <img src="../../../views/assets/main/lovemagic.png">
-                    <a href="services.html">
+                    <a href="/services">
                         <div class="text-services">Любовная<br>магия</div>
                     </a>
                 </div>
 
                 <div class="offset-2 col-md-2 center">
                     <img src="../../../views/assets/main/divination.png">
-                    <a href="services.html">
+                    <a href="/services">
                         <div class="text-services">Гадание</div>
                     </a>
                 </div>
 
                 <div class="offset-2 col-md-2 center">
                     <img src="../../../views/assets/main/troubleshooting.png">
-                    <a href="services.html">
+                    <a href="/services">
                         <div class="text-services">Устранение<br>проблем</div>
                     </a>
                 </div>
@@ -184,55 +183,53 @@
         </div>
         <div class="row cards">
             <div class="offset-3 col-md-6 center">
-                <button class="btn" onclick="window.location = 'services.html'">Перейти к полному списку услуг
-                </button>
+                <button class="btn" onclick="location.href = '/services'">Перейти к полному списку услуг</button>
             </div>
         </div>
     </section>
 
 
-    <!--authorization-->
-    <section class="page-section" id="authorization">
-        <div class="container">
-            <div class="row auth-cont_title center">
-                <div class="offset-1 col-md-4">
-                    <a href="auth.html"><h2>Авторизация</h2></a>
+    <#if user??>
+    <#else>
+        <section class="page-section" id="authorization">
+            <div class="container">
+                <div class="row auth-cont_title center">
+                    <div class="offset-1 col-md-4">
+                        <a href="/auth"><h2>Авторизация</h2></a>
+                    </div>
+                    <div class="offset-2 col-md-3">
+                        <a href="/register"><h2>Регистрация</h2></a>
+                    </div>
                 </div>
-                <div class="offset-2 col-md-3">
-                    <a href="register.html"><h2>Регистрация</h2></a>
-                </div>
-            </div>
 
-            <form class="form-signin">
-                <div class="row cards">
-                    <div class="card border-white offset-3 col-md-6" style="border-radius: 20px">
-                        <div class="card-body center">
-                            <div style="padding-top: 80px">
-                                <input type="email" id="inputEmail" class="form-control auth-cont_input"
-                                       placeholder="Почта"
-                                       required>
-                            </div>
+                <form class="form-signin" action="/auth" method="post">
+                    <div class="row cards">
+                        <div class="card border-white offset-3 col-md-6" style="border-radius: 20px">
+                            <div class="card-body center">
+                                <div style="padding-top: 80px">
+                                    <input type="email" id="inputEmail" class="form-control auth-cont_input"
+                                           placeholder="Почта" required name="email">
+                                </div>
 
-                            <div style="padding-top: 20px">
-                                <input type="password" id="inputPassword" class="form-control auth-cont_input"
-                                       placeholder="Пароль"
-                                       required>
-                            </div>
-                            <div style="padding-top:40px; padding-bottom: 40px">
-                                <div class="checkbox mb-3">
-                                    <label style="color: black; font-family: 'Proxima Nova Rg', sans-serif">
-                                        <input type="checkbox" value="remember-me"> запомнить меня
-                                    </label>
+                                <div style="padding-top: 20px">
+                                    <input type="password" id="inputPassword" class="form-control auth-cont_input"
+                                           placeholder="Пароль" required name="password">
+                                </div>
+                                <div style="padding-top:40px; padding-bottom: 40px">
+                                    <div class="checkbox mb-3">
+                                        <label style="color: black; font-family: 'Proxima Nova Rg', sans-serif">
+                                            <input type="checkbox" value="remember-me" name="remember"> запомнить меня
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row" style="padding-top: 50px">
-                    <button class="offset-4 col-md-4 btn center" type="submit">Войти</button>
-                </div>
-            </form>
-
-        </div>
-    </section>
+                    <div class="row" style="padding-top: 50px">
+                        <button class="offset-4 col-md-4 btn center" type="submit">Войти</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </#if>
 </@base.main>

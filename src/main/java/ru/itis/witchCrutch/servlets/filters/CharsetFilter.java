@@ -9,7 +9,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter("/*")
+@WebFilter({"/auth", "/main", "/register", "/profile", "/products", "/quit"})
 public class CharsetFilter implements Filter {
     private String encoding;
 

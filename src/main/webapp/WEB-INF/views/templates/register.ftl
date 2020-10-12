@@ -53,8 +53,6 @@
         <div class="register-cont_title">
             Регистрация
         </div>
-
-        <!-- TODO: заменить на абсолютный -->
         <form class="form-signin" method="post" action="/register">
             <div class="row cards">
                 <div class="card border-white offset-3 col-md-6 card_settings">
