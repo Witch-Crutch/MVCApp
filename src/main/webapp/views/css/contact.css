@@ -9,6 +9,10 @@
     left: 850px;
 }
 
+footer .container {
+    padding-top: 500px;
+}
+
 .div_back_left {
     position: absolute;
     z-index: 0;

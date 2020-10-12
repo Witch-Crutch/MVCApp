@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/main")
-public class MainPageServlet extends HttpServlet {
+@WebServlet("/advantages")
+public class AdvantagesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/main.ftl").forward(req, resp);
+        req.getRequestDispatcher("/advantages.ftl").forward(req, resp);
     }
 
     @Override

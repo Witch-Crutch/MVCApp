@@ -1,6 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["main.css"] title="Главная">
+<@base.main title="Главная">
     <!--content-->
     <section class="page-section ">
         <div class="offer">

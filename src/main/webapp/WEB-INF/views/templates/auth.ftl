@@ -1,6 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["main.css", "register.css"] title="Авторизация">
+<@base.main css=["register.css"] title="Авторизация">
 <div class="container">
     <div class="div_back_left">
         <img src="../../../views/assets/smoke_2.png">

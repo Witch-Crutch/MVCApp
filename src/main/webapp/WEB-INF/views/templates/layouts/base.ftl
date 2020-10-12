@@ -7,6 +7,7 @@
         <title>${title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" type="text/css" href="../../../../views/static/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../../../views/css/main.css">
         <#list css as style>
             <link rel="stylesheet" type="text/css" href="../../../views/css/${style}">
         </#list>
