@@ -8,21 +8,22 @@ import java.util.List;
 
 public class ProductServiceImpl implements ProductService{
 
-    private ProductRepository productRepository;
+    private final ProductRepository productRepository;
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
     @Override
-    public Product getProductByName(String name) {
-        return null;
-    }
+    public List<Product> getProductsByName(String name) { return productRepository.getProductsByName(name); }
 
     @Override
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
+
+    @Override
+    public Product getProductById(int id) { return productRepository.getProductById(id); }
 
     @Override
     public List<Product> getProductsByCategory(Category category) {

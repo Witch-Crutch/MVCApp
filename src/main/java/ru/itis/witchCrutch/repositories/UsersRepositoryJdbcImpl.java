@@ -28,7 +28,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private static final  String SQL_INSERT = "INSERT INTO users (name, email, surname, password, profile_img, rights)" +
             "VALUES (?, ?, ?, ?, ?, ?);";
 
-    private final RowMapper<User> userRowMapper = row -> User.builder()
+    private final RowMapper<User> UserRowMapper = row -> User.builder()
             .name(row.getString("name"))
             .lastname(row.getString("surname"))
             .email(row.getString("email"))
@@ -39,18 +39,18 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
 
     @Override
     public List<User> findAll() {
-        return template.query(SQL_FIND_ALL, userRowMapper);
+        return template.query(SQL_FIND_ALL, UserRowMapper);
     }
 
     @Override
     public User findByNamePassword(String name, String password) {
-        List<User> users = template.query(SQL_FIND_NAME_PASS, userRowMapper, name, password);
+        List<User> users = template.query(SQL_FIND_NAME_PASS, UserRowMapper, name, password);
         return !users.isEmpty() ? users.get(0) : null;
     }
 
     @Override
     public User findByEmail(String email) {
-        List<User> users = template.query(SQL_FIND_EMAIL, userRowMapper, email);
+        List<User> users = template.query(SQL_FIND_EMAIL, UserRowMapper, email);
         return !users.isEmpty() ? users.get(0) : null;
     }
 

@@ -60,6 +60,15 @@
 
 .services_card {
     border-radius: 20px;
+    height: 450px;
+}
+
+.services_title:first-letter {
+    text-transform: capitalize;
+}
+
+.col-md-4 {
+    margin-bottom: 30px;
 }
 
 .services_img {

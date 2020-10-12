@@ -6,7 +6,8 @@ import ru.itis.witchCrutch.models.Product;
 import java.util.List;
 
 public interface ProductService {
-    Product getProductByName(String name);
+    List<Product> getProductsByName(String name);
     List<Product> getAllProducts();
+    Product getProductById(int id);
     List<Product> getProductsByCategory(Category category);
 }
