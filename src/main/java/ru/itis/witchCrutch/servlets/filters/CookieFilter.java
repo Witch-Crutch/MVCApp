@@ -50,7 +50,9 @@ public class CookieFilter implements Filter {
         if (email != null && password != null) {
             User user = usersService.getUserByEmail(email);
             Basket basket = basketService.getUserBasket(user);
-            if (basket != null) req.getServletContext().setAttribute("basket", basket);
+            if (basket != null) {
+                req.getServletContext().setAttribute("basket", basket);
+            }
             if (user != null) req.getServletContext().setAttribute("user", user);
         }
         filterChain.doFilter(servletRequest, servletResponse);

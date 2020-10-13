@@ -9,6 +9,8 @@ import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.itis.witchCrutch.repositories.ProductRepositoryJdbcImpl.ProductRowMapper;
+
 public class BasketRepositoryJdbcImpl implements BasketRepository{
 
     private final DataSource dataSource;
@@ -22,19 +24,27 @@ public class BasketRepositoryJdbcImpl implements BasketRepository{
     private static final String SQL_ADD_PRODUCT = "INSERT INTO customer_basket (basket_id, product_id) VALUES (?, ?);";
 
     //language=SQL
+    private static final String SQL_GET_PRODUCTS = "SELECT p.id, p.name, p.description, p.price, p.image, c.name as ca_name FROM customer_basket inner join basket b on b.id = customer_basket.basket_id inner join product p on p.id = customer_basket.product_id inner join categories c on c.id = p.category_id where basket_id=?;";
+
+    //language=SQL
     private static final String SQL_FIND_BY_USER_ID =
             "SELECT * FROM basket where customer_id=?";
 
-    private RowMapper<Basket> BasketRowMapper = row -> Basket.builder()
+    public RowMapper<Basket> BasketRowMapper = row -> Basket.builder()
             .id(row.getInt("id"))
             .user(usersService.getUserById(row.getInt("customer_id")))
-            .products(new ArrayList<>())
+            .products(productsInBasket(row.getInt("id")))
             .build();
 
     public BasketRepositoryJdbcImpl(DataSource dataSource, UsersService userService) {
         this.dataSource = dataSource;
         this.usersService = userService;
         this.template = new SimpleJdbcTemplate(dataSource);
+    }
+
+    private List<Product> productsInBasket(int id) {
+        List<Product> products = template.query(SQL_GET_PRODUCTS, ProductRowMapper, id);
+        return !products.isEmpty() ? products : new ArrayList<>();
     }
 
     @Override

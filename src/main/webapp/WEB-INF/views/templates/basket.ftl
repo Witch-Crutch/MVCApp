@@ -35,7 +35,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="card-body_text">
-                                                        ${product.getDescrtiption()}
+                                                        ${product.getDescription()}
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -46,7 +46,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="btn_basket">Удалить</a>
+                                    <a class="btn_basket" href="/basket?delete=${product.getId()}">Удалить</a>
                                 </div>
                             </div>
                         </#list>

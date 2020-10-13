@@ -26,7 +26,7 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
         this.template = new SimpleJdbcTemplate(dataSource);
     }
 
-    public RowMapper<Product> ProductRowMapper = row -> Product.builder()
+    public static RowMapper<Product> ProductRowMapper = row -> Product.builder()
             .id(row.getInt("id"))
             .name(row.getString("name"))
             .description(row.getString("description"))
