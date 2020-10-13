@@ -10,4 +10,5 @@ public interface UsersService {
     void addUser(User user);
     User getUserByNamePassword(String name, String password);
     User getUserByEmail(String email);
+    User getUserById(int id);
 }

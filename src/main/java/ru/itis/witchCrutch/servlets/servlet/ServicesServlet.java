@@ -1,9 +1,9 @@
 package ru.itis.witchCrutch.servlets.servlet;
 
-import ru.itis.witchCrutch.repositories.ProductRepository;
-import ru.itis.witchCrutch.repositories.ProductRepositoryJdbcImpl;
-import ru.itis.witchCrutch.services.ProductService;
-import ru.itis.witchCrutch.services.ProductServiceImpl;
+import ru.itis.witchCrutch.models.Basket;
+import ru.itis.witchCrutch.models.User;
+import ru.itis.witchCrutch.repositories.*;
+import ru.itis.witchCrutch.services.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet("/services")
 public class ServicesServlet extends HttpServlet {
@@ -20,11 +21,35 @@ public class ServicesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
+
         ProductRepository productRepository = new ProductRepositoryJdbcImpl(dataSource);
         ProductService productService = new ProductServiceImpl(productRepository);
 
+        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
+        UsersService usersService = new UsersServiceImpl(usersRepository);
+
+        BasketRepository basketRepository = new BasketRepositoryJdbcImpl(dataSource, usersService);
+        BasketService basketService = new BasketServiceImpl(basketRepository);
+
         req.setAttribute("products", productService.getAllProducts());
 
-        req.getRequestDispatcher("/services.ftl").forward(req, resp);
+        String id = req.getParameter("id");
+        User user = (User) req.getServletContext().getAttribute("user");
+
+        if (id != null) {
+            if (user != null) {
+                Basket basket = (Basket) req.getServletContext().getAttribute("basket");
+                if (basket == null) {
+                    basket = Basket.builder().products(new ArrayList<>()).user(user).build();
+                    basketService.createBasket(basket);
+                    req.getServletContext().setAttribute("basket", basket);
+                }
+                req.getRequestDispatcher("/services.ftl").forward(req, resp);
+            } else {
+                resp.sendRedirect("/auth");
+            }
+        } else {
+            req.getRequestDispatcher("/services.ftl").forward(req, resp);
+        }
     }
 }

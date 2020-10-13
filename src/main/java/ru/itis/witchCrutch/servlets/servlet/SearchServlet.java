@@ -18,7 +18,8 @@ public class SearchServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String input = req.getParameter("input");
+        // TODO: проверка на sql injection ?
+        String input = req.getParameter("input").trim();
 
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
         ProductRepository productRepository = new ProductRepositoryJdbcImpl(dataSource);
