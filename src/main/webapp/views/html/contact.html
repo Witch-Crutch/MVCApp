@@ -60,12 +60,12 @@
                         Спасибо за желание <br> воспользоваться моими услугами! <br> Оставьте свой номер телефона <br>
                         для связи!
                     </div>
-                    <form class="form-contact" style="padding-left: 120px; padding-right: 120px">
-                        <div style="padding-top: 50px">
-                            <input type="tel" id="inputPhone" class="form-control cont_input">
+                    <form action="" method="post">
+                        <div class="form-group">
+                            <input type="tel" class="form-control cont_input" id="phone" name="phone"
+                                   placeholder="+7 (999) 99 99 999">
                         </div>
-
-                        <div class="offset-3 cont_btn">
+                        <div class="offset-4 cont_btn">
                             <button class="btn">
                                 Отправить
                             </button>
@@ -104,6 +104,8 @@
         </div>
     </div>
 </footer>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../js/jquery.maskedinput.min.js"></script>
+<script src="../js/contact.js"></script>
 </body>
 </html>
