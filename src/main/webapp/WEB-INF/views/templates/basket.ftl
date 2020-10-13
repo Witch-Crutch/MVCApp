@@ -55,7 +55,7 @@
             </div>
 
             <div class="pay center">
-                <a class="btn" href="#">Оплатить</a>
+                <a class="btn" href="/purchase">Оплатить</a>
             </div>
         </div>
     </div>

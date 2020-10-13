@@ -32,7 +32,6 @@ public class BasketServiceServlet extends HttpServlet {
 
         User user = (User) req.getServletContext().getAttribute("user");
         Basket basket = (Basket) req.getServletContext().getAttribute("basket");
-        System.out.println("basket: " + basket);
 
         String add = req.getParameter("add");
         String delete = req.getParameter("delete");

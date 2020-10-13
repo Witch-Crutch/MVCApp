@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 @WebFilter({
         "/auth", "/main", "/register", "/profile", "/services", "/quit", "/basket", "/advantages",
-        "/contact", "/stages", "/basketService"})
+        "/contact", "/stages", "/basketService", "/purchase"})
 public class CookieFilter implements Filter {
 
     @Override
@@ -49,7 +49,7 @@ public class CookieFilter implements Filter {
                 if (cookie.getName().equals("password")) password = cookie.getValue();
             }
         }
-        Basket basket = null;
+        Basket basket;
         if (email != null && password != null) {
             User user = usersService.getUserByEmail(email);
             basket = basketService.getUserBasket(user);
@@ -62,7 +62,6 @@ public class CookieFilter implements Filter {
             req.getServletContext().setAttribute("basket", basket);
             if (user != null) req.getServletContext().setAttribute("user", user);
         }
-        System.out.println("Cookie: " + basket);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }

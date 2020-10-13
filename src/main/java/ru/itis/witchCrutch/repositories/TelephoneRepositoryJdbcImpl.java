@@ -6,7 +6,7 @@ import javax.sql.DataSource;
 
 public class TelephoneRepositoryJdbcImpl implements TelephoneRepository{
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     //language=SQL
     private static final String SQL_SAVE = "INSERT INTO telephone (tel) VALUES (?);";
