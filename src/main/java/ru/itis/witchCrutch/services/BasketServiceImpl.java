@@ -29,6 +29,7 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void deleteProductFromBasket(Product product) {
+    public void deleteProductFromBasket(Basket basket, Product product) {
+        basketRepository.deleteProduct(basket, product);
     }
 }

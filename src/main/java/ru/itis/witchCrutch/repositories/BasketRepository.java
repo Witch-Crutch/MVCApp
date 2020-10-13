@@ -7,4 +7,5 @@ import ru.itis.witchCrutch.models.User;
 public interface BasketRepository extends CrudRepository<Basket>{
     Basket getUserBasket(User user);
     void addProduct(Basket basket, Product product);
+    void deleteProduct(Basket basket, Product product);
 }

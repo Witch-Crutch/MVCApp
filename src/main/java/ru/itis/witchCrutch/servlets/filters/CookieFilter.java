@@ -21,7 +21,7 @@ import java.io.IOException;
 
 @WebFilter({
         "/auth", "/main", "/register", "/profile", "/services", "/quit", "/basket", "/advantages",
-        "/contact", "/stages"})
+        "/contact", "/stages", "/delete"})
 public class CookieFilter implements Filter {
 
     @Override
