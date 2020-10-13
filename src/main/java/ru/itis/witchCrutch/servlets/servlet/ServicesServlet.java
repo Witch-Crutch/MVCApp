@@ -44,6 +44,7 @@ public class ServicesServlet extends HttpServlet {
                     basketService.createBasket(basket);
                     req.getServletContext().setAttribute("basket", basket);
                 }
+                basketService.addProductInBasket(basket, productService.getProductById(Integer.parseInt(id)));
                 req.getRequestDispatcher("/services.ftl").forward(req, resp);
             } else {
                 resp.sendRedirect("/auth");

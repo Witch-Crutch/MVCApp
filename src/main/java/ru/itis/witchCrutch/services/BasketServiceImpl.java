@@ -24,7 +24,8 @@ public class BasketServiceImpl implements BasketService {
     }
 
     @Override
-    public void addProductInBasket(Product product) {
+    public void addProductInBasket(Basket basket, Product product) {
+        basketRepository.addProduct(basket, product);
     }
 
     @Override
