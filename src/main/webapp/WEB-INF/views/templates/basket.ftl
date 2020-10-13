@@ -46,7 +46,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="btn_basket" href="/delete?id=${product.getId()}">Удалить</a>
+                                    <a class="btn_basket" href="/basketService?delete=${product.getId()}">Удалить</a>
                                 </div>
                             </div>
                         </#list>

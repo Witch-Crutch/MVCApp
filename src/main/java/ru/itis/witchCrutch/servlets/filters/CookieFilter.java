@@ -17,11 +17,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 @WebFilter({
         "/auth", "/main", "/register", "/profile", "/services", "/quit", "/basket", "/advantages",
-        "/contact", "/stages", "/delete"})
+        "/contact", "/stages", "/basketService"})
 public class CookieFilter implements Filter {
 
     @Override
@@ -41,20 +42,27 @@ public class CookieFilter implements Filter {
         String email = (String) req.getSession().getAttribute("email");
         String password = (String) req.getSession().getAttribute("password");
 
+
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("email")) email = cookie.getValue();
                 if (cookie.getName().equals("password")) password = cookie.getValue();
             }
         }
+        Basket basket = null;
         if (email != null && password != null) {
             User user = usersService.getUserByEmail(email);
-            Basket basket = basketService.getUserBasket(user);
-            if (basket != null) {
-                req.getServletContext().setAttribute("basket", basket);
+            basket = basketService.getUserBasket(user);
+
+            if (basket == null) {
+                basket = Basket.builder().products(new ArrayList<>()).user(user).build();
+                basketService.createBasket(basket);
             }
+
+            req.getServletContext().setAttribute("basket", basket);
             if (user != null) req.getServletContext().setAttribute("user", user);
         }
+        System.out.println("Cookie: " + basket);
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
