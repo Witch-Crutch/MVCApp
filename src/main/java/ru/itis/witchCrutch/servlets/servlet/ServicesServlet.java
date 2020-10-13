@@ -1,9 +1,7 @@
 package ru.itis.witchCrutch.servlets.servlet;
 
-import ru.itis.witchCrutch.repositories.ProductRepository;
-import ru.itis.witchCrutch.repositories.ProductRepositoryJdbcImpl;
-import ru.itis.witchCrutch.services.ProductService;
-import ru.itis.witchCrutch.services.ProductServiceImpl;
+import ru.itis.witchCrutch.repositories.*;
+import ru.itis.witchCrutch.services.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +16,8 @@ public class ServicesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
+
         ProductRepository productRepository = new ProductRepositoryJdbcImpl(dataSource);
         ProductService productService = new ProductServiceImpl(productRepository);
 

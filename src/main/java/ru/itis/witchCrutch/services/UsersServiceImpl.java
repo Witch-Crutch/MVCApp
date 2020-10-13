@@ -38,5 +38,10 @@ public class UsersServiceImpl implements UsersService {
         return usersRepository.findByEmail(email);
     }
 
+    @Override
+    public User getUserById(int id) {
+        return usersRepository.findById(id);
+    }
+
 
 }

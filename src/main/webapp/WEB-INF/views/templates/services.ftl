@@ -63,7 +63,7 @@
                                             </div>
                                             <div class="btn_pad">
                                                 <button class="btn services_btn"
-                                                        onclick="window.location='${product.getId()}.html'">
+                                                        onclick="location.href='/basketService?add=${product.getId()}'">
                                                     Воспользоваться
                                                 </button>
                                             </div>

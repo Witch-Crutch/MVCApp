@@ -25,10 +25,14 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String SQL_FIND_EMAIL = "SELECT * FROM users where email=?";
 
     //language=SQL
+    private final String SQL_FIND_ID = "SELECT * FROM users where id=?";
+
+    //language=SQL
     private static final  String SQL_INSERT = "INSERT INTO users (name, email, surname, password, profile_img, rights)" +
             "VALUES (?, ?, ?, ?, ?, ?);";
 
     private final RowMapper<User> UserRowMapper = row -> User.builder()
+            .id(row.getInt("id"))
             .name(row.getString("name"))
             .lastname(row.getString("surname"))
             .email(row.getString("email"))
@@ -51,6 +55,12 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public User findByEmail(String email) {
         List<User> users = template.query(SQL_FIND_EMAIL, UserRowMapper, email);
+        return !users.isEmpty() ? users.get(0) : null;
+    }
+
+    @Override
+    public User findById(int id) {
+        List<User> users = template.query(SQL_FIND_ID, UserRowMapper, id);
         return !users.isEmpty() ? users.get(0) : null;
     }
 
