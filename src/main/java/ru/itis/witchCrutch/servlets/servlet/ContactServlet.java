@@ -28,7 +28,6 @@ public class ContactServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TODO: регулярка ?
         String tel = req.getParameter("tel");
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
         TelephoneRepository telephoneRepository = new TelephoneRepositoryJdbcImpl(dataSource);

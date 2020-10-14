@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 @WebFilter({
         "/auth", "/main", "/register", "/profile", "/services", "/quit", "/basket", "/advantages",
-        "/contact", "/stages", "/basketService", "/purchase"})
+        "/contact", "/stages", "/basketService", "/purchase", "/chat", "/message"})
 public class CookieFilter implements Filter {
 
     @Override

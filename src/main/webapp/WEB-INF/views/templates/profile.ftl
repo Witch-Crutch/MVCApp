@@ -112,7 +112,7 @@
                         <img src="../../../views/assets/smoke_2.png">
                     </div>
                     <div class="row history-cont_btn">
-                        <button class="offset-2 col-md-8 btn" type="submit" onclick="window.location='chat.html'">
+                        <button class="offset-2 col-md-8 btn" type="submit" onclick="location.href='/chat'">
                             Написать
                             бабушке
                         </button>

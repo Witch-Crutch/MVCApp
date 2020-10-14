@@ -30,8 +30,8 @@ public class ProfileServlet extends HttpServlet {
         PurchaseService purchaseService = new PurchaseServiceImpl(purchaseRepository);
 
         User user = (User) req.getServletContext().getAttribute("user");
-
-        req.setAttribute("purchase", purchaseRepository.userPurchase(user));
+        if (purchaseRepository.userPurchase(user) != null)
+            req.setAttribute("purchase", purchaseRepository.userPurchase(user));
         req.getRequestDispatcher("/profile.ftl").forward(req, resp);
     }
 

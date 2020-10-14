@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class HashPassword {
 
     public static String getHash(String... data) {
-        String hash;
+        StringBuffer hash;
 
         try {
             MessageDigest messageDigest = MessageDigest.getInstance(Constants.ENCODE);
@@ -14,12 +14,18 @@ public class HashPassword {
             for (String salt : data) {
                 messageDigest.update(salt.getBytes(Constants.CHARSET));
             }
+            byte[] rawHash = messageDigest.digest();
 
-            hash = StringReplacer.replace(new String(messageDigest.digest(), Constants.CHARSET));
+            hash = new StringBuffer();
+            for (byte b : rawHash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) hash.append('0');
+                hash.append(hex);
+            }
         } catch (NoSuchAlgorithmException e) {
             throw new IllegalArgumentException();
         }
 
-        return hash;
+        return hash.toString();
     }
 }
