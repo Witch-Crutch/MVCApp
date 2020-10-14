@@ -1,6 +1,6 @@
 <#ftl encoding="UTF-8">
 <#import "layouts/base.ftl" as base>
-<@base.main title="Заказать звонок" css=["contact.css"]>
+<@base.main title="Заказать звонок" css=["contact.css"] scripts=["jquery.maskedinput.min.js", "contact.js"]>
     <div class="container">
         <div class="div_back_left">
             <img src="../../../views/assets/smoke.png">
@@ -16,13 +16,13 @@
                             Спасибо за желание <br> воспользоваться моими услугами! <br> Оставьте свой номер телефона <br>
                             для связи!
                         </div>
-                        <form class="form-contact" style="padding-left: 120px; padding-right: 120px" method="post" action="/contact">
-                            <div style="padding-top: 50px">
-                                <input type="tel" id="inputPhone" class="form-control cont_input" name="tel">
+                        <form action="/contact" method="post">
+                            <div class="form-group">
+                                <input type="tel" class="form-control cont_input" id="phone" name="tel"
+                                       placeholder="+7 (999) 99 99 999">
                             </div>
-
-                            <div class="offset-3 cont_btn">
-                                <button class="btn" type="submit">
+                            <div class="offset-4 cont_btn">
+                                <button class="btn">
                                     Отправить
                                 </button>
                             </div>

@@ -1,10 +1,11 @@
 package ru.itis.witchCrutch.repositories;
 
-import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
+import ru.itis.witchCrutch.models.Purchase;
+import ru.itis.witchCrutch.models.User;
 
 import java.util.List;
 
-public interface PurchaseRepository {
-    List<Product> userPurchase(Basket basket);
+public interface PurchaseRepository extends CrudRepository<Purchase> {
+    List<Product> userPurchase(User user);
 }

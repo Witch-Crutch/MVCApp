@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 @WebFilter({
         "/auth", "/main", "/register", "/profile", "/services", "/quit", "/basket", "/advantages",
-        "/contact", "/stages", "/basketService", "/purchase"})
+        "/contact", "/stages", "/basketService", "/purchase", "/chat", "/message"})
 public class CookieFilter implements Filter {
 
     @Override
@@ -40,17 +40,17 @@ public class CookieFilter implements Filter {
         Cookie[] cookies = req.getCookies();
 
         String email = (String) req.getSession().getAttribute("email");
-        String password = (String) req.getSession().getAttribute("password");
+        String hash = (String) req.getSession().getAttribute("password");
 
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("email")) email = cookie.getValue();
-                if (cookie.getName().equals("password")) password = cookie.getValue();
+                if (cookie.getName().equals("password")) hash = cookie.getValue();
             }
         }
         Basket basket;
-        if (email != null && password != null) {
+        if (email != null && hash != null && usersService.userAuth(email, hash)) {
             User user = usersService.getUserByEmail(email);
             basket = basketService.getUserBasket(user);
 

@@ -1,7 +1,7 @@
 <#ftl encoding="UTF-8"/>
 <#macro main title css=[] scripts=[]>
     <!DOCTYPE html>
-    <html lang="ru">
+    <html lang="ru" xmlns="http://www.w3.org/1999/html">
     <head>
         <meta charset="UTF-8">
         <title>${title}</title>
@@ -19,7 +19,7 @@
     <script src="../../../../views/static/jquery-3.5.1.min.js"></script>
     <script src="../../../../views/static/bootstrap.bundle.js"></script>
     <#list scripts as script>
-        <script src="../../../views/js/${script}"
+        <script src="../../../../views/js/${script}"></script>
     </#list>
     </body>
     </html>

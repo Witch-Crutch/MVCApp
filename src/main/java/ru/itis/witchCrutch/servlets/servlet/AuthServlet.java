@@ -4,6 +4,7 @@ import ru.itis.witchCrutch.repositories.UsersRepository;
 import ru.itis.witchCrutch.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.witchCrutch.services.UsersService;
 import ru.itis.witchCrutch.services.UsersServiceImpl;
+import ru.itis.witchCrutch.util.HashPassword;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,13 +41,14 @@ public class AuthServlet extends HttpServlet {
 
         if (session != null && session.getAttribute("email") != null && session.getAttribute("password") != null) {
             resp.sendRedirect("/profile");
-        } else if (email != null && password != null && usersService.userIsExist(email)) {
+        } else if (email != null && password != null && usersService.userAuth(email, HashPassword.getHash(email, password))) {
+            String hash = HashPassword.getHash(email, password);
             if (remember) {
                 resp.addCookie(new Cookie("email", email));
-                resp.addCookie(new Cookie("password", password));
+                resp.addCookie(new Cookie("password", hash));
             }
             req.getSession().setAttribute("email", email);
-            req.getSession().setAttribute("password", password);
+            req.getSession().setAttribute("password", hash);
             resp.sendRedirect("/profile");
         } else {
             resp.sendRedirect("/auth");

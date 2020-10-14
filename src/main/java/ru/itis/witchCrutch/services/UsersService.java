@@ -11,4 +11,5 @@ public interface UsersService {
     User getUserByNamePassword(String name, String password);
     User getUserByEmail(String email);
     User getUserById(int id);
+    boolean userAuth(String email, String hash);
 }
