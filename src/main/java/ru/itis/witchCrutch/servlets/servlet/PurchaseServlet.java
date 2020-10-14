@@ -2,6 +2,8 @@ package ru.itis.witchCrutch.servlets.servlet;
 
 import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
+import ru.itis.witchCrutch.models.Purchase;
+import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.repositories.*;
 import ru.itis.witchCrutch.services.*;
 
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet("/purchase")
@@ -20,21 +23,19 @@ public class PurchaseServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
-
-        BasketRepository basketRepository = new BasketRepositoryJdbcImpl(dataSource, usersService);
-        BasketService basketService = new BasketServiceImpl(basketRepository);
+        User user = (User) req.getServletContext().getAttribute("user");
 
         PurchaseRepository purchaseRepository = new PurchaseRepositoryJdbcImpl(dataSource);
         PurchaseService purchaseService = new PurchaseServiceImpl(purchaseRepository);
 
         Basket basket = (Basket) req.getServletContext().getAttribute("basket");
-        List<Product> purchaseList =  purchaseService.getUserPurchase(basket);
+        List<Product> products = basket.getProducts();
+        if (!products.isEmpty()) {
+            Purchase purchase = Purchase.builder().basketId(basket.getId()).products(products).customer(user).build();
+            purchaseService.addPurchase(purchase);
+        }
 
-        req.setAttribute("purchase", purchaseList);
-
-        req.getRequestDispatcher("/profile.ftl").forward(req, resp);
+        resp.sendRedirect("/profile");
     }
 
     @Override

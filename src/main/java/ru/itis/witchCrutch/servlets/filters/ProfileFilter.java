@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter({"/profile", "/basket", "/basketService"})
+@WebFilter({"/profile", "/basket", "/basketService", "/purchase"})
 public class ProfileFilter implements Filter {
 
     @Override
