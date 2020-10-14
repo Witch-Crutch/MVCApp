@@ -16,18 +16,18 @@ public class InFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
         String email = (String) req.getSession().getAttribute("email");
-        String password = (String) req.getSession().getAttribute("password");
+        String hash = (String) req.getSession().getAttribute("password");
 
         Cookie[] cookies = req.getCookies();
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("email")) email = cookie.getValue();
-                if (cookie.getName().equals("password")) password = cookie.getValue();
+                if (cookie.getName().equals("password")) hash = cookie.getValue();
             }
         }
 
-        if (email != null && password != null) {
+        if (email != null && hash != null) {
             resp.sendRedirect("/profile");
         }
         else {

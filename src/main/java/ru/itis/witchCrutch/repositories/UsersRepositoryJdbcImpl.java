@@ -22,6 +22,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String SQL_FIND_NAME_PASS = "SELECT * FROM users where name= ? AND password= ?";
 
     //language=SQL
+    private final String SQL_FIND_EMAIL_PASS = "SELECT * FROM users where email= ? AND password= ?";
+
+    //language=SQL
     private final String SQL_FIND_EMAIL = "SELECT * FROM users where email=?";
 
     //language=SQL
@@ -56,6 +59,12 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     public User findByEmail(String email) {
         List<User> users = template.query(SQL_FIND_EMAIL, UserRowMapper, email);
         return !users.isEmpty() ? users.get(0) : null;
+    }
+
+    @Override
+    public boolean authUser(String email, String hash) {
+        List<User> users = template.query(SQL_FIND_EMAIL_PASS, UserRowMapper, email, hash);
+        return !users.isEmpty();
     }
 
     @Override

@@ -43,5 +43,8 @@ public class UsersServiceImpl implements UsersService {
         return usersRepository.findById(id);
     }
 
+    @Override
+    public boolean userAuth(String email, String hash) { return usersRepository.authUser(email, hash); }
+
 
 }

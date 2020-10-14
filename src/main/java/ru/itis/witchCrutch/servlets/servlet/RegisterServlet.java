@@ -37,13 +37,13 @@ public class RegisterServlet extends HttpServlet {
         String password_again = req.getParameter("password_again");
 
         if (password.equals(password_again) && !usersService.userIsExist(email)) {
-            String hash = HashPassword.getHash(name, password);
+            String hash = HashPassword.getHash(email, password);
 
             User user = User.builder().name(name).password(hash).lastname(lastname).email(email).build();
             usersService.addUser(user);
 
             req.getSession().setAttribute("email", email);
-            req.getSession().setAttribute("password", password);
+            req.getSession().setAttribute("password", hash);
             resp.sendRedirect("/profile");
         }
         else {
