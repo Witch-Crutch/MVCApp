@@ -1,8 +1,10 @@
 package ru.itis.witchCrutch.repositories;
 
+import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.models.Purchase;
 import ru.itis.witchCrutch.models.User;
+import ru.itis.witchCrutch.services.BasketService;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ public class PurchaseRepositoryJdbcImpl implements PurchaseRepository{
 
     private final DataSource dataSource;
     private final SimpleJdbcTemplate template;
+    private final BasketService basketService;
 
     //language=SQL
     private static final String SQL_FIND = "SELECT p.id, p.name, p.description, p.price, p.image, c.name as ca_name FROM purchase pu inner join customer_purchase cp on pu.id = cp.purchase_id inner join product p on p.id = cp.product_id inner join categories c on c.id = p.category_id where customer_id=?";
@@ -30,8 +33,9 @@ public class PurchaseRepositoryJdbcImpl implements PurchaseRepository{
     private final RowMapper<Purchase> purchaseRowMapper = row -> Purchase.builder()
             .id(row.getInt("id")).build();
 
-    public PurchaseRepositoryJdbcImpl(DataSource dataSource) {
+    public PurchaseRepositoryJdbcImpl(DataSource dataSource, BasketService basketService) {
         this.dataSource = dataSource;
+        this.basketService = basketService;
         this.template = new SimpleJdbcTemplate(dataSource);
     }
 
@@ -47,7 +51,9 @@ public class PurchaseRepositoryJdbcImpl implements PurchaseRepository{
         Purchase purchase = template.query(SQL_FIND_ID, purchaseRowMapper, entity.getBasketId()).get(0);
         for (Product product : entity.getProducts()) {
             template.update(SQL_SAVE_PRODUCTS, purchase.getId(), product.getId());
+            basketService.deleteProductFromBasket(Basket.builder().id(entity.getBasketId()).build(), product);
         }
+
     }
 
     @Override

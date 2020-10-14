@@ -1,10 +1,8 @@
 package ru.itis.witchCrutch.servlets.servlet;
 
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.PurchaseRepository;
-import ru.itis.witchCrutch.repositories.PurchaseRepositoryJdbcImpl;
-import ru.itis.witchCrutch.services.PurchaseService;
-import ru.itis.witchCrutch.services.PurchaseServiceImpl;
+import ru.itis.witchCrutch.repositories.*;
+import ru.itis.witchCrutch.services.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +19,14 @@ public class ProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
-        PurchaseRepository purchaseRepository = new PurchaseRepositoryJdbcImpl(dataSource);
+        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
+        UsersService usersService = new UsersServiceImpl(usersRepository);
+
+        BasketRepository basketRepository = new BasketRepositoryJdbcImpl(dataSource, usersService);
+        BasketService basketService = new BasketServiceImpl(basketRepository);
+
+
+        PurchaseRepository purchaseRepository = new PurchaseRepositoryJdbcImpl(dataSource, basketService);
         PurchaseService purchaseService = new PurchaseServiceImpl(purchaseRepository);
 
         User user = (User) req.getServletContext().getAttribute("user");

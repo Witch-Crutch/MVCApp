@@ -25,7 +25,13 @@ public class PurchaseServlet extends HttpServlet {
 
         User user = (User) req.getServletContext().getAttribute("user");
 
-        PurchaseRepository purchaseRepository = new PurchaseRepositoryJdbcImpl(dataSource);
+        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
+        UsersService usersService = new UsersServiceImpl(usersRepository);
+
+        BasketRepository basketRepository = new BasketRepositoryJdbcImpl(dataSource, usersService);
+        BasketService basketService = new BasketServiceImpl(basketRepository);
+
+        PurchaseRepository purchaseRepository = new PurchaseRepositoryJdbcImpl(dataSource, basketService);
         PurchaseService purchaseService = new PurchaseServiceImpl(purchaseRepository);
 
         Basket basket = (Basket) req.getServletContext().getAttribute("basket");
