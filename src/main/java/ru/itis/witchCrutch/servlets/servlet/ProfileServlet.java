@@ -25,8 +25,10 @@ public class ProfileServlet extends HttpServlet {
         BasketRepository basketRepository = new BasketRepositoryJdbcImpl(dataSource, usersService);
         BasketService basketService = new BasketServiceImpl(basketRepository);
 
+        ProductRepository productRepository = new ProductRepositoryJdbcImpl(dataSource);
+        ProductService productService = new ProductServiceImpl(productRepository);
 
-        PurchaseRepository purchaseRepository = new PurchaseRepositoryJdbcImpl(dataSource, basketService);
+        PurchaseRepository purchaseRepository = new PurchaseRepositoryJdbcImpl(dataSource, basketService, productService);
         PurchaseService purchaseService = new PurchaseServiceImpl(purchaseRepository);
 
         User user = (User) req.getServletContext().getAttribute("user");

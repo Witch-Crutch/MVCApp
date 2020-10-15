@@ -16,4 +16,6 @@ public class Product {
     private Category category;
     @Builder.Default
     private String image = ".";
+    @Builder.Default
+    private int popularity = 0;
 }

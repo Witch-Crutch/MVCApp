@@ -27,7 +27,7 @@ public class BasketRepositoryJdbcImpl implements BasketRepository{
     private static final String SQL_DELETE_PRODUCT = "DELETE FROM customer_basket WHERE basket_id=? AND product_id=?";
 
     //language=SQL
-    private static final String SQL_GET_PRODUCTS = "SELECT p.id, p.name, p.description, p.price, p.image, c.name as ca_name FROM customer_basket inner join basket b on b.id = customer_basket.basket_id inner join product p on p.id = customer_basket.product_id inner join categories c on c.id = p.category_id where basket_id=?;";
+    private static final String SQL_GET_PRODUCTS = "SELECT p.id, p.popularity, p.name, p.description, p.price, p.image, c.name as ca_name FROM customer_basket inner join basket b on b.id = customer_basket.basket_id inner join product p on p.id = customer_basket.product_id inner join categories c on c.id = p.category_id where basket_id=?;";
 
     //language=SQL
     private static final String SQL_FIND_BY_USER_ID =
