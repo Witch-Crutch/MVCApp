@@ -18,20 +18,23 @@
                             <div class="row">
                                 <div class="col-md-7">
                                     <input type="search" id="inputSearch" class="form-control search_block_input"
-                                           required name="input">
+                                           placeholder="Введите текст для поиска"
+                                           required
+                                    >
                                 </div>
                                 <div class="offset-1 col-md-2">
                                     <button class="btn services_btn" type="submit">Искать</button>
                                 </div>
                                 <div class="row filter">
                                     <div class="col-md-3">
-                                        <button class="btn" type="submit">Популярные</button>
+                                        <div class="btn">
+                                            <input type="checkbox" class="form-check-input">Популярные</input>
+                                        </div>
                                     </div>
                                     <div class="offset-2 col-md-3">
-                                        <button class="btn" type="submit">Цена</button>
-                                    </div>
-                                    <div class="offset-1 col-md-3">
-                                        <button class="btn" type="submit">Новинки</button>
+                                        <div class="btn">
+                                            <input type="checkbox" class="form-check-input">Цена</input>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -44,10 +44,20 @@
 }
 
 .search_block_input {
-    background-color: #988CCA !important;
+    background-color: #988CCA;
     height: 60px;
     border-radius: 10px;
     border: 0;
+}
+
+.search_block_input:focus {
+    background-color: #988CCA;
+    color: #1b1e21;
+}
+
+
+.search_block_input::placeholder {
+    color: #1b1e21;
 }
 
 .filter {
@@ -109,3 +119,4 @@
 .first-letter {
     text-transform: capitalize;
 }
+
