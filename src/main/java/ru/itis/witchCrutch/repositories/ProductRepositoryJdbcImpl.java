@@ -18,6 +18,9 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
     //language=SQL
     private final String SQL_FIND_BY_NAME = "SELECT p.id, p.name, p.description, p.price, p.image, c.name ca_name FROM product p INNER JOIN categories c on c.id = p.category_id where p.name LIKE ?";
 
+    //language=SQL
+    private final String SQL_FIND_BY_NAME_ORDER_BY_PRICE = SQL_FIND_BY_NAME + " ORDER BY price;";
+
     private final DataSource dataSource;
     private final SimpleJdbcTemplate template;
 
@@ -63,8 +66,22 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
 
     @Override
     public List<Product> getProductsByName(String name) {
+        return orderProducts(name, SQL_FIND_BY_NAME);
+    }
+
+    @Override
+    public List<Product> getProductsByNameOrderByPrice(String name) {
+        return orderProducts(name, SQL_FIND_BY_NAME_ORDER_BY_PRICE);
+    }
+
+    @Override
+    public List<Product> getProductsByNameOrderByPopular(String name) {
+        return null;
+    }
+
+    private List<Product> orderProducts(String name, String SQL) {
         name = "%" + name + "%";
-        List<Product> products = template.query(SQL_FIND_BY_NAME, ProductRowMapper, name);
+        List<Product> products = template.query(SQL, ProductRowMapper, name);
         return !products.isEmpty() ? products : null;
     }
 }

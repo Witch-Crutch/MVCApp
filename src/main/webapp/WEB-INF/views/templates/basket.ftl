@@ -53,7 +53,6 @@
                     </#if>
                 </div>
             </div>
-
             <div class="pay center">
                 <a class="btn" href="/purchase">Оплатить</a>
             </div>

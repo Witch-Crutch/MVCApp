@@ -18,6 +18,16 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> getProductsByName(String name) { return productRepository.getProductsByName(name); }
 
     @Override
+    public List<Product> getProductsByNameOrderByPrice(String name) {
+        return productRepository.getProductsByNameOrderByPrice(name);
+    }
+
+    @Override
+    public List<Product> getProductsByNameOrderByPopular(String name) {
+        return productRepository.getProductsByNameOrderByPopular(name);
+    }
+
+    @Override
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
