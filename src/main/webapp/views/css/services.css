@@ -82,6 +82,11 @@
     padding-top: 30px;
 }
 
+
+.services_title:first-letter {
+    text-transform: capitalize;
+}
+
 .services_price {
     color: #000000;
     font-size: 24px;
@@ -99,4 +104,8 @@
 
 .btn_ajax:focus {
     padding: 15px 180px;
+}
+
+.first-letter {
+    text-transform: capitalize;
 }
