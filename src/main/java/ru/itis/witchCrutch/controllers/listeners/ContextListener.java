@@ -21,9 +21,8 @@ public class ContextListener implements ServletContextListener {
         //    DB
 
         Properties properties = new Properties();
-        //TODO: Заменить на относительный
         try {
-            properties.load(new FileInputStream("C:\\Users\\User\\Desktop\\Project\\itis\\third_semester\\semester_work_1\\WitchCrutch\\src\\main\\resources\\db.properties"));
+            properties.load(sce.getServletContext().getResourceAsStream("/WEB-INF/properties/db.properties"));
         } catch (IOException e) {
             throw new IllegalStateException(e);
         }

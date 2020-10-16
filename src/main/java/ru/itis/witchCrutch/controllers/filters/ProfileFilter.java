@@ -27,7 +27,7 @@ public class ProfileFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         }
         else {
-            resp.sendRedirect("/main");
+            resp.sendRedirect("/auth");
         }
     }
 }

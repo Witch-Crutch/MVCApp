@@ -44,8 +44,12 @@ public class AuthServlet extends HttpServlet {
         } else if (email != null && password != null && usersService.userAuth(email, HashPassword.getHash(email, password))) {
             String hash = HashPassword.getHash(email, password);
             if (remember) {
-                resp.addCookie(new Cookie("email", email));
-                resp.addCookie(new Cookie("password", hash));
+                Cookie emailCookie = new Cookie("email", email);
+                emailCookie.setMaxAge(60 * 60 * 24 * 365);
+                Cookie hashCookie = new Cookie("password", hash);
+                hashCookie.setMaxAge(60 * 60 * 24 * 365);
+                resp.addCookie(emailCookie);
+                resp.addCookie(hashCookie);
             }
             req.getSession().setAttribute("email", email);
             req.getSession().setAttribute("password", hash);
