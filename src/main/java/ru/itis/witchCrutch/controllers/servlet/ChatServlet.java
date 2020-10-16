@@ -1,7 +1,6 @@
-package ru.itis.witchCrutch.servlets.servlet;
+package ru.itis.witchCrutch.controllers.servlet;
 
 import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import ru.itis.witchCrutch.models.Message;
@@ -17,7 +16,6 @@ import ru.itis.witchCrutch.services.UsersServiceImpl;
 import ru.itis.witchCrutch.util.Constants;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -54,11 +52,9 @@ public class ChatServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+        UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
-        MessageRepository messageRepository = new MessageRepositoryJdbcImpl(dataSource, usersService);
-        MessageService messageService = new MessageServiceImpl(messageRepository);
+        MessageService messageService = (MessageService) req.getServletContext().getAttribute("messageService");
 
         User user = (User) req.getServletContext().getAttribute("user");
 
@@ -107,7 +103,6 @@ public class ChatServlet extends HttpServlet {
                             item.write(storeFile);
                         } else if (item.getFieldName().equals("text")) {
                             text = item.getString("UTF-8");
-                            System.out.println(text);
                         }
                     }
                 }

@@ -1,7 +1,6 @@
-package ru.itis.witchCrutch.servlets.servlet;
+package ru.itis.witchCrutch.controllers.servlet;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

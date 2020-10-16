@@ -40,7 +40,7 @@
                                               placeholder="Напишите сообщение ведьме здесь..." name="text"></textarea>
                                 </div>
                             </div>
-                            <span class="btn float-left">Прикрепить файл <input type="file" name="file"></span>
+                            <span class="btn float-left">Прикрепить файл <input type="file" name="file" accept="image/*"></span>
                             <div>
                                 <button type="submit" class="btn float-right">Отправить</button>
                             </div>

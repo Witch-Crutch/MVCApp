@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.servlets.filters;
+package ru.itis.witchCrutch.controllers.filters;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

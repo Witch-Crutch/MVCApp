@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.servlets.servlet;
+package ru.itis.witchCrutch.controllers.servlet;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;

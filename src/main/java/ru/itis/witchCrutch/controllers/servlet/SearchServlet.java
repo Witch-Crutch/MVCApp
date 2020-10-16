@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.servlets.servlet;
+package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.repositories.ProductRepository;
@@ -20,14 +20,13 @@ public class SearchServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO: проверка на sql injection ?
         String input = req.getParameter("input");
         boolean popular = req.getParameter("popular") != null;
         boolean price = req.getParameter("price") != null;
 
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
-        ProductRepository productRepository = new ProductRepositoryJdbcImpl(dataSource);
-        ProductService productService = new ProductServiceImpl(productRepository);
+
+        ProductService productService = (ProductService) req.getServletContext().getAttribute("productService");
 
         if (input == null) {
             input = " ";

@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.servlets.servlet;
+package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet("/purchase")
@@ -25,17 +24,13 @@ public class PurchaseServlet extends HttpServlet {
 
         User user = (User) req.getServletContext().getAttribute("user");
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+        ProductService productService = (ProductService) req.getServletContext().getAttribute("productService");
 
-        BasketRepository basketRepository = new BasketRepositoryJdbcImpl(dataSource, usersService);
-        BasketService basketService = new BasketServiceImpl(basketRepository);
+        UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
-        ProductRepository productRepository = new ProductRepositoryJdbcImpl(dataSource);
-        ProductService productService = new ProductServiceImpl(productRepository);
+        BasketService basketService = (BasketService) req.getServletContext().getAttribute("basketService");
 
-        PurchaseRepository purchaseRepository = new PurchaseRepositoryJdbcImpl(dataSource, basketService, productService);
-        PurchaseService purchaseService = new PurchaseServiceImpl(purchaseRepository);
+        PurchaseService purchaseService = (PurchaseService) req.getServletContext().getAttribute("purchaseService");
 
         Basket basket = (Basket) req.getServletContext().getAttribute("basket");
         List<Product> products = basket.getProducts();

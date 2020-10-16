@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.servlets.servlet;
+package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.repositories.UsersRepository;
 import ru.itis.witchCrutch.repositories.UsersRepositoryJdbcImpl;
@@ -24,8 +24,8 @@ public class AuthServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+
+        UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
         String email = req.getParameter("email");
         String password = req.getParameter("password");

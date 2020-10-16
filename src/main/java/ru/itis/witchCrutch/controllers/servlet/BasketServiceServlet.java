@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.servlets.servlet;
+package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
@@ -21,19 +21,14 @@ public class BasketServiceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
-        ProductRepository productRepository = new ProductRepositoryJdbcImpl(dataSource);
-        ProductService productService = new ProductServiceImpl(productRepository);
+        ProductService productService = (ProductService) req.getServletContext().getAttribute("productService");
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+        UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
-        BasketRepository basketRepository = new BasketRepositoryJdbcImpl(dataSource, usersService);
-        BasketService basketService = new BasketServiceImpl(basketRepository);
+        BasketService basketService = (BasketService) req.getServletContext().getAttribute("basketService");
 
         User user = (User) req.getServletContext().getAttribute("user");
         Basket basket = (Basket) req.getServletContext().getAttribute("basket");
-
-
 
         String add = req.getParameter("add");
         String delete = req.getParameter("delete");

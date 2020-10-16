@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.servlets.filters;
+package ru.itis.witchCrutch.controllers.filters;
 
 import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.User;
@@ -31,17 +31,14 @@ public class CookieFilter implements Filter {
 
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+        UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
-        BasketRepository basketRepository = new BasketRepositoryJdbcImpl(dataSource, usersService);
-        BasketService basketService = new BasketServiceImpl(basketRepository);
+        BasketService basketService = (BasketService) req.getServletContext().getAttribute("basketService");
 
         Cookie[] cookies = req.getCookies();
 
         String email = (String) req.getSession().getAttribute("email");
         String hash = (String) req.getSession().getAttribute("password");
-
 
         if (cookies != null) {
             for (Cookie cookie : cookies) {

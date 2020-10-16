@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.servlets.servlet;
+package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.repositories.UsersRepositoryJdbcImpl;
@@ -25,10 +25,9 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+
+        UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
         String name = req.getParameter("name");
         String lastname = req.getParameter("lastname");
