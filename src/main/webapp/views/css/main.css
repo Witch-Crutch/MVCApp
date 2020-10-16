@@ -144,6 +144,10 @@ footer .container {
     cursor: pointer;
 }
 
+.text-services:first-letter {
+    text-transform: capitalize;
+}
+
 .auth-cont_input {
     background-color: #988CCA;
     height: 60px;

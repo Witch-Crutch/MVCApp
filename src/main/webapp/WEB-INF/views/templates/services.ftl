@@ -24,14 +24,20 @@
                                     <button class="btn services_btn" type="submit">Искать</button>
                                 </div>
                                 <div class="row filter">
-                                    <div class="col-md-3">
-                                        <div class="btn" onclick="document.getElementById('pop').click()">
-                                            <label><input type="checkbox" class="form-check-input" name="popular" id="pop"/>Популярные</label>
+                                    <div class="offset-2 col-md-5 justify-content-center">
+                                        <div class="form-check">
+                                            <input type="radio" class="form-check-input" id="materialGroupExample1"
+                                                   name="groupOfMaterialRadios">
+                                            <label class="form-check-label" for="materialGroupExample1">
+                                                Популярные </label>
                                         </div>
                                     </div>
-                                    <div class="offset-2 col-md-3">
-                                        <div class="btn" onclick="document.getElementById('price').click()">
-                                            <label><input type="checkbox" class="form-check-input" name="price" id="price"/>Цена</label>
+
+                                    <div class="offset-2 col-md-5 justify-content-center">
+                                        <div class="form-check">
+                                            <input type="radio" class="form-check-input" id="materialGroupExample2"
+                                                   name="groupOfMaterialRadios" checked>
+                                            <label class="form-check-label" for="materialGroupExample2"> Цена </label>
                                         </div>
                                     </div>
                                 </div>

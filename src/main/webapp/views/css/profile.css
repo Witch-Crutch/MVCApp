@@ -116,6 +116,10 @@ div.modal div.modal-backdrop {
     padding-top: 40px;
 }
 
+.card-body_title:first-letter {
+    text-transform: capitalize;
+}
+
 .card-body_text {
     text-align: left;
     padding-top: 40px;

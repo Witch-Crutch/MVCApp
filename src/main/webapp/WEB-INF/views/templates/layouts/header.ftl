@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-2">
-                    <img src="../../../../views/assets/main/logo.png" class="logo">
+                    <a href="/main"><img src="../../../../views/assets/main/logo.png" class="logo"></a>
                 </div>
                 <#if user??>
                     <div class="col-md-2 links">
