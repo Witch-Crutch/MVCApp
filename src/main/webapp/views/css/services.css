@@ -31,6 +31,11 @@
     background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
 }
 
+.form-check-label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .serv-cont_title {
     font-weight: bold;
     color: #FFFFFF;
