@@ -69,8 +69,11 @@
                                                 ${product.getPrice()}Р
                                             </div>
                                             <div class="btn_pad">
+                                                <#--                                                <button class="btn services_btn"-->
+                                                <#--                                                        onclick="location.href='/basketService?add=${product.getId()}'">-->
+                                                <#--                                                TODO здесь изменения от фронта-->
                                                 <button class="btn services_btn"
-                                                        onclick="location.href='/basketService?add=${product.getId()}'">
+                                                        onclick="alert('Услуга добавлена в корзину! Уже начинаю колдовать!')">
                                                     Воспользоваться
                                                 </button>
                                             </div>
