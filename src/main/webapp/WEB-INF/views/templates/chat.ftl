@@ -16,12 +16,14 @@
                             <#if messages??>
                                 <#list messages as message>
                                     <li class="d-flex justify-content-between mb-4">
-                                        <img src="../../../views/assets/user/${message.getSender().getProfileImg()}" alt="avatar"
+                                        <img src="../../../views/assets/user/${message.getSender().getProfileImg()}"
+                                             alt="avatar"
                                              class="avatar rounded-circle ">
                                         <div class="chat-body white">
                                             <div class="header">
                                                 <strong class="primary-font">${message.getSender().getLastname()} ${message.getSender().getName()}</strong>
-                                                <small class="pull-right text-muted"><i class="far fa-clock"></i> ${message.getDate()}</small>
+                                                <small class="pull-right text-muted"><i
+                                                            class="far fa-clock"></i> ${message.getDate()}</small>
                                             </div>
                                             <hr class="w-100">
                                             <p class="mb-0">
@@ -40,7 +42,8 @@
                                               placeholder="Напишите сообщение ведьме здесь..." name="text"></textarea>
                                 </div>
                             </div>
-                            <span class="btn float-left">Прикрепить файл <input type="file" name="file" accept="image/*"></span>
+                            <span class="btn float-left">Прикрепить файл <input type="file" name="file"
+                                                                                accept="image/*"></span>
                             <div>
                                 <button type="submit" class="btn float-right">Отправить</button>
                             </div>
