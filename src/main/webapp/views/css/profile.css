@@ -205,6 +205,10 @@ div.modal div.modal-backdrop {
     border-bottom: 1px solid tomato;
 }
 
+.profile_avatar {
+    height: 200px;
+    border-radius: 50%;
+}
 
 
 

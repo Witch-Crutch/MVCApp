@@ -21,6 +21,10 @@
                                                                 class="far fa-clock"></i> ${message.getDate()}</small>
                                                 </div>
                                                 <hr class="w-100">
+                                                <#--                                                TODO исправить путь к картинке на шаблон-->
+                                                <a href=" " style="display: block"><img
+                                                            src=" "
+                                                            class="w-25"></a>
                                                 <p class="mb-0">
                                                     ${message.getMessage()}
                                                 </p>
