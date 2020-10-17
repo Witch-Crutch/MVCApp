@@ -1,11 +1,11 @@
-
 body {
-    background-color: #000000;
+    /*background-color: #000000;*/
     position: relative;
     box-sizing: border-box;
     color: #FFFFFF;
     font-family: 'Proxima Nova Rg', sans-serif;
     overflow-x: hidden;
+    background: url("../assets/backsmoke.png") scroll;
 }
 
 h1, h2, h4 {
@@ -167,6 +167,19 @@ footer .container {
 
 .auth-cont_input::placeholder {
     color: #1b1e21;
+}
+
+.content {
+    padding-bottom: 30px;
+}
+
+.foo {
+    background-color: black;
+}
+
+.cont_foo {
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 

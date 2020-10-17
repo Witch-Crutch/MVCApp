@@ -1,14 +1,8 @@
 <#ftl encoding="UTF-8">
 <#import "layouts/base.ftl" as base>
 <@base.main css=["advantages.css"] title="Преимущества">
-    <div class="container">
-        <div class="div_back_left">
-            <img src="../../../views/assets/smoke_2.png">
-        </div>
-        <div class="div_back_right">
-            <img src="../../../views/assets/smoke.png">
-        </div>
-        <div class="container div_front">
+    <div class="content">
+        <div class="container">
             <div class="adv-cont_title">
                 Преимущества
             </div>
@@ -20,7 +14,8 @@
                             <p><h4 class="card-cont_title">Консультации онлайн</h4></p>
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-cont_text"><span> Если вам неудобно </span> приезжать в мой кабинет, мы
+                                    <h5 class="card-cont_text"><span> Если вам неудобно </span> приезжать в мой
+                                        кабинет, мы
                                         можем встречаться онлайн.</h5>
                                 </div>
                             </div>

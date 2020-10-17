@@ -1,12 +1,8 @@
 <#ftl encoding="UTF-8">
 <#import "layouts/base.ftl" as base>
 <@base.main css=["services.css"] title="Мои услуги">
-    <div class="container">
-        <div class="div_back_right">
-            <img src="../../../views/assets/smoke.png">
-        </div>
-
-        <div class="container div_front">
+    <div class="content">
+        <div class="container">
             <div class="serv-cont_title">
                 Мои услуги
             </div>
@@ -47,10 +43,6 @@
                 </div>
             </form>
 
-            <div class="div_back_left">
-                <img src="../../../views/assets/smoke_2.png">
-            </div>
-
             <div class="services">
                 <div class="container">
                     <div class="row">
@@ -83,15 +75,6 @@
                             </#list>
                         </#if>
                     </div>
-
-                    <#--<div class="div_back_right">
-                        <img src="../../../views/assets/smoke.png">
-                    </div>-->
-
-                    <#--<div class="div_back_left">
-                        <img src="../../../views/assets/smoke_2.png">
-                    </div>-->
-
                 </div>
 
 

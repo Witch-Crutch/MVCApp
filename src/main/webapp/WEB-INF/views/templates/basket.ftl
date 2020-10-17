@@ -1,15 +1,8 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
 <@base.main title="Корзина" css=["profile.css", "basket.css"]>
-    <div class="container">
-        <div class="div_back_left">
-            <img src="../../../views/assets/smoke_2.png">
-        </div>
-        <div class="div_back_right">
-            <img src="../../../views/assets/smoke.png">
-        </div>
-
-        <div class="container div_front">
+    <div class="content">
+        <div class="container">
             <div class="profile-cont_title center">
                 Корзина
             </div>

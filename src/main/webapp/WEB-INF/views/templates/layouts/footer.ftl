@@ -1,5 +1,5 @@
-<footer>
-    <div class="container">
+<footer id="sticky-footer" class="foo text-white-50">
+    <div class="container cont_foo">
         <div class="row">
             <div class="offset-1 col-md-3">
                 <img src="../../../../views/assets/main/logo.png">

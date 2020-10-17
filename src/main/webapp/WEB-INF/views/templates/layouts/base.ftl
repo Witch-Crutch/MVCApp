@@ -15,7 +15,7 @@
     <body>
     <#include "header.ftl">
     <#nested>
-    <#--<#include "footer.ftl">-->
+    <#include "footer.ftl">
     <script src="../../../../views/static/jquery-3.5.1.min.js"></script>
     <script src="../../../../views/static/bootstrap.bundle.js"></script>
     <#list scripts as script>
