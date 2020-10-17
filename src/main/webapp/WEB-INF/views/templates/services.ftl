@@ -65,7 +65,7 @@
                                                 <#--                                                        onclick="location.href='/basketService?add=${product.getId()}'">-->
                                                 <#--                                                TODO здесь изменения от фронта-->
                                                 <button class="btn services_btn"
-                                                        onclick="alert('Услуга добавлена в корзину! Уже начинаю колдовать!')">
+                                                        onclick="d(${product.getId()})">
                                                     Воспользоваться
                                                 </button>
                                             </div>
@@ -86,4 +86,10 @@
             </div>
         </div>
     </div>
+    <script>
+        function d(id) {
+            alert('Услуга добавлена в корзину! Уже начинаю колдовать!');
+            window.location.href='/basketService?add='+id;
+        }
+    </script>
 </@base.main>
