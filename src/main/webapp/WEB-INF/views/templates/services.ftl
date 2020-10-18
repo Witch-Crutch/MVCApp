@@ -89,7 +89,7 @@
     <script>
         function d(id) {
             alert('Услуга добавлена в корзину! Уже начинаю колдовать!');
-            window.location.href='/basketService?add='+id;
+            window.location.href = '/basketService?add=' + id;
         }
     </script>
 </@base.main>
