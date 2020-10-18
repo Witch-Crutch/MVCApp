@@ -28,8 +28,9 @@
                         </div>
                         <div class="row info-cont">
                             <div class="col-md-2">
-                                <a>
-                                    <img src="../../../views/assets/user/${user.getProfileImg()}">
+                                <a style="width: 40%" target="_blank">
+                                    <img class="profile_avatar"
+                                         src="../../../views/assets/user/${user.getProfileImg()}">
                                 </a>
                             </div>
 
