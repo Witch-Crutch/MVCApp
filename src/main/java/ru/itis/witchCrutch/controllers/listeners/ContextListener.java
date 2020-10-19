@@ -1,14 +1,13 @@
 package ru.itis.witchCrutch.controllers.listeners;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+import ru.itis.witchCrutch.dataSource.SimpleDataSource;
+import ru.itis.witchCrutch.dataSource.SimpleDataSourceConfig;
 import ru.itis.witchCrutch.repositories.*;
 import ru.itis.witchCrutch.services.*;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -27,17 +26,19 @@ public class ContextListener implements ServletContextListener {
             throw new IllegalStateException(e);
         }
 
-        HikariConfig hikariConfig = new HikariConfig();
+        SimpleDataSourceConfig simpleConfig = new SimpleDataSourceConfig();
 
-        hikariConfig.setJdbcUrl(properties.getProperty("db.jdbc.url"));
-        hikariConfig.setDriverClassName(properties.getProperty("db.jdbc.driver-class-name"));
-        hikariConfig.setUsername(properties.getProperty("db.jdbc.username"));
-        hikariConfig.setPassword(properties.getProperty("db.jdbc.password"));
-        hikariConfig.setMaximumPoolSize(Integer.parseInt(properties.getProperty("db.jdbc.hikari.max-pool-size")));
+        simpleConfig.setJdbcUrl(properties.getProperty("db.jdbc.url"));
+        simpleConfig.setDriverClassName(properties.getProperty("db.jdbc.driver-class-name"));
+        simpleConfig.setUsername(properties.getProperty("db.jdbc.username"));
+        simpleConfig.setPassword(properties.getProperty("db.jdbc.password"));
 
-        HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+        //HikariDataSource dataSource = new HikariDataSource(simpleConfig);
 
         // Repository
+
+        SimpleDataSource dataSource = new SimpleDataSource(simpleConfig);
+
 
         UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
         UsersService usersService = new UsersServiceImpl(usersRepository);

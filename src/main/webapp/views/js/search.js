@@ -1,5 +1,11 @@
-var services = ["гадание на картах", "защита", "приворот"];
-autocomplete(document.getElementById("inputSearch"), services);
+$.ajax({
+    url: "/service",
+    type: "GET",
+    dataType: "json",
+    success: function (data) {
+        autocomplete(document.getElementById("inputSearch"), data);
+    }
+});
 
 function autocomplete(inp, arr) {
     var currentFocus;

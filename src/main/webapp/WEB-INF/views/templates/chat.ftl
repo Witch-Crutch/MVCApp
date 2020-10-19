@@ -21,10 +21,12 @@
                                                                 class="far fa-clock"></i> ${message.getDate()}</small>
                                                 </div>
                                                 <hr class="w-100">
-                                                <#--                                                TODO исправить путь к картинке на шаблон-->
-                                                <a href=" " style="display: block"><img
-                                                            src=" "
-                                                            class="w-25"></a>
+                                                <#if message.getFilename() != ".">
+                                                    <a href="../../../uploads/${message.getFilename()}"
+                                                       style="display: block">
+                                                        <img src="../../../uploads/${message.getFilename()}" class="w-25">
+                                                    </a>
+                                                </#if>
                                                 <p class="mb-0">
                                                     ${message.getMessage()}
                                                 </p>

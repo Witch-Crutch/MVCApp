@@ -85,7 +85,7 @@ public class ChatServlet extends HttpServlet {
             ServletFileUpload upload = new ServletFileUpload(factory);
             upload.setFileSizeMax(1024 * 1024 * 50);
             upload.setSizeMax(1024 * 1024 * 50);
-            String uploadPath = "C:\\Users\\User\\Desktop\\Project\\itis\\third_semester\\semester_work_1\\WitchCrutch\\src\\main\\webapp\\WEB-INF\\uploads";
+            String uploadPath = "C:\\Users\\User\\Desktop\\Project\\itis\\third_semester\\semester_work_1\\WitchCrutch\\src\\main\\webapp\\uploads";
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
                 uploadDir.mkdir();
