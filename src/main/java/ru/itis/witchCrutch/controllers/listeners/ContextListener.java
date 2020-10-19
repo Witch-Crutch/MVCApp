@@ -8,7 +8,6 @@ import ru.itis.witchCrutch.services.*;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
