@@ -19,9 +19,7 @@ public class SearchFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
 
-        //TODO передавать гетом
-
-        if (req.getMethod().equals("GET")){
+        if (req.getMethod().equals("POST")){
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }

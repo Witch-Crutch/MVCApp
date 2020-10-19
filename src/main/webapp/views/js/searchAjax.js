@@ -2,7 +2,7 @@ $("#search_form").submit(function (event) {
     event.preventDefault();
     $.ajax({
         url: "/search",
-        type: "POST",
+        type: "GET",
         data: {
             'input': $("#inputSearch").val(),
             'filter': $('input[name=filter]:checked').val()
