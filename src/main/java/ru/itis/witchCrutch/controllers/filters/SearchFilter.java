@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-import java.util.SortedMap;
 
 @WebFilter("/search")
 public class SearchFilter implements Filter {
