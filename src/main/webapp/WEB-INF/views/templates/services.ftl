@@ -23,7 +23,7 @@
                                     <div class="offset-2 col-md-5 justify-content-center">
                                         <div class="form-check">
                                             <input type="radio" class="form-check-input" id="materialGroupExample1"
-                                                   name="groupOfMaterialRadios">
+                                                   name="filter" value="popular">
                                             <label class="form-check-label" for="materialGroupExample1">
                                                 Популярные </label>
                                         </div>
@@ -32,7 +32,7 @@
                                     <div class="offset-2 col-md-5 justify-content-center">
                                         <div class="form-check">
                                             <input type="radio" class="form-check-input" id="materialGroupExample2"
-                                                   name="groupOfMaterialRadios" checked>
+                                                   name="filter" value="price">
                                             <label class="form-check-label" for="materialGroupExample2"> Цена </label>
                                         </div>
                                     </div>

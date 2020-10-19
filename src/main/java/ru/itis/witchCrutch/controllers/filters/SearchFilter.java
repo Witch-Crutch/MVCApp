@@ -27,9 +27,23 @@ public class SearchFilter implements Filter {
         }
 
         String input = servletRequest.getParameter("input");
+        String filter = servletRequest.getParameter("filter");
+
         input = input == null ? "" : input;
+
         ProductService productService = (ProductService) req.getServletContext().getAttribute("productService");
-        List<Product> productList = productService.getProductsByName(input);
+        List<Product> productList = null;
+
+        if (filter != null) {
+            if (filter.equals("price")) {
+                productList = productService.getProductsByNameOrderByPrice(input);
+            } else if (filter.equals("popular")) {
+                productList = productService.getProductsByNameOrderByPopular(input);
+            }
+        } else {
+            productList = productService.getProductsByName(input);
+        }
+
         JSONObject jsonObject = new JSONObject();
         JSONArray jsonArray = new JSONArray();
         for (Product product : productList) {

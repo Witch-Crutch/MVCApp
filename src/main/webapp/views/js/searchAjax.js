@@ -4,7 +4,8 @@ $("#search_form").submit(function (event) {
         url: "/search",
         type: "POST",
         data: {
-            'input': $("#inputSearch").val()
+            'input': $("#inputSearch").val(),
+            'filter': $('input[name=filter]:checked').val()
         },
         dataType: "json",
         success: function (data) {
@@ -35,8 +36,5 @@ $("#search_form").submit(function (event) {
                     '</div>'))
             });
         }
-    }).done(function () {
-    }).fail(function () {
-        alert("error")
     });
 });
