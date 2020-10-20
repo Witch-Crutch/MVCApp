@@ -46,9 +46,6 @@
 <!--content-->
 <div class="content">
     <div class="container">
-        <!--    <div class="div_back_left">-->
-        <!--        <img src="../assets/smoke_2.png">-->
-        <!--    </div>-->
         <div class="container">
             <div class="row">
                 <div class="profile-cont_title">
@@ -70,7 +67,7 @@
                             <!--ModalForm-->
                             <div class="text-center">
                                 <a href="" class="btn_mini_2 btn-default" data-toggle="modal"
-                                   data-target="#modalForm">Изменить</a>
+                                   data-target="#modalForm" onclick="swa()">Изменить</a>
                             </div>
                         </div>
 
@@ -84,7 +81,7 @@
 
                                 <div class="col-md-3">
                                     <div class="row info-cont_text_top">
-                                        Иванова rewtyuio
+                                        Иванова
                                     </div>
                                     <div class="row info-cont_text">
                                         elizavetka96@mail.ru
@@ -100,9 +97,15 @@
                     </div>
                 </div>
 
-                <!--            <div class="div_back_right">-->
-                <!--                <img src="../assets/smoke_2.png">-->
-                <!--            </div>-->
+                <div id="overlay">
+                    <div class="popup">
+                        <button class="close" title="Закрыть окно" onclick="swa2()"></button>
+                        <p class="modal_text">Изменить фотографию</p>
+                        <p class="button_modal"><span class="btn_mini_3 float-left">
+                         Прикрепить файл <input type="file">
+                        </span></p>
+                    </div>
+                </div>
 
                 <div class="history">
                     <div class="container">
@@ -180,9 +183,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--                    <div class="div_back_left">-->
-                        <!--                        <img src="../assets/smoke_2.png">-->
-                        <!--                    </div>-->
+
                         <div class="row history-cont_btn">
                             <button class="offset-2 col-md-8 btn" type="submit" onclick="window.location='chat.html'">
                                 Написать
@@ -230,8 +231,24 @@
     </div>
 </footer>
 
+</div>
+
+
 <script src="../static/jquery-3.5.1.min.js"></script>
 <script src="../static/bootstrap.bundle.js"></script>
-</div>
+<script>
+    var b = document.getElementById('overlay');
+
+    function swa() {
+        b.style.visibility = 'visible';
+        b.style.opacity = '1';
+        b.style.transition = 'all 0.7s ease-out 0s';
+    }
+
+    function swa2() {
+        b.style.visibility = 'hidden';
+        b.style.opacity = '0';
+    }
+</script>
 </body>
 </html>

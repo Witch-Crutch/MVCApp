@@ -1,6 +1,6 @@
 <#ftl encoding="UTF-8"/>
 <#import "layouts/base.ftl" as base>
-<@base.main css=["profile.css"] title="Личный кабинет">
+<@base.main css=["profile.css"] scripts=["modalWindow.js"] title="Личный кабинет">
     <div class="content">
         <div class="container">
             <div class="row">
@@ -23,7 +23,7 @@
                             <!--ModalForm-->
                             <div class="text-center">
                                 <a href="" class="btn_mini_2 btn-default" data-toggle="modal"
-                                   data-target="#modalForm">Изменить</a>
+                                   data-target="#modalForm" onclick="swa()">Изменить</a>
                             </div>
                         </div>
                         <div class="row info-cont">
@@ -34,28 +34,30 @@
                                 </a>
                             </div>
 
-                            <div class="offset-2 col-md-2">
+                            <div class="col-md-3">
                                 <div class="row info-cont_text_top">
                                     ${user.getLastname()}
                                 </div>
                                 <div class="row info-cont_text">
                                     ${user.getName()}
                                 </div>
-                                <div class="row info-cont_text">
-                                    11.06.1996
-                                </div>
                             </div>
-                            <div class="offset-1 col-md-5">
+                            <div class="col-md-5">
                                 <div class="row info-cont_text_top">
                                     ${user.getEmail()}
                                 </div>
-                                <div class="row info-cont_text">
-                                    Пользуюсь услугами
-                                    бабушки Костыль уже три года.
-                                    Ни разу не подвела!
-                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div id="overlay">
+                    <div class="popup">
+                        <button class="close" title="Закрыть окно" onclick="swa2()"></button>
+                        <p class="modal_text">Изменить фотографию</p>
+                        <p class="button_modal"><span class="btn_mini_3 float-left">
+                         Прикрепить файл <input type="file">
+                        </span></p>
                     </div>
                 </div>
 
@@ -102,9 +104,7 @@
                                 </#list>
                             </#if>
                         </div>
-                        <div class="div_back_left">
-                            <img src="../../../views/assets/smoke_2.png">
-                        </div>
+
                         <div class="row history-cont_btn">
                             <button class="offset-2 col-md-8 btn" type="submit" onclick="location.href='/chat'">
                                 Написать

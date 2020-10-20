@@ -1,23 +1,10 @@
-.div_front {
-    position: absolute;
-    z-index: 100;
+.modal_text {
+    font-size: 36px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: black;
 }
 
-div.modal div.modal-backdrop {
-    z-index: 200;
-}
-
-.div_back_right {
-    position: absolute;
-    z-index: 0;
-    left: 800px;
-}
-
-.div_back_left {
-    position: absolute;
-    z-index: 0;
-    right: 1000px;
-}
 
 .btn {
     background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
@@ -60,12 +47,32 @@ div.modal div.modal-backdrop {
     transition: 0.5s ease;
 }
 
+.btn_mini_3 {
+    background: linear-gradient(270deg, #624FAE 16.12%, #9E31D1 69.22%);
+    box-shadow: 0px 8px 60px rgba(178, 49, 210, 0.5);
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    padding: 10px 30px;
+    border-radius: 90px;
+    border: 0;
+    transition: 0.5s ease;
+}
+
 .btn:hover {
     background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
 }
 
 .btn_mini:hover {
     background: linear-gradient(270deg, #9E31D1 16.12%, #624FAE 69.22%);
+}
+
+.button_modal {
+    padding: 10px 20px;
+}
+
+.close {
+    background-color: #624FAE !important;
 }
 
 .profile-cont_title {
