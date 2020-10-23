@@ -1,10 +1,11 @@
 package ru.itis.witchCrutch.repositories;
 
 import ru.itis.witchCrutch.models.Telephone;
+import ru.itis.witchCrutch.repositories.interfaces.TelephoneRepository;
 
 import javax.sql.DataSource;
 
-public class TelephoneRepositoryJdbcImpl implements TelephoneRepository{
+public class TelephoneRepositoryJdbcImpl implements TelephoneRepository {
 
     private final DataSource dataSource;
 

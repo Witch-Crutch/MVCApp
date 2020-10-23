@@ -3,11 +3,12 @@ package ru.itis.witchCrutch.services;
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.models.Purchase;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.PurchaseRepository;
+import ru.itis.witchCrutch.repositories.interfaces.PurchaseRepository;
+import ru.itis.witchCrutch.services.interfaces.PurchaseService;
 
 import java.util.List;
 
-public class PurchaseServiceImpl implements PurchaseService{
+public class PurchaseServiceImpl implements PurchaseService {
 
     private final PurchaseRepository purchaseRepository;
 

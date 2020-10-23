@@ -1,6 +1,8 @@
 package ru.itis.witchCrutch.repositories;
 
 import ru.itis.witchCrutch.models.User;
+import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
+import ru.itis.witchCrutch.repositories.interfaces.UsersRepository;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -22,7 +24,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String SQL_FIND_NAME_PASS = "SELECT * FROM users where name= ? AND password= ?";
 
     //language=SQL
-    private final String SQL_FIND_EMAIL_PASS = "SELECT * FROM users where email= ? AND password= ?";
+    private final String SQL_FIND_EMAIL_PASS = "SELECT * FROM users where email=? AND password=?";
 
     //language=SQL
     private final String SQL_FIND_EMAIL = "SELECT * FROM users where email=?";
@@ -50,8 +52,8 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     }
 
     @Override
-    public User findByNamePassword(String name, String password) {
-        List<User> users = template.query(SQL_FIND_NAME_PASS, UserRowMapper, name, password);
+    public User findByEmailPassword(String email, String password) {
+        List<User> users = template.query(SQL_FIND_EMAIL_PASS, UserRowMapper, email, password);
         return !users.isEmpty() ? users.get(0) : null;
     }
 
@@ -64,6 +66,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     @Override
     public boolean authUser(String email, String hash) {
         List<User> users = template.query(SQL_FIND_EMAIL_PASS, UserRowMapper, email, hash);
+        System.out.println(users);
         return !users.isEmpty();
     }
 

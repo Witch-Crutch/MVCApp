@@ -1,10 +1,7 @@
 package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.models.Telephone;
-import ru.itis.witchCrutch.repositories.TelephoneRepository;
-import ru.itis.witchCrutch.repositories.TelephoneRepositoryJdbcImpl;
-import ru.itis.witchCrutch.services.TelephoneService;
-import ru.itis.witchCrutch.services.TelephoneServiceImpl;
+import ru.itis.witchCrutch.services.interfaces.TelephoneService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,8 +22,6 @@ public class ContactServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String tel = req.getParameter("tel");
-
-        DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
         TelephoneService telephoneService = (TelephoneService) req.getServletContext().getAttribute("telephoneService");
 

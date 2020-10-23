@@ -48,7 +48,7 @@
                             Войти
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item nav-link" href="/auth">Вход</a>
+                            <a class="dropdown-item nav-link" href="/auth" >Вход</a>
                             <a class="dropdown-item nav-link" href="/register">Регистрация</a>
                         </div>
                     </div>

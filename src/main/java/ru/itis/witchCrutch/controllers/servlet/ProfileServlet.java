@@ -2,8 +2,10 @@ package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.*;
-import ru.itis.witchCrutch.services.*;
+import ru.itis.witchCrutch.services.interfaces.BasketService;
+import ru.itis.witchCrutch.services.interfaces.ProductService;
+import ru.itis.witchCrutch.services.interfaces.PurchaseService;
+import ru.itis.witchCrutch.services.interfaces.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +31,7 @@ public class ProfileServlet extends HttpServlet {
 
         PurchaseService purchaseService = (PurchaseService) req.getServletContext().getAttribute("purchaseService");
 
-        User user = (User) req.getServletContext().getAttribute("user");
+        User user = (User) req.getSession().getAttribute("user");
         List<Product> purchases = purchaseService.getUserPurchase(user);
 
         if (purchaseService.getUserPurchase(user) != null)

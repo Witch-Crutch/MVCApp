@@ -4,8 +4,10 @@ import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.models.Purchase;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.services.BasketService;
-import ru.itis.witchCrutch.services.ProductService;
+import ru.itis.witchCrutch.repositories.interfaces.PurchaseRepository;
+import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
+import ru.itis.witchCrutch.services.interfaces.BasketService;
+import ru.itis.witchCrutch.services.interfaces.ProductService;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ import java.util.List;
 
 import static ru.itis.witchCrutch.repositories.ProductRepositoryJdbcImpl.ProductRowMapper;
 
-public class PurchaseRepositoryJdbcImpl implements PurchaseRepository{
+public class PurchaseRepositoryJdbcImpl implements PurchaseRepository {
 
     private final DataSource dataSource;
     private final SimpleJdbcTemplate template;

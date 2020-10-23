@@ -2,7 +2,7 @@ package ru.itis.witchCrutch.controllers.filters;
 
 import org.json.simple.JSONArray;
 import ru.itis.witchCrutch.models.Product;
-import ru.itis.witchCrutch.services.ProductService;
+import ru.itis.witchCrutch.services.interfaces.ProductService;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

@@ -1,5 +1,7 @@
 package ru.itis.witchCrutch.controllers.servlet;
 
+import ru.itis.witchCrutch.util.CookieActions;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -14,18 +16,10 @@ public class QuitServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Cookie[] cookies = req.getCookies();
 
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("email") || cookie.getName().equals("password")) {
-                cookie.setValue("");
-                cookie.setPath("/");
-                cookie.setMaxAge(0);
-                resp.addCookie(cookie);
-            }
-        }
+        CookieActions.deleteCookies(req, resp, "email", "password");
 
-        req.getServletContext().setAttribute("user", null);
-        req.getSession().setAttribute("email", null);
-        req.getSession().setAttribute("password", null);
+        req.getSession().setAttribute("user", null);
+        req.getSession().setAttribute("basket", null);
 
         resp.sendRedirect("/main");
     }

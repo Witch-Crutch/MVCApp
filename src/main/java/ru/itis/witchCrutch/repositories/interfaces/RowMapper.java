@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.repositories;
+package ru.itis.witchCrutch.repositories.interfaces;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

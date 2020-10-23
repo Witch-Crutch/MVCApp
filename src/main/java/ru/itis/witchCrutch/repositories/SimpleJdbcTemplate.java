@@ -1,5 +1,7 @@
 package ru.itis.witchCrutch.repositories;
 
+import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

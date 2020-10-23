@@ -4,8 +4,10 @@ import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.models.Purchase;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.*;
-import ru.itis.witchCrutch.services.*;
+import ru.itis.witchCrutch.services.interfaces.BasketService;
+import ru.itis.witchCrutch.services.interfaces.ProductService;
+import ru.itis.witchCrutch.services.interfaces.PurchaseService;
+import ru.itis.witchCrutch.services.interfaces.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +24,7 @@ public class PurchaseServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
-        User user = (User) req.getServletContext().getAttribute("user");
+        User user = (User) req.getSession().getAttribute("user");
 
         ProductService productService = (ProductService) req.getServletContext().getAttribute("productService");
 
@@ -32,11 +34,19 @@ public class PurchaseServlet extends HttpServlet {
 
         PurchaseService purchaseService = (PurchaseService) req.getServletContext().getAttribute("purchaseService");
 
-        Basket basket = (Basket) req.getServletContext().getAttribute("basket");
-        List<Product> products = basket.getProducts();
-        if (!products.isEmpty()) {
-            Purchase purchase = Purchase.builder().basketId(basket.getId()).products(products).customer(user).build();
-            purchaseService.addPurchase(purchase);
+        Basket basket = (Basket) req.getSession().getAttribute("basket");
+        if (basket != null) {
+            List<Product> products = basket.getProducts();
+            if (!products.isEmpty()) {
+                Purchase purchase = Purchase.builder().basketId(basket.getId()).products(products).customer(user).build();
+                purchaseService.addPurchase(purchase);
+            } else {
+                resp.sendRedirect("/basket");
+                return;
+            }
+        } else {
+            resp.sendRedirect("/basket");
+            return;
         }
 
         resp.sendRedirect("/profile");

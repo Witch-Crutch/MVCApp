@@ -22,9 +22,9 @@
                                                 </div>
                                                 <hr class="w-100">
                                                 <#if message.getFilename() != ".">
-                                                    <a href="../../../uploads/${message.getFilename()}"
+                                                    <a href="../../../views/uploads/${message.getFilename()}"
                                                        style="display: block">
-                                                        <img src="../../../uploads/${message.getFilename()}" class="w-25">
+                                                        <img src="../../../views/uploads/${message.getFilename()}" class="w-25">
                                                     </a>
                                                 </#if>
                                                 <p class="mb-0">

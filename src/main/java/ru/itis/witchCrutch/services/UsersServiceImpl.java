@@ -1,7 +1,8 @@
 package ru.itis.witchCrutch.services;
 
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.UsersRepository;
+import ru.itis.witchCrutch.repositories.interfaces.UsersRepository;
+import ru.itis.witchCrutch.services.interfaces.UsersService;
 
 import java.util.List;
 
@@ -29,8 +30,8 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public User getUserByNamePassword(String name, String password) {
-        return usersRepository.findByNamePassword(name, password);
+    public User getUserByEmailPassword(String email, String password) {
+        return usersRepository.findByEmailPassword(email, password);
     }
 
     @Override

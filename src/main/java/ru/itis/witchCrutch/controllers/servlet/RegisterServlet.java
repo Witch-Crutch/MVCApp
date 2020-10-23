@@ -1,10 +1,7 @@
 package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.UsersRepositoryJdbcImpl;
-import ru.itis.witchCrutch.repositories.UsersRepository;
-import ru.itis.witchCrutch.services.UsersService;
-import ru.itis.witchCrutch.services.UsersServiceImpl;
+import ru.itis.witchCrutch.services.interfaces.UsersService;
 import ru.itis.witchCrutch.util.HashPassword;
 
 import javax.servlet.ServletException;
@@ -25,7 +22,6 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
         UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
@@ -35,18 +31,17 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String password_again = req.getParameter("password_again");
 
-        if (password.equals(password_again) && !usersService.userIsExist(email)) {
+        // TODO добавить валидатор
+        if (name != null && lastname != null && email != null && password != null && password_again != null && password.equals(password_again)) {
             String hash = HashPassword.getHash(email, password);
-
-            User user = User.builder().name(name).password(hash).lastname(lastname).email(email).build();
-            usersService.addUser(user);
-
-            req.getSession().setAttribute("email", email);
-            req.getSession().setAttribute("password", hash);
-            resp.sendRedirect("/profile");
-        }
-        else {
-            resp.sendRedirect("/register");
+            if (usersService.userIsExist(email)) {
+                resp.sendRedirect("/register");
+            } else {
+                User user = User.builder().name(name).password(hash).lastname(lastname).email(email).build();
+                usersService.addUser(user);
+                req.getSession().setAttribute("user", usersService.getUserByEmailPassword(email, hash));
+                resp.sendRedirect("/profile");
+            }
         }
     }
 }

@@ -1,7 +1,5 @@
 package ru.itis.witchCrutch.dataSource;
 
-import ru.itis.witchCrutch.repositories.SimpleJdbcTemplate;
-
 import javax.sql.DataSource;
 import java.io.PrintWriter;
 import java.sql.Connection;

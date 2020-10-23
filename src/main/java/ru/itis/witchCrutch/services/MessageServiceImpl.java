@@ -2,7 +2,8 @@ package ru.itis.witchCrutch.services;
 
 import ru.itis.witchCrutch.models.Message;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.MessageRepository;
+import ru.itis.witchCrutch.repositories.interfaces.MessageRepository;
+import ru.itis.witchCrutch.services.interfaces.MessageService;
 
 import java.util.List;
 

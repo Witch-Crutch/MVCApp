@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.services;
+package ru.itis.witchCrutch.services.interfaces;
 
 import ru.itis.witchCrutch.models.Message;
 import ru.itis.witchCrutch.models.User;

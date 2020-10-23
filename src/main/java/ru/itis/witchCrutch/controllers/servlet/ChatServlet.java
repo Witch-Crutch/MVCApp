@@ -5,13 +5,13 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import ru.itis.witchCrutch.models.Message;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.MessageRepository;
+import ru.itis.witchCrutch.repositories.interfaces.MessageRepository;
 import ru.itis.witchCrutch.repositories.MessageRepositoryJdbcImpl;
-import ru.itis.witchCrutch.repositories.UsersRepository;
+import ru.itis.witchCrutch.repositories.interfaces.UsersRepository;
 import ru.itis.witchCrutch.repositories.UsersRepositoryJdbcImpl;
-import ru.itis.witchCrutch.services.MessageService;
+import ru.itis.witchCrutch.services.interfaces.MessageService;
 import ru.itis.witchCrutch.services.MessageServiceImpl;
-import ru.itis.witchCrutch.services.UsersService;
+import ru.itis.witchCrutch.services.interfaces.UsersService;
 import ru.itis.witchCrutch.services.UsersServiceImpl;
 import ru.itis.witchCrutch.util.Constants;
 
@@ -33,15 +33,15 @@ public class ChatServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
-        UsersRepository usersRepository = new UsersRepositoryJdbcImpl(dataSource);
-        UsersService usersService = new UsersServiceImpl(usersRepository);
+        UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
-        MessageRepository messageRepository = new MessageRepositoryJdbcImpl(dataSource, usersService);
-        MessageService messageService = new MessageServiceImpl(messageRepository);
+        String tomcatBase = System.getProperty("catalina.home");
+        String uploadPath = String.format("%s\\webapps\\ROOT\\views\\uploads", tomcatBase);
 
-        User user = (User) req.getServletContext().getAttribute("user");
+        MessageService messageService = (MessageService) req.getServletContext().getAttribute("messageService");
+
+        User user = (User) req.getSession().getAttribute("user");
 
         List<Message> messages = messageService.userMessage(user);
         req.setAttribute("messages", messages);
@@ -50,13 +50,12 @@ public class ChatServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
         UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
         MessageService messageService = (MessageService) req.getServletContext().getAttribute("messageService");
 
-        User user = (User) req.getServletContext().getAttribute("user");
+        User user = (User) req.getSession().getAttribute("user");
 
         List<String> parameters = loadFile(req);
 
@@ -85,11 +84,14 @@ public class ChatServlet extends HttpServlet {
             ServletFileUpload upload = new ServletFileUpload(factory);
             upload.setFileSizeMax(1024 * 1024 * 50);
             upload.setSizeMax(1024 * 1024 * 50);
-            String uploadPath = "C:\\Users\\User\\Desktop\\Project\\itis\\third_semester\\semester_work_1\\WitchCrutch\\src\\main\\webapp\\uploads";
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
+            String tomcatBase = System.getProperty("catalina.home");
+            String upload1 = String.format("%s\\webapps\\ROOT\\views\\uploads", tomcatBase);
+            // TODO относительный путь
+            String upload2 = "C:\\Users\\User\\Desktop\\Project\\itis\\third_semester\\semester_work_1\\WitchCrutch\\src\\main\\webapp\\views\\uploads";
+
+            List<File> uploads = new ArrayList<>();
+            uploads.add(new File(upload1));
+            uploads.add(new File(upload2));
 
             List<FileItem> formItems;
             try {
@@ -98,16 +100,18 @@ public class ChatServlet extends HttpServlet {
                     for (FileItem item : formItems) {
                         if (!item.isFormField() && item.getSize() > 0) {
                             filename = UUID.randomUUID().toString().substring(0, 8) + ".png";
-                            String filePath = uploadPath + File.separator + filename;
-                            File storeFile = new File(filePath);
-                            item.write(storeFile);
+                            for (File uploadPath : uploads) {
+                                String filePath = uploadPath + File.separator + filename;
+                                File storeFile = new File(filePath);
+                                item.write(storeFile);
+                            }
                         } else if (item.getFieldName().equals("text")) {
                             text = item.getString("UTF-8");
                         }
                     }
                 }
             } catch (Exception e) {
-                throw new RuntimeException();
+                throw new RuntimeException(e);
             }
         }
         result.add(filename);

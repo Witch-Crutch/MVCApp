@@ -1,4 +1,4 @@
-package ru.itis.witchCrutch.repositories;
+package ru.itis.witchCrutch.repositories.interfaces;
 
 import ru.itis.witchCrutch.models.Telephone;
 

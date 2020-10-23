@@ -2,12 +2,14 @@ package ru.itis.witchCrutch.repositories;
 
 import ru.itis.witchCrutch.models.Message;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.services.UsersService;
+import ru.itis.witchCrutch.repositories.interfaces.MessageRepository;
+import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
+import ru.itis.witchCrutch.services.interfaces.UsersService;
 
 import javax.sql.DataSource;
 import java.util.List;
 
-public class MessageRepositoryJdbcImpl implements MessageRepository{
+public class MessageRepositoryJdbcImpl implements MessageRepository {
 
     private final DataSource dataSource;
     private final SimpleJdbcTemplate template;

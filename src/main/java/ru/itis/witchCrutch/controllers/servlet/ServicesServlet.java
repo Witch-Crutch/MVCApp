@@ -1,6 +1,6 @@
 package ru.itis.witchCrutch.controllers.servlet;
 
-import ru.itis.witchCrutch.services.*;
+import ru.itis.witchCrutch.services.interfaces.ProductService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +15,6 @@ public class ServicesServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
-
         ProductService productService = (ProductService) req.getServletContext().getAttribute("productService");
 
         req.setAttribute("products", productService.getAllProducts());

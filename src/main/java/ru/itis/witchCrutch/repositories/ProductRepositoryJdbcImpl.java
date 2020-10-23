@@ -2,7 +2,8 @@ package ru.itis.witchCrutch.repositories;
 
 import ru.itis.witchCrutch.models.Category;
 import ru.itis.witchCrutch.models.Product;
-import ru.itis.witchCrutch.models.User;
+import ru.itis.witchCrutch.repositories.interfaces.ProductRepository;
+import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
 
 import javax.sql.DataSource;
 import java.util.List;

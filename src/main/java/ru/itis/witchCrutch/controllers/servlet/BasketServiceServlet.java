@@ -3,8 +3,9 @@ package ru.itis.witchCrutch.controllers.servlet;
 import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.*;
-import ru.itis.witchCrutch.services.*;
+import ru.itis.witchCrutch.services.interfaces.BasketService;
+import ru.itis.witchCrutch.services.interfaces.ProductService;
+import ru.itis.witchCrutch.services.interfaces.UsersService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -27,8 +28,8 @@ public class BasketServiceServlet extends HttpServlet {
 
         BasketService basketService = (BasketService) req.getServletContext().getAttribute("basketService");
 
-        User user = (User) req.getServletContext().getAttribute("user");
-        Basket basket = (Basket) req.getServletContext().getAttribute("basket");
+        User user = (User) req.getSession().getAttribute("user");
+        Basket basket = (Basket) req.getSession().getAttribute("basket");
 
         String add = req.getParameter("add");
         String delete = req.getParameter("delete");

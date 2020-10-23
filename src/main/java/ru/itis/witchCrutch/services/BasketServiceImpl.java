@@ -3,7 +3,8 @@ package ru.itis.witchCrutch.services;
 import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.BasketRepository;
+import ru.itis.witchCrutch.repositories.interfaces.BasketRepository;
+import ru.itis.witchCrutch.services.interfaces.BasketService;
 
 public class BasketServiceImpl implements BasketService {
 

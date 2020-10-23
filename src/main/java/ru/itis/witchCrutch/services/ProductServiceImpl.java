@@ -2,11 +2,12 @@ package ru.itis.witchCrutch.services;
 
 import ru.itis.witchCrutch.models.Category;
 import ru.itis.witchCrutch.models.Product;
-import ru.itis.witchCrutch.repositories.ProductRepository;
+import ru.itis.witchCrutch.repositories.interfaces.ProductRepository;
+import ru.itis.witchCrutch.services.interfaces.ProductService;
 
 import java.util.List;
 
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     private final ProductRepository productRepository;
 

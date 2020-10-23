@@ -1,5 +1,7 @@
 package ru.itis.witchCrutch.controllers.filters;
 
+import ru.itis.witchCrutch.models.User;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
@@ -15,15 +17,9 @@ public class ProfileFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
 
-        String email = (String) req.getSession().getAttribute("email");
-        String password = (String) req.getSession().getAttribute("password");
+        User user = (User) req.getSession().getAttribute("user");
 
-        for(Cookie cookie : req.getCookies()) {
-            if (cookie.getName().equals("email")) email = cookie.getValue();
-            if (cookie.getName().equals("password")) password = cookie.getValue();
-        }
-
-        if (email != null && password != null) {
+        if (user != null) {
             filterChain.doFilter(servletRequest, servletResponse);
         }
         else {

@@ -3,7 +3,9 @@ package ru.itis.witchCrutch.repositories;
 import ru.itis.witchCrutch.models.Basket;
 import ru.itis.witchCrutch.models.Product;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.services.UsersService;
+import ru.itis.witchCrutch.repositories.interfaces.BasketRepository;
+import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
+import ru.itis.witchCrutch.services.interfaces.UsersService;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.List;
 
 import static ru.itis.witchCrutch.repositories.ProductRepositoryJdbcImpl.ProductRowMapper;
 
-public class BasketRepositoryJdbcImpl implements BasketRepository{
+public class BasketRepositoryJdbcImpl implements BasketRepository {
 
     private final DataSource dataSource;
     private final SimpleJdbcTemplate template;
