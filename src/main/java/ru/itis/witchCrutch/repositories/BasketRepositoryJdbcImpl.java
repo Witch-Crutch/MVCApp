@@ -58,21 +58,6 @@ public class BasketRepositoryJdbcImpl implements BasketRepository {
     }
 
     @Override
-    public void update(Basket entity) {
-
-    }
-
-    @Override
-    public void delete(Basket entity) {
-
-    }
-
-    @Override
-    public List<Basket> findAll() {
-        return null;
-    }
-
-    @Override
     public Basket getUserBasket(User user) {
         List<Basket> baskets = template.query(SQL_FIND_BY_USER_ID, BasketRowMapper, user.getId());
         return !baskets.isEmpty() ? baskets.get(0) : null;

@@ -13,8 +13,9 @@
                         </div>
                         <form action="/contact" method="post">
                             <div class="form-group">
+                                <label for="phone"></label>
                                 <input type="tel" class="form-control cont_input" id="phone" name="tel"
-                                       placeholder="+7 (999) 99 99 999">
+                                                                  placeholder="+7 (999) 99 99 999">
                             </div>
                             <div class="offset-4 cont_btn">
                                 <button class="btn">

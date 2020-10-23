@@ -11,7 +11,7 @@
                 <div class="col md-4">
                     <div class="card-gradient">
                         <div class="card-body center ">
-                            <p><h4 class="card-cont_title">Консультации онлайн</h4></p>
+                            <p><h4 class="card-cont_title">Консультации онлайн</h4>
                             <div class="row">
                                 <div class="col">
                                     <h5 class="card-cont_text"><span> Если вам неудобно </span> приезжать в мой
@@ -26,7 +26,7 @@
                 <div class="col md-4">
                     <div class="card-gradient">
                         <div class="card-body center ">
-                            <p><h4 class="card-cont_title">Безупречная репутация</h4></p>
+                            <p><h4 class="card-cont_title">Безупречная репутация</h4>
                             <div class="row ">
                                 <div class="col">
                                     <h5 class=" card-cont_text">За время моей работы тысячи
@@ -40,7 +40,7 @@
                 <div class="col md-4">
                     <div class="card-gradient">
                         <div class="card-body center ">
-                            <p><h4 class="card-cont_title">Цены ниже рыночных</h4></p>
+                            <p><h4 class="card-cont_title">Цены ниже рыночных</h4>
                             <div class="row">
                                 <div class="col">
                                     <h5 class=" card-cont_text">Всегда стараюсь предоставить

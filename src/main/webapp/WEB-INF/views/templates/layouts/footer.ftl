@@ -2,7 +2,7 @@
     <div class="container cont_foo">
         <div class="row">
             <div class="offset-1 col-md-3">
-                <img src="/views/assets/user/crutch.png">
+                <img src="/views/assets/main/crutch.png" alt="logo">
             </div>
             <div class="offset-1 col-md-2">
                 <div class="row"><a class="nav-link " href="/advantages">Преимущества</a></div>

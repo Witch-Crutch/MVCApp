@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="/views/assets/main/header.png" class="img-fluid">
+                            <img src="/views/assets/main/header.png" class="img-fluid" alt="header image">
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     <div class="col md-4">
                         <div class="card-gradient">
                             <div class="card-body center ">
-                                <p><h4 class="card-cont_title">Консультации онлайн</h4></p>
+                                <p><h4 class="card-cont_title">Консультации онлайн</h4>
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-cont_text"><span> Если вам неудобно </span> приезжать в мой
@@ -55,7 +55,7 @@
                     <div class="col md-4">
                         <div class="card-gradient">
                             <div class="card-body center">
-                                <p><h4 class="card-cont_title">Безупречная репутация</h4></p>
+                                <p><h4 class="card-cont_title">Безупречная репутация</h4>
                                 <div class="row ">
                                     <div class="col">
                                         <h5 class="card-cont_text">За время моей работы тысячи
@@ -70,7 +70,7 @@
                     <div class="col md-4">
                         <div class="card-gradient">
                             <div class="card-body center">
-                                <p><h4 class="card-cont_title ">Цены ниже рыночных</h4></p>
+                                <p><h4 class="card-cont_title ">Цены ниже рыночных</h4>
                                 <div class="row">
                                     <div class="col">
                                         <h5 class="card-cont_text ">Всегда стараюсь предоставить
@@ -93,11 +93,11 @@
                 </div>
                 <div class="row stages-cont_img">
                     <div class="offset-1 col-md-2">
-                        <div class="row justify-content-center"><img src="/views/assets/main/1.png"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/1.png" alt="advantages"></div>
                         <div class="row stages-cont_text center"><h6>1. Ваше обращение <span> ко мне </span></h6></div>
                     </div>
                     <div class="offset-2 col-md-2">
-                        <div class="row justify-content-center"><img src="/views/assets/main/3.png"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/3.png" alt="advantages"></div>
                         <div class="row stages-cont_text center"><h6>3. Заключение договора
                                 <span> с последующей оплатой</span>
                                 после
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="offset-2 col-md-2 text-center">
-                        <div class="row  justify-content-center"><img src="/views/assets/main/5.png"></div>
+                        <div class="row  justify-content-center"><img src="/views/assets/main/5.png" alt="advantages"></div>
                         <div class="row stages-cont_text center"><h6> 5. Оплата любым удобным
                                 <span>для вас способом</span>
                             </h6>
@@ -117,13 +117,13 @@
 
                 <div class="row stages-cont_img">
                     <div class="offset-3 col-md-2">
-                        <div class="row justify-content-center"><img src="/views/assets/main/2.png"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/2.png" alt="advantages"></div>
                         <div class="row stages-cont_text center"><h6>2. Выезд по указанному адресу или приезд <span>ко мне в
                     офис</span></h6>
                         </div>
                     </div>
                     <div class="offset-2 col-md-2">
-                        <div class="row justify-content-center"><img src="/views/assets/main/4.png"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/4.png" alt="advantages"></div>
                         <div class="row stages-cont_text center"><h6><span> 4. Организация и контроль</span> всего
                                 процесса
                             </h6>
@@ -142,7 +142,7 @@
                 <div class="row cards">
                     <#list categories as category>
                         <div class="offset-1 col-md-3 center">
-                            <img src="/views/assets/main/${category.getImage()}">
+                            <img src="/views/assets/main/${category.getImage()}" alt="category">
                             <a href="/services">
                                 <div class="text-services">${category.getName()}</div>
                             </a>
@@ -178,13 +178,15 @@
                             <div class="card border-white offset-3 col-md-6" style="border-radius: 20px">
                                 <div class="card-body center">
                                     <div style="padding-top: 80px">
+                                        <label for="inputEmail"></label>
                                         <input type="email" id="inputEmail" class="form-control auth-cont_input"
-                                               placeholder="Почта" required name="email">
+                                                                               placeholder="Почта" required name="email">
                                     </div>
 
                                     <div style="padding-top: 20px">
+                                        <label for="inputPassword"></label>
                                         <input type="password" id="inputPassword" class="form-control auth-cont_input"
-                                               placeholder="Пароль" required name="password">
+                                                                                  placeholder="Пароль" required name="password">
                                     </div>
                                     <div style="padding-top:40px; padding-bottom: 40px">
                                         <div class="checkbox mb-3">

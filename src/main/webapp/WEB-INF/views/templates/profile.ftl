@@ -29,8 +29,7 @@
                         <div class="row info-cont">
                             <div class="col-md-2">
                                 <a style="width: 40%" target="_blank">
-                                    <img class="profile_avatar"
-                                         src="/views/assets/user/${user.getProfileImg()}">
+                                    <img class="profile_avatar" src="/views/assets/user/${user.getProfileImg()}" alt="avatar">
                                 </a>
                             </div>
                             <div class="offset-5 col-md-3">
@@ -77,7 +76,7 @@
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <div class="card-body_img" style="padding: 70px 50px">
-                                                            <img src="/views/assets/services/${purch.getImage()}">
+                                                            <img src="/views/assets/services/${purch.getImage()}" alt="product">
                                                         </div>
                                                     </div>
                                                     <div class="container offset-2 col-md-6">

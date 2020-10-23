@@ -2,10 +2,14 @@ package ru.itis.witchCrutch.repositories.interfaces;
 
 import ru.itis.witchCrutch.models.User;
 
-public interface UsersRepository extends CrudRepository<User> {
+import java.util.List;
+
+public interface UsersRepository {
+    void save(User user);
+    boolean authUser(String email, String hash);
     User findByEmailPassword(String email, String password);
     User findByEmail(String email);
-    boolean authUser(String email, String hash);
     User findById(int id);
+    List<User> findAll();
 }
 

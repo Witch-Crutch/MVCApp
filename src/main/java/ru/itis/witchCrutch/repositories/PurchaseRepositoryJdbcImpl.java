@@ -61,19 +61,4 @@ public class PurchaseRepositoryJdbcImpl implements PurchaseRepository {
             productService.updateProduct(product);
         }
     }
-
-    @Override
-    public void update(Purchase entity) {
-
-    }
-
-    @Override
-    public void delete(Purchase entity) {
-
-    }
-
-    @Override
-    public List<Purchase> findAll() {
-        return null;
-    }
 }

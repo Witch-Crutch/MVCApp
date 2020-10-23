@@ -1,6 +1,5 @@
 package ru.itis.witchCrutch.repositories;
 
-import ru.itis.witchCrutch.dataSource.SimpleDataSource;
 import ru.itis.witchCrutch.models.Category;
 import ru.itis.witchCrutch.repositories.interfaces.CategoryRepository;
 import ru.itis.witchCrutch.repositories.interfaces.RowMapper;

@@ -13,8 +13,9 @@
                         <div class="offset-2 col-md-9">
                             <div class="row">
                                 <div class="col-md-7">
+                                    <label for="inputSearch"></label>
                                     <input type="search" autocomplete="off" id="inputSearch" class="form-control search_block_input"
-                                           placeholder="Введите текст для поиска" name="input" value="">
+                                                                            placeholder="Введите текст для поиска" name="input" value="">
                                 </div>
                                 <div class="offset-1 col-md-2">
                                     <button class="btn services_btn" type="submit">Искать</button>

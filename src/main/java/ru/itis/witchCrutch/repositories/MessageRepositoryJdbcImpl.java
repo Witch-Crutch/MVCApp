@@ -41,21 +41,6 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
     }
 
     @Override
-    public void update(Message entity) {
-
-    }
-
-    @Override
-    public void delete(Message entity) {
-
-    }
-
-    @Override
-    public List<Message> findAll() {
-        return null;
-    }
-
-    @Override
     public List<Message> getUserMessage(User user) {
         List<Message> messages = template.query(SQL_FIND_USER, messageRowMapper, user.getId());
         return !messages.isEmpty() ? messages : null;
