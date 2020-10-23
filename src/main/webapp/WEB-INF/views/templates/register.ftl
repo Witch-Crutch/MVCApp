@@ -11,13 +11,12 @@
                     <div class="card border-white offset-3 col-md-6 card_settings">
                         <div class="card-body text-center ">
                             <div class="register-cont_input_top">
-                                <input type="text" id="last_name" class="form-control register-cont_input"
-                                       placeholder="Фамилия" required name="lastname">
+                                <input type="text" size="40" id="last_name" class="form-control register-cont_input"
+                                       placeholder="Фамилия" required name="lastname" pattern="^[A-Za-zА-ЯЁа-яё]+$">
                             </div>
-
                             <div class="register-cont_input_middle">
-                                <input type="text" id="first_name" class="form-control register-cont_input"
-                                       placeholder="Имя" required name="name">
+                                <input type="text" size="40" id="first_name" class="form-control register-cont_input"
+                                       placeholder="Имя" required name="name" pattern="^[A-Za-zА-ЯЁа-яё]+$">
                             </div>
 
                             <div class="register-cont_input_middle">
@@ -27,12 +26,14 @@
 
                             <div class="register-cont_input_middle">
                                 <input type="password" id="inputPassword" class="form-control register-cont_input"
-                                       placeholder="Пароль" required name="password">
+                                       placeholder="Пароль" required name="password"
+                                       pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$">
                             </div>
 
                             <div class="register-cont_input_bottom">
                                 <input type="password" id="repeatPassword" class="form-control register-cont_input"
-                                       placeholder="Повторите пароль" required name="password_again">
+                                       placeholder="Повторите пароль" required name="password_again"
+                                       pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$">
                             </div>
                         </div>
                     </div>

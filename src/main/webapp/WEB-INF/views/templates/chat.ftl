@@ -14,7 +14,7 @@
                                             <img src="/views/assets/user/${message.getSender().getProfileImg()}"
                                                  alt="avatar"
                                                  class="avatar rounded-circle ">
-                                            <div class="chat-body white">
+                                            <div class="chat-body white" style="overflow-x: hidden">
                                                 <div class="header">
                                                     <strong class="primary-font">${message.getSender().getLastname()} ${message.getSender().getName()}</strong>
                                                     <small class="pull-right text-muted"><i
@@ -24,10 +24,10 @@
                                                 <#if message.getFilename() != ".">
                                                     <a href="/views/uploads/${message.getFilename()}"
                                                        style="display: block">
-                                                        <img src="/views/uploads/${message.getFilename()}" class="w-25">
+                                                        <img src="/views/uploads/${message.getFilename()}" class="w-50">
                                                     </a>
                                                 </#if>
-                                                <p class="mb-0">
+                                                <p class="mb-0" style="width: 90%;">
                                                     ${message.getMessage()}
                                                 </p>
                                             </div>

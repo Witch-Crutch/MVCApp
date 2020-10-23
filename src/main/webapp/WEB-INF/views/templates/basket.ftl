@@ -12,7 +12,7 @@
                     <#if basket??>
                         <#list basket.getProducts() as product>
                             <div class="row history-cont_cards">
-                                <div class="card" style="border-radius: 20px">
+                                <div class="card" style="border-radius: 20px; width: 90%">
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-md-2">
@@ -20,7 +20,7 @@
                                                     <img src="/views/assets/services/${product.getImage()}">
                                                 </div>
                                             </div>
-                                            <div class="container offset-1 col-md-6">
+                                            <div class="container offset-2 col-md-6">
                                                 <div class="row">
                                                     <div class="card-body_title">
                                                         ${product.getName()}

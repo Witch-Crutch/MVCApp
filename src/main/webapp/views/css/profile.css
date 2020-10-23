@@ -97,15 +97,11 @@
     padding-top: 70px;
 }
 
-.info-cont_text_top {
-    color: #FFFFFF;
-    font-size: 30px;
-}
 
 .info-cont_text {
     padding-top: 25px;
     color: #FFFFFF;
-    font-size: 30px;
+    font-size: 24px;
 }
 
 .history-cont_cards {
@@ -216,6 +212,10 @@
     border-radius: 90%;
     height: 300px;
     width: 300px;
+}
+
+.alert_btn{
+    padding-top:40px;
 }
 
 

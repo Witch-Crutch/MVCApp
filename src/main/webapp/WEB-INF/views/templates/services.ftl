@@ -49,12 +49,6 @@
                     </div>
                 </div>
 
-
-                <div class="row">
-                    <div class=" offset-4 col-md-4 center serv-cont_title ">
-                        <button class="btn btn_ajax" onclick="startAjax()">Показать ещё</button>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

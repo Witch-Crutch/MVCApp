@@ -33,17 +33,14 @@
                                          src="/views/assets/user/${user.getProfileImg()}">
                                 </a>
                             </div>
-
-                            <div class="col-md-3">
-                                <div class="row info-cont_text_top">
+                            <div class="offset-5 col-md-3">
+                                <div class="row info-cont_text">
                                     ${user.getLastname()}
                                 </div>
                                 <div class="row info-cont_text">
                                     ${user.getName()}
                                 </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="row info-cont_text_top">
+                                <div class="row info-cont_text">
                                     ${user.getEmail()}
                                 </div>
                             </div>
@@ -58,6 +55,9 @@
                         <p class="button_modal"><span class="btn_mini_3 float-left">
                          Прикрепить файл <input type="file">
                         </span></p>
+                        <p class="center" style="padding-top: 30px">
+                            <button class="btn_mini_2" type="submit">Сохранить</button>
+                        </p>
                     </div>
                 </div>
 
@@ -72,15 +72,15 @@
                             <#if purchase??>
                                 <#list purchase as purch>
                                     <div class="row history-cont_cards">
-                                        <div class="card" style="border-radius: 20px">
-                                            <div class="card-body">
+                                        <div class="card" style="border-radius: 20px; width: 90%">
+                                            <div class="card-body ">
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <div class="card-body_img" style="padding: 70px 50px">
                                                             <img src="/views/assets/services/${purch.getImage()}">
                                                         </div>
                                                     </div>
-                                                    <div class="container offset-1 col-md-6">
+                                                    <div class="container offset-2 col-md-6">
                                                         <div class="row">
                                                             <div class="card-body_title">
                                                                 ${purch.getName()}
