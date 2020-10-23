@@ -3,6 +3,7 @@ package ru.itis.witchCrutch.controllers.servlet;
 import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 import ru.itis.witchCrutch.util.HashPassword;
+import ru.itis.witchCrutch.util.Validator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,8 +32,7 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String password_again = req.getParameter("password_again");
 
-        // TODO добавить валидатор
-        if (name != null && lastname != null && email != null && password != null && password_again != null && password.equals(password_again)) {
+        if (Validator.validRegister(name, lastname, email, password, password_again)) {
             String hash = HashPassword.getHash(email, password);
             if (usersService.userIsExist(email)) {
                 resp.sendRedirect("/register");
@@ -42,6 +42,8 @@ public class RegisterServlet extends HttpServlet {
                 req.getSession().setAttribute("user", usersService.getUserByEmailPassword(email, hash));
                 resp.sendRedirect("/profile");
             }
+        } else {
+            resp.sendRedirect("/register");
         }
     }
 }

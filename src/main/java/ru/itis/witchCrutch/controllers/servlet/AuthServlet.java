@@ -4,6 +4,7 @@ import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 import ru.itis.witchCrutch.util.CookieActions;
 import ru.itis.witchCrutch.util.HashPassword;
+import ru.itis.witchCrutch.util.Validator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,40 +23,15 @@ public class AuthServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
-
         UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
-        String email = "";
-        String password = "";
+        User user;
 
-        User user = (User) req.getSession().getAttribute("user");
-
-        if (user != null) {
-            resp.sendRedirect("/profile");
-        }
-
-        Cookie[] cookies = req.getCookies();
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals("email")) email = cookie.getValue();
-            if (cookie.getName().equals("password")) password = cookie.getValue();
-        }
-
-        if (!email.equals("") && !password.equals("")) {
-            user = usersService.getUserByEmailPassword(email, password);
-            if (user != null) {
-                req.getSession().setAttribute("user", user);
-                resp.sendRedirect("/profile");
-            } else {
-                CookieActions.deleteCookies(req, resp, "email", "password");
-            }
-        }
-
-        email = req.getParameter("email");
-        password = req.getParameter("password");
+        String email = req.getParameter("email");
+        String password = req.getParameter("password");
         final boolean remember = req.getParameter("remember") != null;
 
-        if (email != null && password != null) {
+        if (Validator.validAuth(email, password)) {
             String hash = HashPassword.getHash(email, password);
             user = usersService.getUserByEmailPassword(email, hash);
             if (user != null) {
@@ -72,6 +48,8 @@ public class AuthServlet extends HttpServlet {
             } else {
                 resp.sendRedirect("/auth");
             }
+        } else {
+            resp.sendRedirect("/auth");
         }
     }
 }

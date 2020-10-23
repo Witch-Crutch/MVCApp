@@ -32,7 +32,6 @@ public class SimpleJdbcTemplate {
             }
 
             resultSet = statement.executeQuery();
-
             while (resultSet.next()) {
                 result.add(rowMapper.mapRow(resultSet));
             }

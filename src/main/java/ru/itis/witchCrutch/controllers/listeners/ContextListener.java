@@ -65,12 +65,16 @@ public class ContextListener implements ServletContextListener {
         TelephoneRepository telephoneRepository = new TelephoneRepositoryJdbcImpl(dataSource);
         TelephoneService telephoneService = new TelephoneServiceImpl(telephoneRepository);
 
+        CategoryRepository categoryRepository = new CategoryRepositoryJdbcImpl(dataSource) ;
+        CategoryService categoryService = new CategoryServiceImpl(categoryRepository);
+
         sce.getServletContext().setAttribute("productService", productService);
         sce.getServletContext().setAttribute("basketService", basketService);
         sce.getServletContext().setAttribute("messageService", messageService);
         sce.getServletContext().setAttribute("purchaseService", purchaseService);
         sce.getServletContext().setAttribute("telephoneService", telephoneService);
         sce.getServletContext().setAttribute("userService", usersService);
+        sce.getServletContext().setAttribute("categoryService", categoryService);
     }
 
     @Override

@@ -11,7 +11,7 @@
                                 <#if messages??>
                                     <#list messages as message>
                                         <li class="d-flex justify-content-between mb-4">
-                                            <img src="../../../views/assets/user/${message.getSender().getProfileImg()}"
+                                            <img src="/views/assets/user/${message.getSender().getProfileImg()}"
                                                  alt="avatar"
                                                  class="avatar rounded-circle ">
                                             <div class="chat-body white">
@@ -22,9 +22,9 @@
                                                 </div>
                                                 <hr class="w-100">
                                                 <#if message.getFilename() != ".">
-                                                    <a href="../../../views/uploads/${message.getFilename()}"
+                                                    <a href="/views/uploads/${message.getFilename()}"
                                                        style="display: block">
-                                                        <img src="../../../views/uploads/${message.getFilename()}" class="w-25">
+                                                        <img src="/views/uploads/${message.getFilename()}" class="w-25">
                                                     </a>
                                                 </#if>
                                                 <p class="mb-0">

@@ -60,7 +60,9 @@
     </div>
     <script>
         function d(id) {
+            <#if user??>
             alert('Услуга добавлена в корзину! Уже начинаю колдовать!');
+            </#if>
             window.location.href = '/basketService?add=' + id;
         }
     </script>

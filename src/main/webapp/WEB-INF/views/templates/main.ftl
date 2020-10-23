@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <img src="../../../views/assets/main/header.png" class="img-fluid">
+                            <img src="/views/assets/main/header.png" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -93,11 +93,11 @@
                 </div>
                 <div class="row stages-cont_img">
                     <div class="offset-1 col-md-2">
-                        <div class="row justify-content-center"><img src="../../../views/assets/main/1.png"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/1.png"></div>
                         <div class="row stages-cont_text center"><h6>1. Ваше обращение <span> ко мне </span></h6></div>
                     </div>
                     <div class="offset-2 col-md-2">
-                        <div class="row justify-content-center"><img src="../../../views/assets/main/3.png"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/3.png"></div>
                         <div class="row stages-cont_text center"><h6>3. Заключение договора
                                 <span> с последующей оплатой</span>
                                 после
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                     <div class="offset-2 col-md-2 text-center">
-                        <div class="row  justify-content-center"><img src="../../../views/assets/main/5.png"></div>
+                        <div class="row  justify-content-center"><img src="/views/assets/main/5.png"></div>
                         <div class="row stages-cont_text center"><h6> 5. Оплата любым удобным
                                 <span>для вас способом</span>
                             </h6>
@@ -117,13 +117,13 @@
 
                 <div class="row stages-cont_img">
                     <div class="offset-3 col-md-2">
-                        <div class="row justify-content-center"><img src="../../../views/assets/main/2.png"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/2.png"></div>
                         <div class="row stages-cont_text center"><h6>2. Выезд по указанному адресу или приезд <span>ко мне в
                     офис</span></h6>
                         </div>
                     </div>
                     <div class="offset-2 col-md-2">
-                        <div class="row justify-content-center"><img src="../../../views/assets/main/4.png"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/4.png"></div>
                         <div class="row stages-cont_text center"><h6><span> 4. Организация и контроль</span> всего
                                 процесса
                             </h6>
@@ -140,48 +140,15 @@
                     <h2>Чем я могу Вам помочь ?</h2>
                 </div>
                 <div class="row cards">
-                    <div class="offset-1 col-md-2 center">
-                        <img src="../../../views/assets/main/spoilage.png">
-                        <a href="/services">
-                            <div class="text-services">Порча</div>
-                        </a>
-                    </div>
+                    <#list categories as category>
+                        <div class="offset-1 col-md-3 center">
+                            <img src="/views/assets/main/${category.getImage()}">
+                            <a href="/services">
+                                <div class="text-services">${category.getName()}</div>
+                            </a>
+                        </div>
+                    </#list>
 
-                    <div class="offset-2 col-md-2 center">
-                        <img src="../../../views/assets/main/protection.png">
-                        <a href="/services">
-                            <div class="text-services">Защита</div>
-                        </a>
-                    </div>
-
-                    <div class="offset-2 col-md-2 center">
-                        <img src="../../../views/assets/main/evileye.png">
-                        <a href="/services">
-                            <div class="text-services">Сглаз</div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row cards">
-                    <div class="offset-1 col-md-2 center">
-                        <img src="../../../views/assets/main/lovemagic.png">
-                        <a href="/services">
-                            <div class="text-services">Любовная<br>магия</div>
-                        </a>
-                    </div>
-
-                    <div class="offset-2 col-md-2 center">
-                        <img src="../../../views/assets/main/divination.png">
-                        <a href="/services">
-                            <div class="text-services">Гадание</div>
-                        </a>
-                    </div>
-
-                    <div class="offset-2 col-md-2 center">
-                        <img src="../../../views/assets/main/troubleshooting.png">
-                        <a href="/services">
-                            <div class="text-services">Устранение<br>проблем</div>
-                        </a>
-                    </div>
                 </div>
 
             </div>
