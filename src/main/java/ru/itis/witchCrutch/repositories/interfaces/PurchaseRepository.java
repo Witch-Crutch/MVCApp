@@ -6,6 +6,7 @@ import ru.itis.witchCrutch.models.User;
 
 import java.util.List;
 
-public interface PurchaseRepository extends CrudRepository<Purchase> {
+public interface PurchaseRepository {
+    void save(Purchase purchase);
     List<Product> userPurchase(User user);
 }

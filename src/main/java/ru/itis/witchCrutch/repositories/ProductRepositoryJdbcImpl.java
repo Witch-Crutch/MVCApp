@@ -46,19 +46,10 @@ public class ProductRepositoryJdbcImpl implements ProductRepository {
             .popularity(row.getInt("popularity"))
             .build();
 
-    @Override
-    public void save(Product entity) {
-
-    }
 
     @Override
     public void update(Product entity) {
         template.update(SQL_UPDATE, entity.getPopularity(), entity.getId());
-    }
-
-    @Override
-    public void delete(Product entity) {
-
     }
 
     @Override

@@ -12,13 +12,14 @@
                     <div class="card offset-3 col-md-6" style="border-radius: 20px">
                         <div class="card-body text-center">
                             <div class="register-cont_input_top">
-                                <!-- исправить на email -->
+                                <label for="inputEmail"></label>
                                 <input type="email" id="inputEmail" class="form-control register-cont_input"
-                                       placeholder="Почта" required name="email">
+                                                                       placeholder="Почта" required name="email">
                             </div>
                             <div class="register-cont_input_middle">
+                                <label for="inputPassword"></label>
                                 <input type="password" id="inputPassword" class="form-control register-cont_input"
-                                       placeholder="Пароль" required name="password">
+                                                                          placeholder="Пароль" required name="password">
                             </div>
 
                             <div class="auth-checkbox">

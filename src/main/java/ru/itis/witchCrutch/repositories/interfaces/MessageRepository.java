@@ -5,6 +5,7 @@ import ru.itis.witchCrutch.models.User;
 
 import java.util.List;
 
-public interface MessageRepository extends CrudRepository<Message> {
+public interface MessageRepository {
     List<Message> getUserMessage(User user);
+    void save(Message message);
 }

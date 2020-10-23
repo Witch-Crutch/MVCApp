@@ -82,14 +82,4 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
                 SQL_INSERT, user.getName(), user.getEmail(), user.getLastname(), user.getPassword(),
                 user.getProfileImg(), user.getRights().getString());
     }
-
-    @Override
-    public void update(User entity) {
-
-    }
-
-    @Override
-    public void delete(User entity) {
-
-    }
 }

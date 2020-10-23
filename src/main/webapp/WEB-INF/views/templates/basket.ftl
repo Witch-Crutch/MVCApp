@@ -17,7 +17,7 @@
                                         <div class="row">
                                             <div class="col-md-2">
                                                 <div class="card-body_img" style="padding: 70px 50px">
-                                                    <img src="/views/assets/services/${product.getImage()}">
+                                                    <img src="/views/assets/services/${product.getImage()}" alt="product image">
                                                 </div>
                                             </div>
                                             <div class="container offset-1 col-md-6">

@@ -24,7 +24,7 @@
                                                 <#if message.getFilename() != ".">
                                                     <a href="/views/uploads/${message.getFilename()}"
                                                        style="display: block">
-                                                        <img src="/views/uploads/${message.getFilename()}" class="w-25">
+                                                        <img src="/views/uploads/${message.getFilename()}" class="w-25" alt="upload file">
                                                     </a>
                                                 </#if>
                                                 <p class="mb-0">
@@ -39,8 +39,9 @@
                             <form class="form-dispatch" action="/chat" method="post" enctype="multipart/form-data">
                                 <div class="white">
                                     <div class="form-group basic-textarea">
-                                    <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
-                                              placeholder="Напишите сообщение ведьме здесь..." name="text"></textarea>
+                                        <label for="exampleFormControlTextarea2"></label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
+                                                  placeholder="Напишите сообщение ведьме здесь..." name="text"></textarea>
                                     </div>
                                 </div>
                                 <span class="btn float-left">Прикрепить файл <input type="file" name="file"
