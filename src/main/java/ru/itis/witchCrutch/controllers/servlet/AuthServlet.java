@@ -3,6 +3,7 @@ package ru.itis.witchCrutch.controllers.servlet;
 import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 import ru.itis.witchCrutch.util.CookieActions;
+import ru.itis.witchCrutch.util.FileToImage;
 import ru.itis.witchCrutch.util.HashPassword;
 import ru.itis.witchCrutch.util.Validator;
 
@@ -38,6 +39,9 @@ public class AuthServlet extends HttpServlet {
             String hash = HashPassword.getHash(email, password);
             user = usersService.getUserByEmailPassword(email, hash);
             if (user != null) {
+                if (user.getProfileImg() != null) {
+                    user.setImage(FileToImage.toImage(user.getProfileImg()));
+                }
                 req.getSession().setAttribute("user", user);
                 if (remember) {
                     Cookie emailCookie = new Cookie("email", email);

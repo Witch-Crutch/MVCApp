@@ -2,6 +2,7 @@ package ru.itis.witchCrutch.models;
 
 
 import lombok.*;
+import ru.itis.witchCrutch.util.FileToImage;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,25 +23,12 @@ public class User {
     private String password;
     private InputStream profileImg;
     @Builder.Default
-    private String image = "/views/assets/user/profile.png";
-    @Builder.Default
     private Right rights = Right.USER;
+    @Builder.Default
+    private String image = "/views/assets/user/profile.png";
 
-    public String getProImage() {
-        if (profileImg == null) {
-            return image;
-        }
-
-        byte[] target = null;
-        try {
-            target = new byte[profileImg.available()];
-            profileImg.read(target);
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
-        }
-        String res = "data:image/png;base64," + Base64.getEncoder().encodeToString(target);
-        this.image = res;
-        return res;
+    public String getMesImage() {
+        return FileToImage.toImage(profileImg);
     }
 
     public enum Right {

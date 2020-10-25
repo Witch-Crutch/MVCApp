@@ -75,6 +75,7 @@ public class ContextListener implements ServletContextListener {
         sce.getServletContext().setAttribute("telephoneService", telephoneService);
         sce.getServletContext().setAttribute("userService", usersService);
         sce.getServletContext().setAttribute("categoryService", categoryService);
+
     }
 
     @Override

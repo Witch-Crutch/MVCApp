@@ -12,7 +12,7 @@
                                     <#list messages as message>
                                         <#if message.getSender().getId() == user.getId()>
                                             <li class="d-flex justify-content-between mb-4">
-                                                <img src="${message.getSender().getProImage()}"
+                                                <img src="${message.getSender().getMesImage()}"
                                                      alt="avatar"
                                                      class="avatar rounded-circle ">
                                                 <div class="chat-body white" style="overflow-x: hidden ">
@@ -56,7 +56,7 @@
                                                         ${message.getMessage()}
                                                     </p>
                                                 </div>
-                                                <img src="${message.getSender().getProImage()}"
+                                                <img src="${message.getSender().getMesImage()}"
                                                      alt="avatar"
                                                      class="avatar rounded-circle ">
                                             </li>

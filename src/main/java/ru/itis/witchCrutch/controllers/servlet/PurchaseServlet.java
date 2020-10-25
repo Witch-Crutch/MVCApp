@@ -49,7 +49,7 @@ public class PurchaseServlet extends HttpServlet {
             return;
         }
 
-        resp.sendRedirect("/profile");
+        resp.sendRedirect("/contact");
     }
 
     @Override

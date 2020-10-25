@@ -3,6 +3,7 @@ package ru.itis.witchCrutch.controllers.servlet;
 import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.services.interfaces.MessageService;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
+import ru.itis.witchCrutch.util.FileToImage;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -30,13 +31,19 @@ public class ChangeImageServlet extends HttpServlet {
 
         User user = (User) req.getSession().getAttribute("user");
 
-        InputStream file = req.getPart("file").getInputStream();
+        InputStream file = null;
+        InputStream file2 = null;
+        if (req.getPart("file").getSize() > 0) {
+            file = req.getPart("file").getInputStream();
+            file2 = req.getPart("file").getInputStream();
+        }
 
         if (file != null) {
             user.setProfileImg(file);
             usersService.updateUser(user);
-            req.getSession().setAttribute("user", usersService.getUserById(user.getId()));
+            user.setImage(FileToImage.toImage(file2));
         }
+
         resp.sendRedirect("/profile");
     }
 }

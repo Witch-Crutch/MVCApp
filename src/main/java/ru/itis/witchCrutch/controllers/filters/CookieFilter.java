@@ -5,6 +5,7 @@ import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.services.interfaces.BasketService;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 import ru.itis.witchCrutch.util.CookieActions;
+import ru.itis.witchCrutch.util.FileToImage;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -52,6 +53,9 @@ public class CookieFilter implements Filter {
         if (!email.equals("") && !password.equals("")) {
             user = usersService.getUserByEmailPassword(email, password);
             if (user != null) {
+                if (user.getProfileImg() != null) {
+                    user.setImage(FileToImage.toImage(user.getProfileImg()));
+                }
                 req.getSession().setAttribute("user", user);
                 setBasket(user, basketService, req);
             } else {

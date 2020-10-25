@@ -12,7 +12,7 @@ App for using the services of the witch Crutch.
   - Freemarker template engine v.2.3.30
   - JDBS PostgreSQL v.42.2.16
  
-## Сoncepts and patterns
+## Concepts and patterns
 - ### Concept of development
   - MVC
 - ### Design pattern

@@ -30,7 +30,7 @@
                     <div class="row info-cont">
                         <div class="col-md-3">
                             <a style="width: 40%" target="_blank">
-                                <img class="profile_avatar" src="${user.getProImage()}"
+                                <img class="profile_avatar" src="${user.getImage()}"
                                      alt="avatar">
                             </a>
                         </div>
