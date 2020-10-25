@@ -13,13 +13,15 @@
                             <div class="register-cont_input_top">
                                 <label for="last_name"></label>
                                 <input type="text" id="last_name" class="form-control register-cont_input"
-                                       placeholder="Фамилия" required name="lastname" pattern="^[A-Za-zА-ЯЁа-яё]+$">
+                                       placeholder="Фамилия" required name="lastname" pattern="^[A-Za-zА-ЯЁа-яё]+$"
+                                       title="Кажется, ты хочешь обмануть ведьму? Проверь формат своих данных.">
                             </div>
 
                             <div class="register-cont_input_middle">
                                 <label for="first_name"></label>
                                 <input type="text" id="first_name" class="form-control register-cont_input"
-                                       placeholder="Имя" required name="name" pattern="^[A-Za-zА-ЯЁа-яё]+$">
+                                       placeholder="Имя" required name="name" pattern="^[A-Za-zА-ЯЁа-яё]+$"
+                                       title="Кажется, ты хочешь обмануть ведьму? Проверь формат своих данных.">
                             </div>
 
                             <div class="register-cont_input_middle">
@@ -32,18 +34,31 @@
                                 <label for="inputPassword"></label>
                                 <input type="password" id="inputPassword" class="form-control register-cont_input"
                                        placeholder="Пароль" required name="password"
-                                       pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$">
+                                       pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$"
+                                       title="Этот пароль очень легко расколдовать! Чего-то не хватает...">
                             </div>
 
                             <div class="register-cont_input_bottom">
                                 <label for="repeatPassword"></label>
                                 <input type="password" id="repeatPassword" class="form-control register-cont_input"
                                        placeholder="Повторите пароль" required name="password_again"
-                                       pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$">
+                                       pattern="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+$).{8,}$"
+                                       title="Этот пароль очень легко расколдовать! Чего-то не хватает...">
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div style="padding-top: 20px">
+                    <#--                TODO подставить нужное сообщение в алерт -->
+                    <div class="alert alert-primary alert-info fade show" role="alert">
+                        Здесь будет сообщение
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="row register-cont_input_top">
                     <button class=" offset-4 col-md-4 btn" type="submit">Регистрация</button>
                 </div>

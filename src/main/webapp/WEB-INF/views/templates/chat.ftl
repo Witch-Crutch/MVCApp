@@ -21,15 +21,14 @@
                                                                 class="far fa-clock"></i> ${message.getDate()}</small>
                                                 </div>
                                                 <hr class="w-100">
-                                                <#if message.getFile()??>
-
-                                                    <a href="${message.getImage()}"
-                                                       style="display: block">
-                                                        <img src="${message.getImage()}" class="w-50"
+                                                <#if message.getFilename() != ".">
+                                                    <a href="/views/uploads/${message.getFilename()}"
+                                                       style="display: block" target="_blank">
+                                                        <img src="/views/uploads/${message.getFilename()}" class="w-50"
                                                              alt="upload file" style="padding-left: 30px">
                                                     </a>
                                                 </#if>
-                                                <p class="mb-0" style="width: 90%;">
+                                                <p class="mb-0" style="width: 80%;">
                                                     ${message.getMessage()}
                                                 </p>
                                             </div>

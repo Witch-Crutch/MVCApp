@@ -93,11 +93,13 @@
                 </div>
                 <div class="row stages-cont_img">
                     <div class="offset-1 col-md-2">
-                        <div class="row justify-content-center"><img src="/views/assets/main/1.png" alt="advantages"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/1.png" alt="advantages">
+                        </div>
                         <div class="row stages-cont_text center"><h6>1. Ваше обращение <span> ко мне </span></h6></div>
                     </div>
                     <div class="offset-2 col-md-2">
-                        <div class="row justify-content-center"><img src="/views/assets/main/3.png" alt="advantages"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/3.png" alt="advantages">
+                        </div>
                         <div class="row stages-cont_text center"><h6>3. Заключение договора
                                 <span> с последующей оплатой</span>
                                 после
@@ -106,7 +108,8 @@
                         </div>
                     </div>
                     <div class="offset-2 col-md-2 text-center">
-                        <div class="row  justify-content-center"><img src="/views/assets/main/5.png" alt="advantages"></div>
+                        <div class="row  justify-content-center"><img src="/views/assets/main/5.png" alt="advantages">
+                        </div>
                         <div class="row stages-cont_text center"><h6> 5. Оплата любым удобным
                                 <span>для вас способом</span>
                             </h6>
@@ -117,13 +120,15 @@
 
                 <div class="row stages-cont_img">
                     <div class="offset-3 col-md-2">
-                        <div class="row justify-content-center"><img src="/views/assets/main/2.png" alt="advantages"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/2.png" alt="advantages">
+                        </div>
                         <div class="row stages-cont_text center"><h6>2. Выезд по указанному адресу или приезд <span>ко мне в
                     офис</span></h6>
                         </div>
                     </div>
                     <div class="offset-2 col-md-2">
-                        <div class="row justify-content-center"><img src="/views/assets/main/4.png" alt="advantages"></div>
+                        <div class="row justify-content-center"><img src="/views/assets/main/4.png" alt="advantages">
+                        </div>
                         <div class="row stages-cont_text center"><h6><span> 4. Организация и контроль</span> всего
                                 процесса
                             </h6>
@@ -141,7 +146,7 @@
                 </div>
                 <div class="row cards">
                     <#list categories as category>
-                        <div class="offset-1 col-md-3 center">
+                        <div class="col-md-4 center">
                             <img src="/views/assets/main/${category.getImage()}" alt="category">
                             <a href="/services">
                                 <div class="text-services">${category.getName()}</div>
@@ -180,13 +185,13 @@
                                     <div style="padding-top: 80px">
                                         <label for="inputEmail"></label>
                                         <input type="email" id="inputEmail" class="form-control auth-cont_input"
-                                                                               placeholder="Почта" required name="email">
+                                               placeholder="Почта" required name="email">
                                     </div>
 
                                     <div style="padding-top: 20px">
                                         <label for="inputPassword"></label>
                                         <input type="password" id="inputPassword" class="form-control auth-cont_input"
-                                                                                  placeholder="Пароль" required name="password">
+                                               placeholder="Пароль" required name="password">
                                     </div>
                                     <div style="padding-top:40px; padding-bottom: 40px">
                                         <div class="checkbox mb-3">
