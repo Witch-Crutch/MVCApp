@@ -14,12 +14,12 @@
                             <div class="register-cont_input_top">
                                 <label for="inputEmail"></label>
                                 <input type="email" id="inputEmail" class="form-control register-cont_input"
-                                                                       placeholder="Почта" required name="email">
+                                       placeholder="Почта" required name="email">
                             </div>
                             <div class="register-cont_input_middle">
                                 <label for="inputPassword"></label>
                                 <input type="password" id="inputPassword" class="form-control register-cont_input"
-                                                                          placeholder="Пароль" required name="password">
+                                       placeholder="Пароль" required name="password">
                             </div>
 
                             <div class="auth-checkbox">
@@ -32,6 +32,17 @@
                         </div>
                     </div>
                 </div>
+
+                <div style="padding-top: 20px">
+                    <#--                TODO подставить нужное сообщение в алерт -->
+                    <div class="alert alert-primary alert-info fade show" role="alert">
+                        Здесь будет сообщение
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
                 <div class="row cards">
                     <button class="offset-4 col-md-4 btn" type="submit">Войти</button>
                 </div>
