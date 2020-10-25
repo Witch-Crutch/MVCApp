@@ -16,8 +16,11 @@ import java.io.IOException;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
+    private String error;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("error", error);
         req.getRequestDispatcher("register.ftl").forward(req, resp);
     }
 
@@ -35,14 +38,17 @@ public class RegisterServlet extends HttpServlet {
         if (Validator.validRegister(name, lastname, email, password, password_again)) {
             String hash = HashPassword.getHash(email, password);
             if (usersService.userIsExist(email)) {
+                this.error = "Такой пользователь уже существует";
                 resp.sendRedirect("/register");
             } else {
                 User user = User.builder().name(name).password(hash).lastname(lastname).email(email).build();
                 usersService.addUser(user);
                 req.getSession().setAttribute("user", usersService.getUserByEmailPassword(email, hash));
+                this.error = null;
                 resp.sendRedirect("/profile");
             }
         } else {
+            this.error = "Проверьте правильность заполненных полей";
             resp.sendRedirect("/register");
         }
     }

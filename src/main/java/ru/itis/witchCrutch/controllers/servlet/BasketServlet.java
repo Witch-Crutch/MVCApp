@@ -12,6 +12,10 @@ public class BasketServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        if (req.getParameter("error") != null && req.getParameter("error").equals("empty")) {
+            req.setAttribute("error", "Ваша корзина пуста");
+        }
         req.getRequestDispatcher("/basket.ftl").forward(req, resp);
     }
 
