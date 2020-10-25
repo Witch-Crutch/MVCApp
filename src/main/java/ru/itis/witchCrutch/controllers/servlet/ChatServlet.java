@@ -26,9 +26,6 @@ public class ChatServlet extends HttpServlet {
 
         UsersService usersService = (UsersService) req.getServletContext().getAttribute("userService");
 
-        String tomcatBase = System.getProperty("catalina.home");
-        String uploadPath = String.format("%s\\webapps\\ROOT\\views\\uploads", tomcatBase);
-
         MessageService messageService = (MessageService) req.getServletContext().getAttribute("messageService");
 
         User user = (User) req.getSession().getAttribute("user");
@@ -55,9 +52,6 @@ public class ChatServlet extends HttpServlet {
         if (text != null || file != null) {
             Message message = Message.builder().message(text == null ? "" : text).file(file).sender(user).receiver(User.builder().id(Constants.ADMIN_ID).build()).build();
             messageService.uploadMessage(message);
-            List<Message> messages = messageService.userMessage(user);
-
-            req.setAttribute("messages", messages);
         }
 
         resp.sendRedirect("/chat");

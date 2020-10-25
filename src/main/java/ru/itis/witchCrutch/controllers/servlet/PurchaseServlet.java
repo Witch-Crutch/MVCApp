@@ -41,7 +41,7 @@ public class PurchaseServlet extends HttpServlet {
                 Purchase purchase = Purchase.builder().basketId(basket.getId()).products(products).customer(user).build();
                 purchaseService.addPurchase(purchase);
             } else {
-                resp.sendRedirect("/basket");
+                resp.sendRedirect("/basket?error=empty");
                 return;
             }
         } else {

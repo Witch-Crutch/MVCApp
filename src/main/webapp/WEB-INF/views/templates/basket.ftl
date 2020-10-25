@@ -11,9 +11,7 @@
                 <div style="padding-top: 20px">
                     <div class="alert alert-danger fade show" role="alert">
                         ${error}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>
             </#if>

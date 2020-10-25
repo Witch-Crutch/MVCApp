@@ -15,8 +15,11 @@ import java.io.IOException;
 @WebServlet("/auth")
 public class AuthServlet extends HttpServlet {
 
+    private String error;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("error", error);
         req.getRequestDispatcher("/auth.ftl").forward(req, resp);
     }
 
@@ -44,11 +47,14 @@ public class AuthServlet extends HttpServlet {
                     resp.addCookie(emailCookie);
                     resp.addCookie(hashCookie);
                 }
+                this.error = null;
                 resp.sendRedirect("/profile");
             } else {
+                this.error = "Такого пользователя не существует";
                 resp.sendRedirect("/auth");
             }
         } else {
+            this.error = "Проверьте правильность заполненных полей";
             resp.sendRedirect("/auth");
         }
     }
