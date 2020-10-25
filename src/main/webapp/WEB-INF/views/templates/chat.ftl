@@ -10,29 +10,57 @@
                             <ul class="list-unstyled chat-1 scrollbar-light-blue">
                                 <#if messages??>
                                     <#list messages as message>
-                                        <li class="d-flex justify-content-between mb-4">
-                                            <img src="/views/assets/user/${message.getSender().getProfileImg()}"
-                                                 alt="avatar"
-                                                 class="avatar rounded-circle ">
-                                            <div class="chat-body white" style="overflow-x: hidden ">
-                                                <div class="header">
-                                                    <strong class="primary-font">${message.getSender().getLastname()} ${message.getSender().getName()}</strong>
-                                                    <small class="pull-right text-muted"><i
-                                                                class="far fa-clock"></i> ${message.getDate()}</small>
+                                        <#if message.getSender().getId() == user.getId()>
+                                            <li class="d-flex justify-content-between mb-4">
+                                                <img src="${message.getSender().getProImage()}"
+                                                     alt="avatar"
+                                                     class="avatar rounded-circle ">
+                                                <div class="chat-body white" style="overflow-x: hidden ">
+                                                    <div class="header">
+                                                        <strong class="primary-font">${message.getSender().getLastname()} ${message.getSender().getName()}</strong>
+                                                        <small class="pull-right text-muted"><i
+                                                                    class="far fa-clock"></i> ${message.getDate()}
+                                                        </small>
+                                                    </div>
+                                                    <hr class="w-100">
+                                                    <#if message.getImage() != "">
+                                                        <a href="${message.getImage()}"
+                                                           style="display: block" target="_blank">
+                                                            <img src="${message.getImage()}" class="w-50"
+                                                                 alt="upload file" style="padding-left: 30px">
+                                                        </a>
+                                                    </#if>
+                                                    <p class="mb-0" style="width: 80%;">
+                                                        ${message.getMessage()}
+                                                    </p>
                                                 </div>
-                                                <hr class="w-100">
-                                                <#if message.getFile()??>
-                                                    <a href="${message.getImage()}"
-                                                       style="display: block" target="_blank">
-                                                        <img src="${message.getImage()}" class="w-50"
-                                                             alt="upload file" style="padding-left: 30px">
-                                                    </a>
-                                                </#if>
-                                                <p class="mb-0" style="width: 80%;">
-                                                    ${message.getMessage()}
-                                                </p>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        <#else>
+                                            <li class="d-flex justify-content-between mb-4">
+                                                <div class="chat-body white" style="overflow-x: hidden ">
+                                                    <div class="header">
+                                                        <strong class="primary-font">${message.getSender().getLastname()} ${message.getSender().getName()}</strong>
+                                                        <small class="pull-right text-muted"><i
+                                                                    class="far fa-clock"></i> ${message.getDate()}
+                                                        </small>
+                                                    </div>
+                                                    <hr class="w-100">
+                                                    <#if message.getFile()??>
+                                                        <a href="${message.getImage()}"
+                                                           style="display: block" target="_blank">
+                                                            <img src="${message.getImage()}" class="w-50"
+                                                                 alt="upload file" style="padding-left: 30px">
+                                                        </a>
+                                                    </#if>
+                                                    <p class="mb-0" style="width: 80%;">
+                                                        ${message.getMessage()}
+                                                    </p>
+                                                </div>
+                                                <img src="${message.getSender().getProImage()}"
+                                                     alt="avatar"
+                                                     class="avatar rounded-circle ">
+                                            </li>
+                                        </#if>
                                     </#list>
                                 </#if>
                             </ul>

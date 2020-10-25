@@ -5,6 +5,7 @@ import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
 import ru.itis.witchCrutch.repositories.interfaces.UsersRepository;
 
 import javax.sql.DataSource;
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 public class UsersRepositoryJdbcImpl implements UsersRepository {
@@ -30,6 +31,9 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String SQL_FIND_EMAIL = "SELECT * FROM users where email=?";
 
     //language=SQL
+    private final String SQL_UPDATE = "UPDATE users set name=?, email=?, surname=?, password=?, profile_img=?, rights=? where id=?";
+
+    //language=SQL
     private final String SQL_FIND_ID = "SELECT * FROM users where id=?";
 
     //language=SQL
@@ -42,7 +46,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
             .lastname(row.getString("surname"))
             .email(row.getString("email"))
             .password(row.getString("password"))
-            .profileImg(row.getString("profile_img"))
+            .profileImg(row.getBytes("profile_img") != null ? new ByteArrayInputStream(row.getBytes("profile_img")) : null)
             .rights(User.Right.valueOf(row.getString("rights")))
             .build();
 
@@ -81,5 +85,12 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
         template.update(
                 SQL_INSERT, user.getName(), user.getEmail(), user.getLastname(), user.getPassword(),
                 user.getProfileImg(), user.getRights().getString());
+    }
+
+    @Override
+    public void updateUser(User user) {
+        template.update(
+                SQL_UPDATE, user.getName(), user.getEmail(), user.getLastname(), user.getPassword(),
+                user.getProfileImg(), user.getRights().getString(), user.getId());
     }
 }

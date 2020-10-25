@@ -5,11 +5,12 @@ import ru.itis.witchCrutch.models.User;
 import java.util.List;
 
 public interface UsersService {
-    List<User> getAllUsers();
-    boolean userIsExist(String email);
     void addUser(User user);
+    void updateUser(User user);
+    boolean userIsExist(String email);
+    boolean userAuth(String email, String hash);
     User getUserByEmailPassword(String email, String password);
     User getUserByEmail(String email);
     User getUserById(int id);
-    boolean userAuth(String email, String hash);
+    List<User> getAllUsers();
 }

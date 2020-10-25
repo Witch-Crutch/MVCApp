@@ -20,7 +20,7 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
     private final String SQL_SAVE = "insert into message (sender_id, text, time, receiver_id, file) values (?, ?, ?, ?, ?)";
 
     //language=SQL
-    private final String SQL_FIND_USER = "select * from message where sender_id=? order by time desc";
+    private final String SQL_FIND_USER = "select * from message where sender_id=? OR receiver_id=? order by time desc";
 
     public MessageRepositoryJdbcImpl(DataSource dataSource, UsersService userService) {
         this.dataSource = dataSource;
@@ -30,7 +30,7 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
 
     public RowMapper<Message> messageRowMapper = row -> Message.builder()
             .message(row.getString("text"))
-            .file(new ByteArrayInputStream(row.getBytes("file")))
+            .file(row.getBytes("file") != null ? new ByteArrayInputStream(row.getBytes("file")) : null)
             .date(row.getTimestamp("time"))
             .sender(userService.getUserById(row.getInt("sender_id")))
             .receiver(userService.getUserById(row.getInt("receiver_id")))
@@ -43,7 +43,7 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
 
     @Override
     public List<Message> getUserMessage(User user) {
-        List<Message> messages = template.query(SQL_FIND_USER, messageRowMapper, user.getId());
+        List<Message> messages = template.query(SQL_FIND_USER, messageRowMapper, user.getId(), user.getId());
         return !messages.isEmpty() ? messages : null;
     }
 }

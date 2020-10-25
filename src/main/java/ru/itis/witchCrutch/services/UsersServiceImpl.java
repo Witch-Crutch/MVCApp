@@ -30,6 +30,11 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public void updateUser(User user) {
+        usersRepository.updateUser(user);
+    }
+
+    @Override
     public User getUserByEmailPassword(String email, String password) {
         return usersRepository.findByEmailPassword(email, password);
     }

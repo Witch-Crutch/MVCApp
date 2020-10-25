@@ -30,7 +30,7 @@
                     <div class="row info-cont">
                         <div class="col-md-3">
                             <a style="width: 40%" target="_blank">
-                                <img class="profile_avatar" src="/views/assets/user/${user.getProfileImg()}"
+                                <img class="profile_avatar" src="${user.getProImage()}"
                                      alt="avatar">
                             </a>
                         </div>
@@ -54,12 +54,16 @@
             <div class="popup">
                 <button class="close" title="Закрыть окно" onclick="swa2()"></button>
                 <p class="modal_text">Изменить фотографию</p>
-                <p class="button_modal"><span class="btn_mini_3 float-left">
-                         Прикрепить файл <input type="file">
-                        </span></p>
-                <p class="center" style="padding-top: 30px">
-                    <button class="btn_mini_2" type="submit">Сохранить</button>
-                </p>
+                <form action="/chg_img" method="post" enctype="multipart/form-data">
+                    <p class="button_modal">
+                    <span class="btn_mini_3 float-left">
+                         Прикрепить файл <input type="file" name="file" accept="image/*">
+                    </span>
+                    </p>
+                    <p class="center" style="padding-top: 30px">
+                        <button class="btn_mini_2" type="submit">Сохранить</button>
+                    </p>
+                </form>
             </div>
         </div>
 

@@ -5,6 +5,7 @@ import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.services.interfaces.MessageService;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 import ru.itis.witchCrutch.util.Constants;
+import sun.applet.resources.MsgAppletViewer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -47,10 +48,18 @@ public class ChatServlet extends HttpServlet {
         Timestamp date = new Timestamp(System.currentTimeMillis());
 
         String text = req.getParameter("text") == null ? "" : req.getParameter("text");
-        InputStream file = req.getPart("file").getInputStream();
+        InputStream file = null;
+        if (req.getPart("file").getSize() > 0) {
+            file = req.getPart("file").getInputStream();
+        }
 
-        if (text != null || file != null) {
-            Message message = Message.builder().message(text == null ? "" : text).file(file).sender(user).receiver(User.builder().id(Constants.ADMIN_ID).build()).build();
+        if (!text.equals("") || file != null) {
+            Message message = Message.builder()
+                    .message(text)
+                    .file(file)
+                    .sender(user)
+                    .receiver(User.builder().id(Constants.ADMIN_ID).build())
+                    .build();
             messageService.uploadMessage(message);
         }
 
