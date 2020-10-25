@@ -1,34 +1,24 @@
 package ru.itis.witchCrutch.controllers.servlet;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import ru.itis.witchCrutch.models.Message;
 import ru.itis.witchCrutch.models.User;
-import ru.itis.witchCrutch.repositories.interfaces.MessageRepository;
-import ru.itis.witchCrutch.repositories.MessageRepositoryJdbcImpl;
-import ru.itis.witchCrutch.repositories.interfaces.UsersRepository;
-import ru.itis.witchCrutch.repositories.UsersRepositoryJdbcImpl;
 import ru.itis.witchCrutch.services.interfaces.MessageService;
-import ru.itis.witchCrutch.services.MessageServiceImpl;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
-import ru.itis.witchCrutch.services.UsersServiceImpl;
 import ru.itis.witchCrutch.util.Constants;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @WebServlet("/chat")
+@MultipartConfig
 public class ChatServlet extends HttpServlet {
 
     @Override
@@ -57,65 +47,19 @@ public class ChatServlet extends HttpServlet {
 
         User user = (User) req.getSession().getAttribute("user");
 
-        List<String> parameters = loadFile(req);
-
-        String filename = parameters.get(0);
-        String text = parameters.get(1);
-
         Timestamp date = new Timestamp(System.currentTimeMillis());
 
-        messageService.uploadMessage(Message.builder().message(text).filename(filename).sender(user).receiver(User.builder().id(Constants.ADMIN_ID).build()).build());
+        String text = req.getParameter("text") == null ? "" : req.getParameter("text");
+        InputStream file = req.getPart("file").getInputStream();
 
-        List<Message> messages = messageService.userMessage(user);
-        req.setAttribute("messages", messages);
+        if (text != null || file != null) {
+            Message message = Message.builder().message(text == null ? "" : text).file(file).sender(user).receiver(User.builder().id(Constants.ADMIN_ID).build()).build();
+            messageService.uploadMessage(message);
+            List<Message> messages = messageService.userMessage(user);
 
-        req.getRequestDispatcher("/chat.ftl").forward(req, resp);
-    }
-
-    private List<String> loadFile(HttpServletRequest req) {
-        String filename = "";
-        String text = "";
-        List<String> result = new ArrayList<>();
-        if (ServletFileUpload.isMultipartContent(req)) {
-            DiskFileItemFactory factory = new DiskFileItemFactory();
-            factory.setSizeThreshold(1024 * 1024);
-            factory.setRepository(new File(System.getProperty("java.io.tmpdir")));
-
-            ServletFileUpload upload = new ServletFileUpload(factory);
-            upload.setFileSizeMax(1024 * 1024 * 50);
-            upload.setSizeMax(1024 * 1024 * 50);
-            String tomcatBase = System.getProperty("catalina.home");
-            String upload1 = String.format("%s\\webapps\\ROOT\\views\\uploads", tomcatBase);
-            // TODO относительный путь
-            String upload2 = "C:\\Users\\User\\Desktop\\Project\\itis\\third_semester\\semester_work_1\\WitchCrutch\\src\\main\\webapp\\views\\uploads";
-
-            List<File> uploads = new ArrayList<>();
-            uploads.add(new File(upload1));
-            uploads.add(new File(upload2));
-
-            List<FileItem> formItems;
-            try {
-                formItems = upload.parseRequest(req);
-                if (formItems != null && formItems.size() > 0) {
-                    for (FileItem item : formItems) {
-                        if (!item.isFormField() && item.getSize() > 0) {
-                            filename = UUID.randomUUID().toString().substring(0, 8) + ".png";
-                            for (File uploadPath : uploads) {
-                                String filePath = uploadPath + File.separator + filename;
-                                File storeFile = new File(filePath);
-                                item.write(storeFile);
-                            }
-                        } else if (item.getFieldName().equals("text")) {
-                            text = item.getString("UTF-8");
-                        }
-                    }
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            req.setAttribute("messages", messages);
         }
-        result.add(filename);
-        result.add(text);
-        return result;
+
+        resp.sendRedirect("/chat");
     }
 }

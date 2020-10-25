@@ -3,6 +3,8 @@ package ru.itis.witchCrutch.repositories;
 import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
 
 import javax.sql.DataSource;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -57,6 +59,10 @@ public class SimpleJdbcTemplate {
 
 
             for (int i = 0; i < args.length; i++) {
+                if (args[i] instanceof InputStream) {
+                    statement.setBinaryStream(i + 1, (InputStream) args[i]);
+                    continue;
+                }
                 statement.setObject(i + 1, args[i]);
             }
 

@@ -7,6 +7,7 @@ import ru.itis.witchCrutch.repositories.interfaces.RowMapper;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 
 import javax.sql.DataSource;
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 public class MessageRepositoryJdbcImpl implements MessageRepository {
@@ -16,7 +17,7 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
     private UsersService userService;
 
     //language=SQL
-    private final String SQL_SAVE = "insert into message (sender_id, text, time, receiver_id, filename) values (?, ?, ?, ?, ?)";
+    private final String SQL_SAVE = "insert into message (sender_id, text, time, receiver_id, file) values (?, ?, ?, ?, ?)";
 
     //language=SQL
     private final String SQL_FIND_USER = "select * from message where sender_id=? order by time desc";
@@ -29,7 +30,7 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
 
     public RowMapper<Message> messageRowMapper = row -> Message.builder()
             .message(row.getString("text"))
-            .filename(row.getString("filename"))
+            .file(new ByteArrayInputStream(row.getBytes("file")))
             .date(row.getTimestamp("time"))
             .sender(userService.getUserById(row.getInt("sender_id")))
             .receiver(userService.getUserById(row.getInt("receiver_id")))
@@ -37,7 +38,7 @@ public class MessageRepositoryJdbcImpl implements MessageRepository {
 
     @Override
     public void save(Message entity) {
-        template.update(SQL_SAVE, entity.getSender().getId(), entity.getMessage(), entity.getDate(), entity.getReceiver().getId(), entity.getFilename());
+        template.update(SQL_SAVE, entity.getSender().getId(), entity.getMessage(), entity.getDate(), entity.getReceiver().getId(), entity.getFile());
     }
 
     @Override
