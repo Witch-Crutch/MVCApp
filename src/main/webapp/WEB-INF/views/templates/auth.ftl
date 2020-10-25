@@ -7,6 +7,17 @@
                 Авторизация
             </div>
 
+            <#if error??>
+                <div style="padding-top: 20px">
+                    <div class="alert alert-danger fade show" role="alert">
+                        ${error}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </#if>
+
             <form class="form-signin" method="post" action="/auth">
                 <div class="row cards">
                     <div class="card offset-3 col-md-6" style="border-radius: 20px">
@@ -30,16 +41,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div style="padding-top: 20px">
-                    <#--                TODO подставить нужное сообщение в алерт -->
-                    <div class="alert alert-primary alert-info fade show" role="alert">
-                        Здесь будет сообщение
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
                     </div>
                 </div>
 
