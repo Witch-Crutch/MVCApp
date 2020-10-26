@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface MessageRepository {
     List<Message> getUserMessage(User user);
+
     void save(Message message);
 }

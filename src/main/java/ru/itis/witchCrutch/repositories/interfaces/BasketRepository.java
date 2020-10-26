@@ -6,7 +6,10 @@ import ru.itis.witchCrutch.models.User;
 
 public interface BasketRepository {
     Basket getUserBasket(User user);
+
     void save(Basket basket);
+
     void addProduct(Basket basket, Product product);
+
     void deleteProduct(Basket basket, Product product);
 }

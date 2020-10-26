@@ -37,7 +37,7 @@ public class UsersRepositoryJdbcImpl implements UsersRepository {
     private final String SQL_FIND_ID = "SELECT * FROM users where id=?";
 
     //language=SQL
-    private static final  String SQL_INSERT = "INSERT INTO users (name, email, surname, password, profile_img, rights)" +
+    private static final String SQL_INSERT = "INSERT INTO users (name, email, surname, password, profile_img, rights)" +
             "VALUES (?, ?, ?, ?, ?, ?);";
 
     private final RowMapper<User> UserRowMapper = row -> User.builder()

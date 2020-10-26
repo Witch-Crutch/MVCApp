@@ -5,7 +5,6 @@ import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.services.interfaces.MessageService;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 import ru.itis.witchCrutch.util.Constants;
-import sun.applet.resources.MsgAppletViewer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;

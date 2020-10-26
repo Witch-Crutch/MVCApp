@@ -16,7 +16,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getProductsByName(String name) { return productRepository.getProductsByName(name); }
+    public List<Product> getProductsByName(String name) {
+        return productRepository.getProductsByName(name);
+    }
 
     @Override
     public List<Product> getProductsByNameOrderByPrice(String name) {
@@ -39,7 +41,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product getProductById(int id) { return productRepository.getProductById(id); }
+    public Product getProductById(int id) {
+        return productRepository.getProductById(id);
+    }
 
     @Override
     public List<Product> getProductsByCategory(Category category) {

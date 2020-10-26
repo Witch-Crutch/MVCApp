@@ -50,7 +50,9 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public boolean userAuth(String email, String hash) { return usersRepository.authUser(email, hash); }
+    public boolean userAuth(String email, String hash) {
+        return usersRepository.authUser(email, hash);
+    }
 
 
 }

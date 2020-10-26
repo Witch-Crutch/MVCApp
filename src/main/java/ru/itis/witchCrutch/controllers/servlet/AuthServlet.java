@@ -2,7 +2,6 @@ package ru.itis.witchCrutch.controllers.servlet;
 
 import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
-import ru.itis.witchCrutch.util.CookieActions;
 import ru.itis.witchCrutch.util.FileToImage;
 import ru.itis.witchCrutch.util.HashPassword;
 import ru.itis.witchCrutch.util.Validator;
@@ -10,7 +9,6 @@ import ru.itis.witchCrutch.util.Validator;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import javax.sql.DataSource;
 import java.io.IOException;
 
 @WebServlet("/auth")

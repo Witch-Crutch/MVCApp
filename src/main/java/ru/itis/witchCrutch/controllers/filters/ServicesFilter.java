@@ -14,7 +14,7 @@ import java.util.List;
 public class ServicesFilter implements Filter {
 
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
 
         ProductService productService = (ProductService) req.getServletContext().getAttribute("productService");

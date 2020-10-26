@@ -9,7 +9,7 @@ $("#search_form").submit(function (event) {
         },
         dataType: "json",
         success: function (data) {
-            result = data['result'];
+            let result = data['result'];
             $('#results').html('');
             result.forEach(function (product) {
                 $('#results').append($(
@@ -17,7 +17,7 @@ $("#search_form").submit(function (event) {
                     '<div class="card services_card">' +
                     '<div class="card-body center">' +
                     '<div class="services_img">' +
-                    '<img src="/views/assets/services/' + product['image'] + '" >' +
+                    '<img src="/views/assets/services/' + product['image'] + '" alt="service">' +
                     '</div>' +
                     '<div class="services_title">' +
                     product['name'] +

@@ -1,10 +1,10 @@
 function validate() {
-    var username = document.form.username.value;
-    var password = document.form.password.value;
+    let username = document.form.username.value;
+    let password = document.form.password.value;
     jQuery.validator.addMethod(
         'regexp',
         function (value, element, regexp) {
-            var re = new RegExp(regexp);
+            let re = new RegExp(regexp);
             return this.optional(element) || re.test(value);
         },
         "Please check your input."

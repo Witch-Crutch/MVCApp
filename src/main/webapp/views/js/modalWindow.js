@@ -1,4 +1,4 @@
-var b = document.getElementById('overlay');
+let b = document.getElementById('overlay');
 
 function swa() {
     b.style.visibility = 'visible';

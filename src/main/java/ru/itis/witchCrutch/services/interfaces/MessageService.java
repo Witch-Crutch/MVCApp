@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface MessageService {
     void uploadMessage(Message message);
+
     List<Message> userMessage(User user);
 }
 

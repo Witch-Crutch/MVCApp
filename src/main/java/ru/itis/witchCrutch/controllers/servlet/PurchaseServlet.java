@@ -9,7 +9,6 @@ import ru.itis.witchCrutch.services.interfaces.ProductService;
 import ru.itis.witchCrutch.services.interfaces.PurchaseService;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,7 +20,7 @@ import java.util.List;
 @WebServlet("/purchase")
 public class PurchaseServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
         User user = (User) req.getSession().getAttribute("user");
@@ -53,7 +52,7 @@ public class PurchaseServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         doGet(req, resp);
     }
 }

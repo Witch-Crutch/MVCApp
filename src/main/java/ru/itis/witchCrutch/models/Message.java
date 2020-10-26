@@ -8,11 +8,7 @@ import java.sql.Timestamp;
 import java.util.Base64;
 
 @Data
-@ToString
 @Builder
-@EqualsAndHashCode
-@Getter
-@Setter
 public class Message {
     User sender;
     User receiver;
@@ -29,7 +25,7 @@ public class Message {
         String res = "";
 
         if (file != null) {
-            byte[] target = null;
+            byte[] target;
             try {
                 target = new byte[file.available()];
                 file.read(target);

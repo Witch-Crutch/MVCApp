@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface PurchaseRepository {
     void save(Purchase purchase);
+
     List<Product> userPurchase(User user);
 }

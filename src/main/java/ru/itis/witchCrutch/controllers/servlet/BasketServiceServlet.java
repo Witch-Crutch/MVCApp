@@ -7,7 +7,6 @@ import ru.itis.witchCrutch.services.interfaces.BasketService;
 import ru.itis.witchCrutch.services.interfaces.ProductService;
 import ru.itis.witchCrutch.services.interfaces.UsersService;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +18,7 @@ import java.io.IOException;
 public class BasketServiceServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         DataSource dataSource = (DataSource) req.getServletContext().getAttribute("datasource");
 
         ProductService productService = (ProductService) req.getServletContext().getAttribute("productService");
@@ -41,7 +40,8 @@ public class BasketServiceServlet extends HttpServlet {
                 deleteProduct(basketService, basket, productService, Integer.parseInt(delete));
                 resp.sendRedirect("/basket");
             }
-        } catch (NumberFormatException ignored){ }
+        } catch (NumberFormatException ignored) {
+        }
         if (add == null && delete == null) {
             resp.sendRedirect("/main");
         }
@@ -58,7 +58,7 @@ public class BasketServiceServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         doGet(req, resp);
     }
 }

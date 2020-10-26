@@ -4,16 +4,10 @@ package ru.itis.witchCrutch.models;
 import lombok.*;
 import ru.itis.witchCrutch.util.FileToImage;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.Base64;
 
 @Data
-@Getter
-@Setter
 @Builder
-@ToString
-@EqualsAndHashCode
 public class User {
 
     private int id;

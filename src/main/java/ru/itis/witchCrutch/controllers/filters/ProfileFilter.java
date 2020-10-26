@@ -4,7 +4,6 @@ import ru.itis.witchCrutch.models.User;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -21,8 +20,7 @@ public class ProfileFilter implements Filter {
 
         if (user != null) {
             filterChain.doFilter(servletRequest, servletResponse);
-        }
-        else {
+        } else {
             resp.sendRedirect("/auth");
         }
     }

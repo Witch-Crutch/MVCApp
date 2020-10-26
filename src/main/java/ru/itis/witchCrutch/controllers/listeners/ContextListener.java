@@ -2,23 +2,16 @@ package ru.itis.witchCrutch.controllers.listeners;
 
 import ru.itis.witchCrutch.dataSource.SimpleDataSource;
 import ru.itis.witchCrutch.dataSource.SimpleDataSourceConfig;
-import ru.itis.witchCrutch.models.Basket;
-import ru.itis.witchCrutch.models.User;
 import ru.itis.witchCrutch.repositories.*;
 import ru.itis.witchCrutch.repositories.interfaces.*;
 import ru.itis.witchCrutch.services.*;
 import ru.itis.witchCrutch.services.interfaces.*;
-import ru.itis.witchCrutch.util.CookieActions;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Properties;
 
 @WebListener
@@ -65,7 +58,7 @@ public class ContextListener implements ServletContextListener {
         TelephoneRepository telephoneRepository = new TelephoneRepositoryJdbcImpl(dataSource);
         TelephoneService telephoneService = new TelephoneServiceImpl(telephoneRepository);
 
-        CategoryRepository categoryRepository = new CategoryRepositoryJdbcImpl(dataSource) ;
+        CategoryRepository categoryRepository = new CategoryRepositoryJdbcImpl(dataSource);
         CategoryService categoryService = new CategoryServiceImpl(categoryRepository);
 
         sce.getServletContext().setAttribute("productService", productService);

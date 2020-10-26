@@ -6,7 +6,8 @@ public class SimpleDataSourceConfig {
     private String username;
     private String password;
 
-    public SimpleDataSourceConfig(){}
+    public SimpleDataSourceConfig() {
+    }
 
     public String getJdbcUrl() {
         return JdbcUrl;
