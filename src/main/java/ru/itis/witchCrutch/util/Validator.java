@@ -31,6 +31,7 @@ public class Validator {
     }
 
     private static boolean valid(String expression, String pattern) {
+        expression = expression.trim();
         Pattern emailPattern = Pattern.compile(pattern);
         Matcher emailMatcher = emailPattern.matcher(expression);
         return emailMatcher.matches();

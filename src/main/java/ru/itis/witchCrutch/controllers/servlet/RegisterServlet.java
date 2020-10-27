@@ -35,6 +35,10 @@ public class RegisterServlet extends HttpServlet {
         String password_again = req.getParameter("password_again");
 
         if (Validator.validRegister(name, lastname, email, password, password_again)) {
+            name = name.trim();
+            lastname = lastname.trim();
+            email = email.trim();
+            password = password.trim();
             String hash = HashPassword.getHash(email, password);
             if (usersService.userIsExist(email)) {
                 this.error = "Такой пользователь уже существует";

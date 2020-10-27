@@ -34,6 +34,8 @@ public class AuthServlet extends HttpServlet {
         final boolean remember = req.getParameter("remember") != null;
 
         if (Validator.validAuth(email, password)) {
+            email = email.trim();
+            password = password.trim();
             String hash = HashPassword.getHash(email, password);
             user = usersService.getUserByEmailPassword(email, hash);
             if (user != null) {
