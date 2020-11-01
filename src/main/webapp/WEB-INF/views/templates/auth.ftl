@@ -18,7 +18,7 @@
                 </div>
             </#if>
 
-            <form class="form-signin" method="post" action="/auth">
+            <form class="form-signin" method="post" action="/auth" autocomplete="off">
                 <div class="row cards">
                     <div class="card offset-3 col-md-6" style="border-radius: 20px">
                         <div class="card-body text-center">

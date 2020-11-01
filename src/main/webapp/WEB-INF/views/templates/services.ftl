@@ -1,13 +1,13 @@
 <#ftl encoding="UTF-8">
 <#import "layouts/base.ftl" as base>
-<@base.main css=["services.css"] title="Мои услуги" scripts=["search.js", "searchAjax.js"]>
+<@base.main css=["services.css"] title="Мои услуги" scripts=["autoComplete.js", "searchAjax.js"]>
     <div class="content">
         <div class="container">
             <div class="serv-cont_title">
                 Мои услуги
             </div>
 
-            <form class="search_form" method="get" action="/search" id="search_form">
+            <form class="search_form" method="get" action="/search" id="search_form" autocomplete="off">
                 <div class="search_block">
                     <div class="container">
                         <div class="row">

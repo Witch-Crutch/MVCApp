@@ -24,11 +24,8 @@
                                                     </div>
                                                     <hr class="w-100">
                                                     <#if message.getImage() != "">
-                                                        <a href="${message.getImage()}"
-                                                           style="display: block" target="_blank">
                                                             <img src="${message.getImage()}" class="w-50"
                                                                  alt="upload file" style="padding-left: 30px">
-                                                        </a>
                                                     </#if>
                                                     <p class="mb-0" style="width: 80%;">
                                                         ${message.getMessage()}

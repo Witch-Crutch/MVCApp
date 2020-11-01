@@ -18,7 +18,7 @@
                 </div>
             </#if>
 
-            <form class="form-signin" method="post" action="/register">
+            <form class="form-signin" method="post" action="/register" autocomplete="off">
                 <div class="row cards">
                     <div class="card border-white offset-3 col-md-6 card_settings">
                         <div class="card-body text-center ">
